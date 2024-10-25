@@ -1,0 +1,23 @@
+#hero {
+    .container.split {
+        gap : 50px;
+        padding-top : 100px;
+        padding-bottom: 100px;
+    }
+
+    #hero_text {
+        flex: 4;
+    }
+    #hero_image {
+        flex: 3;
+        max-height: 100%;
+    }
+
+    #hero_image img {
+        border-radius: 1000px;
+    }
+
+    p {
+        margin-top: 40px;
+    }
+}
