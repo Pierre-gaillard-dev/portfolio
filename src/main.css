@@ -47,11 +47,21 @@ h1 {
 }
 
 h2 {
-    font-size: 48px;
-    font-weight: 300;
+    font-size: 64px;
+    font-weight: 700;
 }
 
-p, a, span {
+h3 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 15px;
+}
+
+p, a, span, div {
     color: var(--text);
     font-family: "Nunito Sans", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -61,8 +71,8 @@ p, a, span {
         font-size: 5.5vw;
     }
     
-    h2 {
-        font-size: 3vw;
+     h2 {
+        font-size: 5vw;
     }
 }
 
@@ -77,6 +87,7 @@ button {
     flex-wrap: nowrap;
     align-items: center;
     gap: 10px;
+    border: none;
 }
 
 button span {

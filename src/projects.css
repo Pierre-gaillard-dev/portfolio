@@ -1,0 +1,45 @@
+article.card {
+    width: 360px;
+    background-color: rgba(22, 8, 51, .8);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+article.card > * {
+    margin: 10px;
+}
+
+article.card .image_container {
+    height: unset;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin: 0;
+}
+
+article.card .image_container img {
+    object-fit: cover;
+    min-width: 100%;
+    margin: 0;
+}
+
+article.card .split {
+    margin-top :20px;
+    gap: 15px;
+}
+
+article.card .languages > p {
+    padding: 3px 7px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+article.card .html_css{
+    background-color: var(--button-color);
+}
+
+article.card .js{
+    background-color: #efd81d;
+    color: var(--black);
+}
