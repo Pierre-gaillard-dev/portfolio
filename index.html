@@ -12,26 +12,37 @@
 </head>
 
 <body class="dark_mode">
-    <section w3-include-html="src/navbar/nav-bar.html" id="container"></section>
+    <section w3-include-html="src/navbar/nav-bar.html" class="container"></section>
 
-    <section id="hero" class="split">
-        <div>
-            <h1>Pierre Gaillard</h1>
-            <h2>Développeur web</h2>
-            <div class="split left">
-                <button class="white">
-                    <img src="src/img/github-mark/github-mark.svg" />
-                    Github
-                </button>
-                <button class="blue">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-mail">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    Github
-                </button>
+    <section id="hero" class="background_light">
+        <div class="container split">
+            <div id="hero_text">
+                <h1>Pierre Gaillard</h1>
+                <h2>Développeur web</h2>
+                <div class="split left button_container">
+                    <button class="white">
+                        <div class="image_container">
+                            <img src="src/img/github-mark/github-mark.svg" />
+                        </div>
+                        <span>Github</span>
+                    </button>
+                    <button class="blue">
+                        <div class="image_container">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-mail">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <span>Mail</span>
+                    </button>
+                </div>
+                <p>Je m’appelle Pierre Gaillard, je suis étudiant à MyDigitalSchool Vannes et je suis </p>
+            </div>
+            <div id="hero_image">
+                <img src="src/img/photo.png" />
             </div>
         </div>
     </section>

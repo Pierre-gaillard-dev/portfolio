@@ -77,6 +77,7 @@ img {
 #nav_bar {
     display: flex;
     justify-content: space-between;
+    height: 80px;
 }
 
 #nav_bar div {
@@ -100,4 +101,5 @@ img {
     width: 100px;
     max-width: 20%;
     right: 0;
+    max-height: 100%;
 }
