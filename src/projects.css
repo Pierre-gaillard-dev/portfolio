@@ -1,5 +1,32 @@
+.projects_container {
+    position: relative;
+    padding: 50px 0px;
+    height: 600px;
+}
+
+.project {
+    position: absolute;
+}
+
+#left {
+    left: 0px;
+    z-index:1;
+}
+
+#middle {
+    left: 50%;
+    transform:translateX(-50%);
+    z-index:2;
+}
+
+#right {
+    right: 0px;
+    z-index:1;
+}
+
 article.card {
     width: 360px;
+    max-width: 40vw;
     background-color: rgba(22, 8, 51, .8);
     backdrop-filter: blur(10px);
     border-radius: 24px;
@@ -28,6 +55,17 @@ article.card .split {
     gap: 15px;
 }
 
+article.card p {
+    max-height: 130px;
+    line-height: 1.5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    text-overflow: ellipsis;
+}
+
 article.card .languages > p {
     padding: 3px 7px;
     border-radius: 100px;
@@ -42,4 +80,26 @@ article.card .html_css{
 article.card .js{
     background-color: #efd81d;
     color: var(--black);
+}
+
+article.card.selected {
+    scale: 1.1;
+}
+
+@media screen and (max-width: 1400px) {
+    .projects_container {
+        height: 50vw;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .projects_container {
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .projects_container {
+        height: 500px;
+    }
 }

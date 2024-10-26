@@ -74,6 +74,28 @@ p, a, span, div {
      h2 {
         font-size: 5vw;
     }
+
+    h3 {
+        font-size: 2vw;
+    }
+
+    p {
+        font-size : 13px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        font-size: 5.5vw;
+    }
+    
+     h2 {
+        font-size: 5vw;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
 }
 
 button {
@@ -114,7 +136,7 @@ button img, button svg {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 50px;
 }
