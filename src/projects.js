@@ -4,6 +4,9 @@ let screen_size = window.innerWidth
 
 let sleeping = false
 let current_index = 1
+
+document.querySelectorAll(".projects_container img").forEach(img => {img.setAttribute("draggable", false)})
+
 const update_index = function () {
     document.querySelector("article.card.selected").classList.remove("selected")
     cards[current_index].querySelector("article").classList.add("selected")
@@ -27,7 +30,40 @@ document.querySelectorAll("article.card").forEach(card => {
 
 project_container.addEventListener("wheel", (event) => {
     if (event.shiftKey && !sleeping) {
+        event.preventDefault();
+
         if (event.deltaY < 0) {
+            current_index++;
+        } else {
+            current_index--;
+        }
+
+        if (current_index < 0) {
+            current_index = cards.length - 1;
+        } else if (current_index >= cards.length) {
+            current_index = 0;
+        }
+
+        update_index();
+    }
+});
+
+
+let mouse_X
+let dragging = false
+
+project_container.addEventListener('touchstart', (event) => {
+    mouse_X = event.touches[0].clientX
+    dragging = true
+})
+
+project_container.addEventListener('touchmove', (event) => {
+    const diff = mouse_X - event.touches[0].clientX
+
+    if (Math.abs(diff) > 50 && !sleeping && dragging) {
+        event.preventDefault();
+
+        if (diff > 0) {
             current_index++
         } else {
             current_index--
@@ -38,21 +74,23 @@ project_container.addEventListener("wheel", (event) => {
         } else if (current_index >= cards.length) {
             current_index = 0
         }
-
+        mouse_X = event.clientX
         update_index()
+        dragging = false
+        
     }
+});
+
+
+project_container.addEventListener("mousedown", (event) => {
+    mouse_X = event.clientX
+    dragging = true
 })
 
-let mouse_X
+project_container.addEventListener("mousemove", (event) => {
+    const diff = mouse_X - event.clientX
 
-project_container.addEventListener('touchstart', (event) => {
-    mouse_X = event.touches[0].clientX
-})
-
-project_container.addEventListener('touchmove', (event) => {
-    const diff = mouse_X - event.touches[0].clientX
-
-    if (Math.abs(diff) > 50 && !sleeping) {
+    if (Math.abs(diff) > 50 && !sleeping && dragging) {
         event.preventDefault();
 
         if (diff > 0) {
@@ -67,10 +105,15 @@ project_container.addEventListener('touchmove', (event) => {
             current_index = 0
         }
 
+        mouse_X = event.clientX
         update_index()
-        
+        dragging = false
     }
-});
+})
+
+document.addEventListener("mouseup", () => {
+    dragging = false
+})
 
 window.onresize = () => {
     if (screen_size >1400 && window.innerWidth <= 1400) {

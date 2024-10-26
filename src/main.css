@@ -66,39 +66,7 @@ p, a, span, div {
     font-family: "Nunito Sans", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-@media screen and (max-width: 1400px) {
-    h1 {
-        font-size: 5.5vw;
-    }
-    
-     h2 {
-        font-size: 5vw;
-    }
-
-    h3 {
-        font-size: 2vw;
-    }
-
-    p {
-        font-size : 13px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    h1 {
-        font-size: 5.5vw;
-    }
-    
-     h2 {
-        font-size: 5vw;
-    }
-
-    h3 {
-        font-size: 16px;
-    }
-}
-
-button {
+a.button {
     padding: 10px;
     border-radius: 10px;
     height: 60px;
@@ -112,15 +80,15 @@ button {
     border: none;
 }
 
-button span {
+a.button span {
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
 }
 
-button img, button svg {
+a.button img, a.button svg {
     height: 100%;
-    width: auto;
+    width: unset;
     object-fit: contain;
     stroke-width: 1.5px;
 }
@@ -169,16 +137,52 @@ button img, button svg {
 }
 
 
-button.blue {
+a.button.blue {
     background-color: var(--button-color);
     color: var(--text);
 }
 
-button.white {
+a.button.white {
     background-color: var(--button-white);
     color: var(--black);
 }
 
 .background_light {
     background-color: var(--background-light);
+}
+
+@media screen and (max-width: 1400px) {
+    h1 {
+        font-size: 5.5vw;
+    }
+    
+    h2 {
+        font-size: 5vw;
+    }
+
+    h3 {
+        font-size: 2vw;
+    }
+
+    p {
+        font-size : 13px;
+    }
+
+    a.button {
+        font-size: 2.5vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        font-size: 40px;
+    }
+    
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
 }

@@ -3,15 +3,16 @@
 }
 
 #skills img {
-    max-height: 70px;
-    max-width: 70px;
+    height: 70px;
+    width: 70px;
+    max-width: 8vw;
     aspect-ratio: 1/1;
     object-fit: contain;
 }
 
 #skills >.container >.split {
     align-items: stretch;
-    gap: unset;
+    gap: 5px;
     justify-content: space-around;
 }
 
@@ -25,4 +26,16 @@
     background-color: var(--text);
     border-radius: 10px;
     flex-shrink: 0;
+}
+
+@media screen and (max-width: 800px) {
+    #skills .separator {
+        width: 1px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #skills .split.left {
+        margin-bottom: 0;
+    }
 }

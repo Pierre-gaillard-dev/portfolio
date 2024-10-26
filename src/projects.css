@@ -5,6 +5,10 @@
     gap: unset;
 }
 
+.projects_container:active {
+    cursor: grabbing;
+}
+
 
 article.card {
     width: 360px;
@@ -15,10 +19,12 @@ article.card {
     overflow: hidden;
     transition: all .2s ease-in-out;
     box-shadow: #000000 5px 5px 10px;
+    user-select: none;
 }
 
 article.card > * {
     margin: 10px;
+    
 }
 
 article.card .image_container {
@@ -76,6 +82,10 @@ article.card.selected {
         justify-content: center;
     }
 
+    article.card .languages > p {
+        font-size: 1vw;
+    }
+
     #left {
         position: absolute;
         transform: translateX(-25vw);
@@ -94,6 +104,16 @@ article.card.selected {
         transform: translateX(25vw);
         transition: transform .2s ease-in-out, order;
         transition-property: transform, z-index, scale;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    article.card .languages {
+        flex-wrap: wrap;
+    }
+    
+    article.card .languages > p {
+        font-size: 10px;
     }
 }
 
