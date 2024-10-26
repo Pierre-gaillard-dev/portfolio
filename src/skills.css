@@ -1,0 +1,28 @@
+#skills h3 {
+    text-align: center;
+}
+
+#skills img {
+    max-height: 70px;
+    max-width: 70px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+#skills >.container >.split {
+    align-items: stretch;
+    gap: unset;
+    justify-content: space-around;
+}
+
+#skills .split.left {
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#skills .separator {
+    width: 2px;
+    background-color: var(--text);
+    border-radius: 10px;
+    flex-shrink: 0;
+}

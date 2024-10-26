@@ -146,6 +146,10 @@ button img, button svg {
     text-align: left;
 }
 
+.center {
+    justify-content: center;
+}
+
 .image_container {
     height: 100%;
     width: 100%;
