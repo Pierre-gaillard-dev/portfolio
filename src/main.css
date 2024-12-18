@@ -97,7 +97,7 @@ a.button img, a.button svg {
     width: 1400px;
     max-width: 100vw;
     margin: auto;
-    padding: 0px 30px;
+    padding: 30px 30px;
 }
 
 .split {
