@@ -31,6 +31,7 @@ html,
 body {
 	max-width: 100vw;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -159,6 +160,16 @@ a.button.white {
 	gap: 50px;
 }
 
+.center {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+	text-align: center;
+}
+
 .left {
 	justify-content: left;
 	text-align: left;
@@ -184,6 +195,13 @@ a.button.white {
 
 .opened {
 	display: block;
+}
+
+#hero {
+	min-height: 40vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media screen and (max-width: 1400px) {

@@ -54,6 +54,23 @@
 	}
 }
 
+header {
+	background-color: var(--background);
+	width: 100vw;
+}
+
+#header, #nav_bar {
+	height: 80px;
+}
+
+header.sticky {
+	position: fixed;
+	top: -80px;
+	z-index: 10;
+	transform: translateY(80px);
+	transition: all .4s ease-in-out;
+}
+
 .nav-bar-container {
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -71,7 +88,6 @@
 #nav_bar {
 	display: flex;
 	justify-content: space-between;
-	height: 80px;
 }
 
 #nav_bar div {

@@ -17,7 +17,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="dark_mode">
-        <Header />
+				<Header sticky />
 				{children}
 			</body>
 		</html>
