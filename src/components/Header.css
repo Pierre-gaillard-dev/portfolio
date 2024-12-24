@@ -1,5 +1,5 @@
 @media screen and (min-width: 500px) {
-	#nav_bar_list.desktop {
+	.nav_bar_list.desktop {
 		display: flex;
 		gap: 20px;
 		li::marker {
@@ -54,17 +54,26 @@
 	}
 }
 
+header {
+	background-color: var(--background);
+	width: 100vw;
+}
+
+#header, #nav_bar {
+	height: 80px;
+}
+
+header.sticky {
+	position: fixed;
+	top: -80px;
+	z-index: 10;
+	transform: translateY(80px);
+	transition: all .4s ease-in-out;
+}
+
 .nav-bar-container {
 	padding-top: 0px;
 	padding-bottom: 0px;
-}
-
-a {
-	text-decoration: none;
-}
-
-img {
-	aspect-ratio: auto;
 }
 
 #nav {
@@ -79,7 +88,6 @@ img {
 #nav_bar {
 	display: flex;
 	justify-content: space-between;
-	height: 80px;
 }
 
 #nav_bar div {
@@ -87,7 +95,7 @@ img {
 	align-items: center;
 }
 
-#nav_bar_list.mobile {
+.nav_bar_list.mobile {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
