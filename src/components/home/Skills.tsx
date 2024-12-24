@@ -10,11 +10,11 @@ const Skills: React.FC = () => {
 				<div className="split">
 					<div>
 						<h3>Back-end</h3>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/php.svg" />
 							<h4>PHP</h4>
 						</div>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/python.svg" />
 							<h4>Python</h4>
 						</div>
@@ -22,15 +22,15 @@ const Skills: React.FC = () => {
 					<div className="separator"></div>
 					<div>
 						<h3>Front-end</h3>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/HTML5.svg" />
 							<h4>HTML</h4>
 						</div>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/CSS.svg" />
 							<h4>CSS</h4>
 						</div>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/javascript.svg" />
 							<h4>Javascript</h4>
 						</div>
@@ -38,15 +38,15 @@ const Skills: React.FC = () => {
 					<div className="separator"></div>
 					<div>
 						<h3>Outils</h3>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/github-mark/github-mark-white.svg" />
 							<h4>Github</h4>
 						</div>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/figma.svg" />
 							<h4>Figma</h4>
 						</div>
-						<div className="split left">
+						<div className="split left card">
 							<img src="../icons/adobe.svg" />
 							<h4>Adobe suite</h4>
 						</div>
