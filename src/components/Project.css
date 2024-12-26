@@ -44,18 +44,18 @@ article.card p {
     text-overflow: ellipsis;
 }
 
-article.card .languages > p {
+.languages > * {
     padding: 3px 7px;
     border-radius: 100px;
     font-size: 12px;
     font-weight: 800;
 }
 
-article.card .html_css{
+.html_css{
     background-color: var(--button-color);
 }
 
-article.card .js{
+.js{
     background-color: #efd81d;
     color: var(--black);
 }

@@ -1,3 +1,4 @@
+'use client'
 import React from "react"
 
 import "./Project.css"
@@ -8,8 +9,8 @@ const Project: React.FC<{
 	img: string
 	description: string
 	Languages: { text: string; className: string }[]
-    selected: boolean
-    onHover: () => void
+    selected?: boolean
+    onHover?: () => void
 }> = (props) => {
 	return (
 		<div className={"project" + (props.selected ? " selected" : "")} id={props.id} onMouseEnter={props.onHover}>

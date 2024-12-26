@@ -129,6 +129,10 @@ a.button.white {
 	color: var(--black);
 }
 
+.bold {
+	font-weight: 800;
+}
+
 .container {
 	width: 1400px;
 	max-width: 100vw;
