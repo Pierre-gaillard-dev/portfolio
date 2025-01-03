@@ -17,6 +17,17 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 		notFound()
 	}
 
+	const formatText = (text: string) => {
+		let result = text.split("\n").map((line, index) => {
+			if (line !== "") {
+				return <p key={index}>{line}</p>
+			} else {
+				return <br key={index} />
+			}
+		})
+		return result
+	}
+
 	return (
 		<div className="content projectDetail">
 			<section id="hero" className="background_light">
@@ -82,32 +93,43 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 			{project.demoLink ? (
 				<section id="demo" className="container">
 					<h2>Testez-le</h2>
-					<iframe
-						src={project.demoLink}
-						width="100%"
-						height={project.demoHeight}
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						allowFullScreen
-					></iframe>
+					<div className="center">
+						<iframe
+							src={project.demoLink}
+							width={project.demoWidth || "100%"}
+							height={project.demoHeight || "450px"}
+							frameBorder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowFullScreen
+						></iframe>
+					</div>
 				</section>
 			) : null}
 			{project.videoLink ? (
 				<section id="video" className="container">
 					<h2>démonstration</h2>
+					<div className="center">
 					<iframe
+						width={project.demoWidth || "530px"}
+						height={project.demoHeight || "300px"}
 						src={project.videoLink}
-						width="100%"
-						height="100%"
+						title="YouTube video player"
 						frameBorder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerPolicy="strict-origin-when-cross-origin"
 						allowFullScreen
 					></iframe>
+					</div>
+				</section>
+			) : null}
+			{!project.demoLink && !project.videoLink ? (
+				<section id="image" className="container">
+					<img src={project.img} alt={project.title} />
 				</section>
 			) : null}
 			<section id="description" className="container">
 				<h2>Description</h2>
-				<p>{project.description}</p>
+				{formatText(project.description)}
 				<br style={{ height: "2rem" }} />
 				<p>
 					<span className="bold">Début du projet :</span>{" "}
@@ -120,17 +142,19 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 					</p>
 				) : null}
 				<p>
-					<span className="bold">Dur&eacute;e passée sur le projet :</span>{" "}
+					<span className="bold">
+						Dur&eacute;e passée sur le projet :
+					</span>{" "}
 					{project.duration}
 				</p>
 			</section>
 			<section id="conditions" className="container">
 				<h2>Conditions</h2>
-				<p>{project.conditions}</p>
+				{formatText(project.conditions)}
 			</section>
 			<section id="droits" className="container">
 				<h2>Droits d'auteur</h2>
-				<p>{project.copyright}</p>
+				{formatText(project.copyright)}
 			</section>
 		</div>
 	)
