@@ -1,4 +1,3 @@
-'use client'
 import React from "react"
 import Link from "next/link"
 
@@ -82,6 +81,7 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 			</section>
 			{project.demoLink ? (
 				<section id="demo" className="container">
+					<h2>Testez-le</h2>
 					<iframe
 						src={project.demoLink}
 						width="100%"
@@ -94,6 +94,7 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 			) : null}
 			{project.videoLink ? (
 				<section id="video" className="container">
+					<h2>démonstration</h2>
 					<iframe
 						src={project.videoLink}
 						width="100%"

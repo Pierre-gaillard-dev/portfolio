@@ -32,4 +32,12 @@
         align-items: left;
         flex-wrap: nowrap;
     }
+
+    a.button {
+        height: 60px;
+    }
+}
+
+.content.projectDetail h2 {
+    font-size: 35px;
 }
