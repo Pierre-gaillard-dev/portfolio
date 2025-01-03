@@ -104,6 +104,7 @@ const Projects: React.FC = () => {
 					img={projects[0].img}
 					description={projects[0].description}
 					languages={projects[0].languages}
+					href={`/projects/${projects[0].id}`}
 					selected={index === 0}
 					onHover={() => hoverHandler(0)}
 				/>
@@ -117,6 +118,7 @@ const Projects: React.FC = () => {
 					img={projects[1].img}
 					description={projects[1].description}
 					languages={projects[1].languages}
+					href={`/projects/${projects[1].id}`}
 					selected={index === 1}
 					onHover={() => hoverHandler(1)}
 				/>
@@ -130,6 +132,7 @@ const Projects: React.FC = () => {
 					img={projects[2].img}
 					description={projects[2].description}
 					languages={projects[2].languages}
+					href={`/projects/${projects[1].id}`}
 					selected={index === 2}
 					onHover={() => hoverHandler(2)}
 				/>

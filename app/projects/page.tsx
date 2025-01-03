@@ -85,15 +85,14 @@ const Projects: React.FC = () => {
 									exit={{ opacity: 0 }}
 									transition={{ duration: 0.5 }}
 								>
-									<Link href={`/projects/${project.id}`}>
 										<Project
 											id={project.id}
 											title={project.title}
 											img={project.img}
 											description={project.description}
 											languages={project.languages}
+											href={`/projects/${project.id}`}
 										/>
-									</Link>
 								</motion.div>
 							)
 						})}
