@@ -7,9 +7,9 @@ const Project: React.FC<{
 	title: string
 	img: string
 	description: string
-	Languages: { text: string; className: string }[]
-    selected: boolean
-    onHover: () => void
+	languages: { text: string; className: string }[]
+    selected?: boolean
+    onHover?: () => void
 }> = (props) => {
 	return (
 		<div className={"project" + (props.selected ? " selected" : "")} id={props.id} onMouseEnter={props.onHover}>
@@ -20,7 +20,7 @@ const Project: React.FC<{
 				<h3>{props.title}</h3>
 				<p>{props.description}</p>
 				<div className="split left languages">
-					{props.Languages.map((language, index) => {
+					{props.languages.map((language, index) => {
 						return (
 							<p key={index} className={language.className}>
 								{language.text}

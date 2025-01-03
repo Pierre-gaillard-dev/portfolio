@@ -1,0 +1,41 @@
+.content.projects {
+    .projectList {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+
+    .grid-item {
+        transition: transform .5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .grid-item:hover {
+        transform: scale(1.02);
+    }
+
+    .filter {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding-bottom: inherit;
+    }
+
+    .filter a {
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+
+    .filter a:not(.selected) {
+        border: 1px solid var(--text);
+        background-color: unset;
+        color: var(--text);
+        opacity: 0.8;
+    }
+
+    .projectList article.card {
+        width: 100%;
+        max-width: unset;
+    }
+}

@@ -68,7 +68,7 @@ const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 					<div>
 						<ul className="desktop nav_bar_list">
 							<Link href={"/#hero"}>Accueil</Link>
-							<a>Projets</a>
+							<Link href={"/projects"}>Projets</Link>
 							<Link href={"/#skills"}>Compétences</Link>
 						</ul>
 						<div

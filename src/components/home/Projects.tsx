@@ -4,6 +4,10 @@ import { useState, useEffect } from "react"
 
 import Project from "../Project"
 
+import type { Project as ProjectType } from "@/.next/types/project"
+
+import { getProject } from "@/src/projects.json"
+
 import "./Projects.css"
 
 const positions = ["left", "middle", "right"]
@@ -11,6 +15,9 @@ const positions = ["left", "middle", "right"]
 const Projects: React.FC = () => {
 	const [index, setIndex] = useState<number>(0)
 	const [sreenwidth, setScreenwidth] = useState<number | null>(null)
+
+	const ProjectsID = ["chess", "thalia", "portfolio"]
+	const projects: ProjectType[] = ProjectsID.map((id) => getProject(id)!)
 
 	useEffect(() => {
 		setIndex(0)
@@ -93,13 +100,10 @@ const Projects: React.FC = () => {
 							? "left"
 							: positions[+(4 - index) % 3]
 					}
-					title="Projet 1"
-					img="../img/photo.png"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod"
-					Languages={[
-						{ text: "HTML/CSS", className: "html_css" },
-						{ text: "JavaScript", className: "js" },
-					]}
+					title={projects[0].title}
+					img={projects[0].img}
+					description={projects[0].description}
+					languages={projects[0].languages}
 					selected={index === 0}
 					onHover={() => hoverHandler(0)}
 				/>
@@ -109,13 +113,10 @@ const Projects: React.FC = () => {
 							? "middle"
 							: positions[+(2 - index) % 3]
 					}
-					title="Projet 2"
-					img="../img/photo.png"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod"
-					Languages={[
-						{ text: "HTML/CSS", className: "html_css" },
-						{ text: "React", className: "react" },
-					]}
+					title={projects[1].title}
+					img={projects[1].img}
+					description={projects[1].description}
+					languages={projects[1].languages}
 					selected={index === 1}
 					onHover={() => hoverHandler(1)}
 				/>
@@ -125,13 +126,10 @@ const Projects: React.FC = () => {
 							? "right"
 							: positions[+(3 - index) % 3]
 					}
-					title="Projet 3"
-					img="../img/photo.png"
-					description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod"
-					Languages={[
-						{ text: "HTML/CSS", className: "html_css" },
-						{ text: "React", className: "react" },
-					]}
+					title={projects[2].title}
+					img={projects[2].img}
+					description={projects[2].description}
+					languages={projects[2].languages}
 					selected={index === 2}
 					onHover={() => hoverHandler(2)}
 				/>
