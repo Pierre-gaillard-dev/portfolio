@@ -1,6 +1,7 @@
 "use client"
 import React from "react"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 
 import Project from "../Project"
 
@@ -86,7 +87,10 @@ const Projects: React.FC = () => {
 
 	return (
 		<section id="projects" className="container">
-			<h2>Mes projets</h2>
+			<div className="split">
+				<h2>Mes projets</h2>
+				<Link href="/projects">tous mes projets</Link>
+			</div>
 			<div
 				className="projects_container split"
 				onWheel={scrollHandler}
