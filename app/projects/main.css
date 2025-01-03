@@ -1,9 +1,12 @@
 .content.projects {
-    section#projects > .projectList {
-        display: flex;
-        flex-direction: row;
+    .projectList {
+        display: grid;
         gap: 20px;
-        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+
+    .grid-item {
+        transition: transform .5s ease-in-out;
     }
 
     .filter {
@@ -24,5 +27,10 @@
         background-color: unset;
         color: var(--text);
         opacity: 0.8;
+    }
+
+    .projectList article.card {
+        width: 100%;
+        max-width: unset;
     }
 }
