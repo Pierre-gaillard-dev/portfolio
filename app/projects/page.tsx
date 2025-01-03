@@ -91,7 +91,7 @@ const Projects: React.FC = () => {
 											title={project.title}
 											img={project.img}
 											description={project.description}
-											Languages={project.languages}
+											languages={project.languages}
 										/>
 									</Link>
 								</motion.div>

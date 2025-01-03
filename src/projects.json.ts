@@ -64,7 +64,7 @@ export const projects: Project[] = [
 		copyright: "Pierre Gaillard",
 	},
 	{
-		id: "Thalia",
+		id: "thalia",
 		title: "Thalia's story",
 		img: "../img/projects/thalia.webp",
 		languages: [
