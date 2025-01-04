@@ -140,6 +140,7 @@ const Page: React.FC = () => {
 						notamment via les cookies.
 					</li>
 				</ul>
+				<br />
 				<p>
 					Pour exercer vos droits ou pour toute question relative à
 					vos données personnelles, veuillez nous contacter à
@@ -205,7 +206,7 @@ const Page: React.FC = () => {
 					</p>
 					<p>
 						<span className="bold">Dernière mise à jour :</span>{" "}
-						04/01/2025
+						04 janvier 2025
 					</p>
 				</div>
 			</section>
