@@ -3,6 +3,8 @@ import Link from "next/link"
 
 import { ChevronLeft } from "@/src/components/icons"
 
+import type { language } from "@/src/type"
+
 import { getProject } from "@/src/projects.json"
 import { notFound } from "next/navigation"
 
@@ -42,7 +44,7 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 						<div>
 							<h1>{project.title}</h1>
 							<div className="split left languages">
-								{project.languages.map((language, index) => {
+								{project.languages.map((language: language, index) => {
 									return (
 										<p
 											key={index}

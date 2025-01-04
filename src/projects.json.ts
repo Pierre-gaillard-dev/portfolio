@@ -1,4 +1,4 @@
-import type { Project } from "@/.next/types/project"
+import type { Project } from "@/src/type"
 
 export const getProject = (id: string): Project | undefined => {
 	return projects.find((project) => project.id === id)

@@ -7,7 +7,7 @@ import Project from "../Project"
 
 import { ChevronRight } from "../icons"
 
-import type { Project as ProjectType } from "@/.next/types/project"
+import type { Project as ProjectType } from "@/src/type"
 
 import { getProject } from "@/src/projects.json"
 
