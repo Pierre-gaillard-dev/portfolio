@@ -1,2 +1,3 @@
-The objective is to provide a new "projects" page with lots of projects grouped by language and with filter options
-There will also be a detail page for each project with a demo (using github pages) or a video if demo isn't possible
+# Portfolio
+
+My next goal is to create the footer of the website. 
