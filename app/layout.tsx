@@ -1,8 +1,9 @@
 import "./globals.css"
 
 /* import components */
-import Header from "../src/components/Header"
+import Header from "@/src/components/Header"
 import Footer from "@/src/components/Footer"
+import CookieBanner from "@/src/components/CookieBanner"
 
 export default function RootLayout({
 	children,
@@ -15,6 +16,7 @@ export default function RootLayout({
 				<Header sticky />
 				{children}
 				<Footer />
+				<CookieBanner />
 			</body>
 		</html>
 	)

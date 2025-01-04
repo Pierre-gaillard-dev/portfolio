@@ -46,7 +46,6 @@ const Footer: React.FC = () => {
 						<Link href="/politique-de-cookies">
 							Politique de cookies
 						</Link>
-						<Link href="/cgu">CGU</Link>
 					</div>
 				</div>
 			</div>
