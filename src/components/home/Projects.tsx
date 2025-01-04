@@ -5,6 +5,8 @@ import Link from "next/link"
 
 import Project from "../Project"
 
+import { ChevronRight } from "../icons"
+
 import type { Project as ProjectType } from "@/.next/types/project"
 
 import { getProject } from "@/src/projects.json"
@@ -89,7 +91,10 @@ const Projects: React.FC = () => {
 		<section id="projects" className="container">
 			<div className="split">
 				<h2>Mes projets</h2>
-				<Link href="/projects">tous mes projets</Link>
+				<Link href="/projects" id="projects_link">
+					Tous mes projets
+					<ChevronRight />
+				</Link>
 			</div>
 			<div
 				className="projects_container split"
