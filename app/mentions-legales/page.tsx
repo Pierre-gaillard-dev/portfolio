@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const MentionsLegales: React.FC = () => {
 	return (
-		<React.Fragment>
+		<div className="content">
 			<section id="hero" className="background_light">
 				<div className="container">
 					<h1 className="center">Mentions L&eacute;gales</h1>
@@ -133,7 +133,7 @@ const MentionsLegales: React.FC = () => {
 				</p>
                 </div>
 			</section>
-		</React.Fragment>
+		</div>
 	)
 }
 

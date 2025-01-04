@@ -25,10 +25,13 @@ const Footer: React.FC = () => {
 							<Github />
 							https://github.com/Pierre-gaillard-dev
 						</a>
-                        <a href="https://www.linkedin.com/in/pierre-gaillard-dev/" target="_blank">
-                            <Linkedin />
-                            https://www.linkedin.com/in/pierre-gaillard-dev/
-                        </a>
+						<a
+							href="https://www.linkedin.com/in/pierre-gaillard-dev/"
+							target="_blank"
+						>
+							<Linkedin />
+							https://www.linkedin.com/in/pierre-gaillard-dev/
+						</a>
 					</div>
 				</div>
 				<div id="legal">
@@ -40,7 +43,9 @@ const Footer: React.FC = () => {
 						<Link href="/politique-de-confidentialite">
 							Politique de confidentialit&eacute;
 						</Link>
-						<Link href="/cgu">CGU</Link>
+						<Link href="/politique-de-cookies">
+							Politique de cookies
+						</Link>
 					</div>
 				</div>
 			</div>
