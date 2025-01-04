@@ -86,7 +86,7 @@ export const projects: Project[] = [
 		endDate: null,
 		duration: "45h",
 		description: "Thalia's story est un jeu vidéo de type visual novels. L'objectif est de progresser à travers des dialogues et des choix pour atteindre la fin du jeu.\nLe jeu est en cours de conception et n'a pas encore de version finale. De nombreux bugs sont présents et l'histoire n'est pas inclue. Il ne s'agit donc que d'une verision de test",
-		conditions: "Ce jeu fait partie d'un projet de cours répartie sur 91h au cours de notre deuxième année, sans compter le temps le temps passé en dehors des cours.",
+		conditions: "Ce jeu fait partie d'un projet de cours réparti sur 91h au cours de notre deuxième année, sans compter le temps passé en dehors des cours.",
 		copyright: "Nous sommes une équipe de 4 personnes passionnées de jeux vidéos :\n- Juliette Bellec : Chef de projet et directrice artistique\n- Pierre Gaillard : Développeur\n- Baptiste Dechamp : responsable marketing et communication\n- Raphael Launay : Réacteur et communication\n\nTous les visuels présents dans le jeu sont créés par Juliette Bellec et protégés par des droits d'auteurs.",
 	},
 	{

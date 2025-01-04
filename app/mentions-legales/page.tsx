@@ -54,15 +54,17 @@ const MentionsLegales: React.FC = () => {
 			<section id="hebergement" className="container">
 				<h2>Hebergement</h2>
 				<p>
-					<span className="bold">Nom :</span> OVH
+					<span className="bold">Nom :</span> PlanetHoster
 				</p>
 				<p>
-					<span className="bold">Adresse :</span> 2 Rue Kellermann, 59100
-					Roubaix, France
+					<span className="bold">Adresse :</span> 4416 Louis-B.-Mayer, Laval, Québec, Canada
+				</p>
+				<p>
+					<span className="bold">Téléphone :</span> +1 855 774 4678
 				</p>
 				<p>
 					<span className="bold">Site web :</span>
-					<a href="https://www.ovh.com/fr">www.ovh.com</a>
+					<a href="https://www.ovh.com/fr">thhps://www.planethoster.com</a>
 				</p>
 			</section>
 			<section
