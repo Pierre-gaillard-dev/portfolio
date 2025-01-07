@@ -8,8 +8,11 @@ const Footer: React.FC = () => {
 	return (
 		<footer className="footer">
 			<div className="container split">
+				<div className="logo">
 				<div className="image_container">
 					<img src="/img/photo.png" alt="Logo" />
+				</div>
+				<h3>Pierre Gaillard</h3>
 				</div>
 				<div id="contact">
 					<h3>Me contacter</h3>
@@ -23,14 +26,14 @@ const Footer: React.FC = () => {
 							target="_blank"
 						>
 							<Github />
-							https://github.com/Pierre-gaillard-dev
+							github.com/Pierre-gaillard-dev
 						</a>
 						<a
-							href="https://www.linkedin.com/in/pierre-gaillard-dev/"
+							href="linkedin.com/in/pierre-gaillard-dev/"
 							target="_blank"
 						>
 							<Linkedin />
-							https://www.linkedin.com/in/pierre-gaillard-dev/
+							linkedin.com/in/pierre-gaillard-dev/
 						</a>
 					</div>
 				</div>

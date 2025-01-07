@@ -8,11 +8,15 @@
 		--background-light-080: rgba(22, 8, 51, 0.8);
 		--background-3: #2b0f61;
 		--background-3-080: rgba(43, 15, 97, 0.8);
-		--button-color: #334da6;
+		--button-purple: #6a1aff;
+		--button-purple-hover: #5716d1;
+		--button-purple-background: #6a1aff33;
 		--button-white: #ffffff;
+		--button-white-hover: #dfdfdf;
+		--button-white-background: #ffffff33;
 		--shadow: #6a1aff33 5px 5px 10px;
 		--shadow-large: #6a1aff33 10px 10px 20px;
-		--shadow-neo: var(--background) 5px 5px 10px,
+		--shadow-neo-light: var(--background) 5px 5px 10px,
 			var(--background-3-080) -5px -5px 10px,
 			inset var(--background-3-080) 5px 5px 10px,
 			inset var(--background) -5px -5px 10px;
@@ -82,7 +86,8 @@ h3 {
 	letter-spacing: 2px;
 }
 
-p, li {
+p,
+li {
 	font-size: 15px;
 }
 
@@ -95,8 +100,9 @@ a:hover {
 	text-decoration: underline;
 }
 
-ol, ul {
-    padding-left: 20px;
+ol,
+ul {
+	padding-left: 20px;
 }
 
 a.button {
@@ -111,6 +117,8 @@ a.button {
 	align-items: center;
 	gap: 10px;
 	border: none;
+	text-decoration: none;
+	box-shadow: var(--shadow);
 }
 
 a.button span {
@@ -127,14 +135,49 @@ a.button svg {
 	stroke-width: 1.5px;
 }
 
-a.button.blue {
-	background-color: var(--button-color);
+
+.button_background {
+	height: 100%;
+	margin-left: 8px;
+}
+
+
+.button_background > a.button {
+	transform: translate(-8px, -5px);
+	transition: all 0.2s ease-in-out;
+}
+
+.button_background > a.button:hover {
+	transform: translate(0px, 0px);
+}
+
+.button_background:has(.purple) {
+	background-color: var(--button-purple-background);
+	border-radius: 10px;
+}
+
+.button_background:has(.white) {
+	background-color: var(--button-white-background);
+	border-radius: 10px;
+}
+
+
+a.button.purple {
+	background-color: var(--button-purple);
 	color: var(--text);
+}
+
+a.button.purple:hover {
+	background-color: var(--button-purple-hover);
 }
 
 a.button.white {
 	background-color: var(--button-white);
 	color: var(--black);
+}
+
+a.button.white:hover {
+	background-color: var(--button-white-hover);
 }
 
 .bold {
@@ -229,7 +272,8 @@ a.button.white {
 		font-size: 2vw;
 	}
 
-	p, li {
+	p,
+	li {
 		font-size: 13px;
 	}
 

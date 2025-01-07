@@ -33,7 +33,7 @@
         flex-wrap: nowrap;
     }
 
-    a.button {
+    .button_background {
         height: 60px;
     }
 }

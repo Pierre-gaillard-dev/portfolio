@@ -36,7 +36,7 @@
 	background-color: var(--background-080);
 	backdrop-filter: blur(10px);
 	overflow: hidden;
-    box-shadow: var(--shadow-neo);
+    box-shadow: var(--shadow-neo-light);
     padding: 20px;
 }
 
