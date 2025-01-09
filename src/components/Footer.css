@@ -30,11 +30,19 @@
         margin: unset;
     }
 
-    .split .split {
+    #legal .split {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+    }
+
+    #contact .split {
+        justify-content: center;
+    }
+
+    #contact .split > * {
+        flex: unset;
     }
 
     a {

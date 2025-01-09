@@ -1,18 +1,21 @@
 # Portfolio
 
 added :
-
-to add :
+- links
+    - add hover effects to buttons (see /ideas/inspi_1.mp4)
+    - remove underline effects for links for some elements
+- website icon
 - header
     - projects link goes to section instead to dedicated page if on main page
 - footer
     - add legal line (@right reserved...)
+    - replace links by buttons only
+
+to add :
 - projects
     - project detail page in overlay only
     - add fullscreen button to demos
 - Links
-    - add hover effects to buttons (see /ideas/inspi_1.mp4)
-    - remove underline effects for links for some elements
     - underline effect : line appearing from left to right
 - Home sections
     - add CV (see /ideas.CV.jpg for integration)
@@ -29,4 +32,3 @@ to add :
 - loading screen
 - dark mode / light mode
 - english
-- website icon
