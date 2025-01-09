@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Mail, Github, Linkedin } from "./icons"
 import Button from "./Button"
 
-import "./Footer.css"
+import "./css/Footer.css"
 
 const Footer: React.FC = () => {
 	return (

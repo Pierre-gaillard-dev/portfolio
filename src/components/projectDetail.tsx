@@ -8,14 +8,11 @@ import type { language } from "@/src/type"
 import { getProject } from "@/src/projects.json"
 import { notFound } from "next/navigation"
 
-import "./main.css"
-import "@/src/components/Project.css"
+import "@/src/components/css/ProjectDetail.css"
+import "@/src/components/css/Project.css"
 import Button from "@/src/components/Button"
 
-const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
-	params,
-}) => {
-	const id = (await params).id
+const ProjectDetail: React.FC<{ id: string, close: () => void }> = ({ id, close }) => {
 	const project = getProject(id)
 
 	if (!project) {
@@ -37,10 +34,10 @@ const ProjectDetail: React.FC<{ params: Promise<{ id: string }> }> = async ({
 		<div className="content projectDetail">
 			<section id="hero" className="background_light">
 				<div className="container">
-					<Link href="/projects" className="back">
+					<a onClick={close} className="back">
 						<ChevronLeft />
 						Retour
-					</Link>
+					</a>
 					<div className="split">
 						<div>
 							<h1>{project.title}</h1>

@@ -5,15 +5,23 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
 import Project from "@/src/components/Project"
+import Overlay from "@/src/components/Overlay"
 
 import { projects } from "@/src/projects.json"
 
 import "./main.css"
+import ProjectDetail from "@/src/components/projectDetail"
 
 const Projects: React.FC = () => {
 	const [filters, setFilters] = useState<{
 		[key: string]: { active: boolean; className: string }
 	}>({})
+
+	const [OverlayedProjectID, setOverlayedProjectID] = useState<string | null>(null)
+
+	const activeFilters = () => {
+		return Object.values(filters).some((filter) => filter.active)
+	}
 
 	useEffect(() => {
 		const newFilters: {
@@ -23,7 +31,7 @@ const Projects: React.FC = () => {
 			project.languages.forEach((language) => {
 				if (!newFilters[language.text]) {
 					newFilters[language.text] = {
-						active: true,
+						active: false,
 						className: language.className,
 					}
 				}
@@ -31,6 +39,14 @@ const Projects: React.FC = () => {
 		})
 		setFilters(newFilters)
 	}, [])
+
+	const handleclick = (id: string) => {
+		setOverlayedProjectID(id)
+	}
+
+	const handleclose = () => {
+		setOverlayedProjectID(null)
+	}
 
 	return (
 		<div className="content projects">
@@ -71,7 +87,8 @@ const Projects: React.FC = () => {
 							if (
 								!project.languages.some(
 									(language) => filters[language.text].active
-								)
+								) &&
+								activeFilters()
 							) {
 								return
 							}
@@ -85,19 +102,24 @@ const Projects: React.FC = () => {
 									exit={{ opacity: 0 }}
 									transition={{ duration: 0.5 }}
 								>
-										<Project
-											id={project.id}
-											title={project.title}
-											img={project.img}
-											description={project.description}
-											languages={project.languages}
-											href={`/projects/${project.id}`}
-										/>
+									<Project
+										id={project.id}
+										title={project.title}
+										img={project.img}
+										description={project.description}
+										languages={project.languages}
+										onClick={() => handleclick(project.id)}
+									/>
 								</motion.div>
 							)
 						})}
 					</div>
 				</AnimatePresence>
+				{OverlayedProjectID && (
+				<Overlay close={handleclose}>
+					<ProjectDetail id={OverlayedProjectID} close={handleclose} />
+				</Overlay>
+				)}
 			</section>
 		</div>
 	)

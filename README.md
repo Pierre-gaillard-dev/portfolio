@@ -10,10 +10,12 @@ added :
 - footer
     - add legal line (@right reserved...)
     - replace links by buttons only
+- projects
+    - empty filters by default
+    - project detail page in overlay only
 
 to add :
 - projects
-    - project detail page in overlay only
     - add fullscreen button to demos
 - Links
     - underline effect : line appearing from left to right

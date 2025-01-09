@@ -43,6 +43,11 @@ body {
 		"Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	height: 100vh;
+}
+
+body:has(.overlay) {
+	overflow: hidden;
 }
 
 .background_light {
@@ -174,7 +179,7 @@ a.button.white:hover {
 
 .container {
 	width: 1400px;
-	max-width: 100vw;
+	max-width: 100%;
 	margin: auto;
 	padding: 30px 30px;
 }

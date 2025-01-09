@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import "./Header.css"
+import "./css/Header.css"
 
 const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 	const [opened, setOpened] = useState<boolean>(false)
