@@ -20,7 +20,7 @@ const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 		<section id="header">
 			<header className={sticky ? "sticky" : ""}>
 				<nav id="nav_bar">
-					<Link href={"/"} id="logo">
+					<Link href={"/#hero"} id="logo">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 327.42 348.68"

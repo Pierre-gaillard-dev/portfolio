@@ -8,9 +8,7 @@
 		--background-light-080: rgba(22, 8, 51, 0.8);
 		--background-3: #2b0f61;
 		--background-3-080: rgba(43, 15, 97, 0.8);
-		--button-purple: #6a1aff;
-		--button-purple-hover: #5716d1;
-		--button-purple-background: #6a1aff33;
+		--button-shadow: var(--background) 5px 5px 10px;
 		--button-white: #ffffff;
 		--button-white-hover: #dfdfdf;
 		--button-white-background: #ffffff33;
@@ -108,7 +106,7 @@ ul {
 a.button {
 	padding: 10px;
 	border-radius: 10px;
-	height: 60px;
+	height: 50px;
 	font-size: 32px;
 	font-weight: 400;
 	display: flex;
@@ -119,6 +117,8 @@ a.button {
 	border: none;
 	text-decoration: none;
 	box-shadow: var(--shadow);
+	background: var(--background-light);
+	border: var(--text) 1px solid;
 }
 
 a.button span {
@@ -139,36 +139,24 @@ a.button svg {
 .button_background {
 	height: 100%;
 	margin-left: 8px;
+	background-color: var(--background);
+	border-radius: 10px;
+	box-shadow: var(--button-shadow);
 }
 
 
 .button_background > a.button {
 	transform: translate(-8px, -5px);
 	transition: all 0.2s ease-in-out;
+	box-shadow: var(--shadow-neo-light);
+}
+
+.button_background > a.button.white {
+	box-shadow: unset;
 }
 
 .button_background > a.button:hover {
 	transform: translate(0px, 0px);
-}
-
-.button_background:has(.purple) {
-	background-color: var(--button-purple-background);
-	border-radius: 10px;
-}
-
-.button_background:has(.white) {
-	background-color: var(--button-white-background);
-	border-radius: 10px;
-}
-
-
-a.button.purple {
-	background-color: var(--button-purple);
-	color: var(--text);
-}
-
-a.button.purple:hover {
-	background-color: var(--button-purple-hover);
 }
 
 a.button.white {

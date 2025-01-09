@@ -8,12 +8,12 @@ const Footer: React.FC = () => {
 	return (
 		<footer className="footer">
 			<div className="container split">
-				<div className="logo">
-				<div className="image_container">
-					<img src="/img/photo.png" alt="Logo" />
-				</div>
-				<h3>Pierre Gaillard</h3>
-				</div>
+				<Link href="/#hero" className="logo">
+					<div className="image_container">
+						<img src="/img/photo.png" alt="Logo" />
+					</div>
+					<h3>Pierre Gaillard</h3>
+				</Link>
 				<div id="contact">
 					<h3>Me contacter</h3>
 					<div className="split">

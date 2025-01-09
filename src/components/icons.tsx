@@ -125,3 +125,13 @@ export const Linkedin: React.FC = () => {
 		</svg>
 	)
 }
+
+export const Icons: Record<string, React.FC> = {
+	ChevronLeft: ChevronLeft,
+	ChevronRight: ChevronRight,
+	X: X,
+	Menu: Menu,
+	Mail: Mail,
+	Github: Github,
+	Linkedin: Linkedin,
+}

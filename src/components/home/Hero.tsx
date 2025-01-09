@@ -1,6 +1,7 @@
 import "./Hero.css"
 
 import { Github, Mail } from "../icons"
+import Button from "../Button"
 
 const Hero: React.FC = () => {
 	return (
@@ -10,30 +11,14 @@ const Hero: React.FC = () => {
 					<h1>Pierre Gaillard</h1>
 					<h2>Développeur web</h2>
 					<div className="split left button_container">
-						<div className="button_background">
-							<a
-								className="button white"
-								href="https://github.com/Pierre-gaillard-dev"
-								target="_blank"
-							>
-								<div className="image_container">
-									<Github />
-								</div>
-								<span>Github</span>
-							</a>
-						</div>
-						<div className="button_background">
-							<a
-								className="button purple"
-								href="mailto:pierre.gaillard.dev@gmail.com"
-								target="_blank"
-							>
-								<div className="image_container">
-									<Mail />
-								</div>
-								<span>Mail</span>
-							</a>
-						</div>
+						<Button link="https://github.com/Pierre-gaillard-dev">
+							<Github />
+							<span>Github</span>
+						</Button>
+						<Button link="mailto:pierre.gaillard.dev@gmail.com">
+							<Mail />
+							<span>Mail</span>
+						</Button>
 					</div>
 					<p>
 						Je m’appelle Pierre Gaillard, je suis étudiant à

@@ -44,7 +44,7 @@
         }
 
         .button_container {
-            height: 5.5vw;
+            height: 50px;
         }
     }
 
@@ -55,6 +55,11 @@
 
         .button_container {
             height: 40px;
+            margin: 10px 0px
+        }
+
+        p {
+            margin-top: 20px;
         }
     }
 
