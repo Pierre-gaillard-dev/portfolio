@@ -33,6 +33,10 @@
         flex-wrap: nowrap;
     }
 
+    .languages p {
+        margin: unset;
+    }
+
     .button_background {
         height: 60px;
     }

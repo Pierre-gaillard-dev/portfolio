@@ -40,7 +40,7 @@ const ProjectDetail: React.FC<{ id: string, close: () => void }> = ({ id, close 
 					</a>
 					<div className="split">
 						<div>
-							<h1>{project.title}</h1>
+							<h2>{project.title}</h2>
 							<div className="split left languages">
 								{project.languages.map(
 									(language: language, index) => {

@@ -20,16 +20,17 @@ to add :
 - Links
     - underline effect : line appearing from left to right
 - Home sections
-    - add CV (see /ideas.CV.jpg for integration)
     - add soft skills
     - add experiences (roadmap style)
     - add contact section
+        - add CV (see /ideas.CV.jpg for integration)
         - linkedin
         - Mail
         - Github
         - City
 - Skills
     - remove HTML / CSS, replace with React and NextJS
+    - replace github by blender
 
 - loading screen
 - dark mode / light mode

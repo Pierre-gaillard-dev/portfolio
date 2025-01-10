@@ -60,6 +60,7 @@ svg {
 	max-height: 100%;
 	aspect-ratio: auto;
 	color: inherit;
+	display: block;
 }
 
 h1,
@@ -75,6 +76,7 @@ h6 {
 
 h1 {
 	font-size: 75px;
+	font-weight: 600;
 	line-height: 40px;
 }
 
@@ -106,71 +108,6 @@ a:hover {
 ol,
 ul {
 	padding-left: 20px;
-}
-
-a.button {
-	padding: 10px;
-	border-radius: 10px;
-	height: 50px;
-	font-size: 32px;
-	font-weight: 400;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-items: center;
-	gap: 10px;
-	border: none;
-	text-decoration: none;
-	box-shadow: var(--shadow);
-	background: var(--background-light);
-	border: var(--text) 1px solid;
-}
-
-a.button span {
-	font-size: inherit;
-	font-weight: inherit;
-	color: inherit;
-}
-
-a.button img,
-a.button svg {
-	height: 100%;
-	width: unset;
-	object-fit: contain;
-	stroke-width: 1.5px;
-}
-
-
-.button_background {
-	height: 100%;
-	margin-left: 8px;
-	background-color: var(--background);
-	border-radius: 10px;
-	box-shadow: var(--button-shadow);
-}
-
-
-.button_background > a.button {
-	transform: translate(-8px, -5px);
-	transition: all 0.2s ease-in-out;
-	box-shadow: var(--shadow-neo-light);
-}
-
-.button_background > a.button.white {
-	box-shadow: unset;
-}
-
-.button_background > a.button:hover {
-	transform: translate(0px, 0px);
-}
-
-a.button.white {
-	background-color: var(--button-white);
-	color: var(--black);
-}
-
-a.button.white:hover {
-	background-color: var(--button-white-hover);
 }
 
 .bold {
