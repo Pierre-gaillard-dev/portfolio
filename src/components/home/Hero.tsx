@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
 					<h1>Pierre Gaillard</h1>
 					<h2>Développeur web</h2>
 					<div className="split left button_container">
-						<Button link="https://github.com/Pierre-gaillard-dev">
+						<Button link="https://github.com/Pierre-gaillard-dev" id="github" target="_blank">
 							<Github />
 							<span>Github</span>
 						</Button>

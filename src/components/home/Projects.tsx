@@ -154,6 +154,12 @@ const Projects: React.FC = () => {
 					onClick={() => handleclick(projects[2].id)}
 				/>
 			</div>
+			<div id="projects_link_bottom">
+				<Link href="/projects">
+					Tous mes projets
+					<ChevronRight />
+				</Link>
+			</div>
 			{overlayedProjectID && (
 				<Overlay close={closeOverlay}>
 					<ProjectDetail

@@ -13,6 +13,7 @@ added :
 - projects
     - empty filters by default
     - project detail page in overlay only
+- responsive
 
 to add :
 - projects
@@ -35,3 +36,4 @@ to add :
 - loading screen
 - dark mode / light mode
 - english
+- elements in background (little stars or things like that)

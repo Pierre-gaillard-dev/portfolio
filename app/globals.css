@@ -18,6 +18,8 @@
 			var(--background-3-080) -5px -5px 10px,
 			inset var(--background-3-080) 5px 5px 10px,
 			inset var(--background) -5px -5px 10px;
+		--consent-accept-background: #6a1aff;
+		--consent-decline-background: #efd81d;
 		--text: #ffffff;
 		--black: #000000;
 	}
@@ -167,6 +169,9 @@ ul {
 .image_container {
 	height: 100%;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .button_container {

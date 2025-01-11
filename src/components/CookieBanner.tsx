@@ -29,8 +29,8 @@ const CookieBanner: React.FC = () => {
 			onAccept={handleAccept}
 			onDecline={handleDeclide}
 			style={{ background: "var(--background)", fontSize: "13px" }}
-			buttonStyle={{ color: "var(--text)", background: "var(--button-color)", borderRadius: "128px", fontSize: "13px" }}
-			declineButtonStyle={{ color: "var(--black)", background: "#efd81d", borderRadius: "128px", fontSize: "13px" }}
+			buttonStyle={{ color: "var(--text)", background: "var(--consent-accept-background)", borderRadius: "128px", fontSize: "13px" }}
+			declineButtonStyle={{ color: "var(--black)", background: "var(--consent-decline-background)", borderRadius: "128px", fontSize: "13px" }}
 		>
 			Ce site utilise des cookies pour vous garantir la meilleure
 			expérience sur notre site.{" "}

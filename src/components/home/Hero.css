@@ -48,14 +48,24 @@
         }
     }
 
+    @media screen and (max-width: 1000px) {
+        .button_container {
+            height: 40px;
+        }
+    }
+
     @media screen and (max-width: 800px) {
         h2 {
             font-size: 24px;
         }
 
         .button_container {
-            height: 40px;
+            height: 35px;
             margin: 10px 0px
+        }
+
+        .button_container #github {
+            display: none;
         }
 
         p {
@@ -63,8 +73,13 @@
         }
     }
 
-    @media screen and (max-width: 600px) {
-        #hero_image {
+    @media screen and (max-width: 500px) {
+        > .container.split {
+            flex-direction: column-reverse;
+            padding-top: 20px;
+        }
+
+        .button_container #github {
             display: none;
         }
     }
