@@ -2,8 +2,9 @@
 import React from "react"
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-import "./Header.css"
+import "./css/Header.css"
 
 const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 	const [opened, setOpened] = useState<boolean>(false)
@@ -16,11 +17,13 @@ const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 		}
 	}
 
+	let pathname = usePathname()
+
 	return (
 		<section id="header">
 			<header className={sticky ? "sticky" : ""}>
 				<nav id="nav_bar">
-					<Link href={"/"} id="logo">
+					<Link href={"/#hero"} id="logo">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 327.42 348.68"
@@ -68,7 +71,7 @@ const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 					<div>
 						<ul className="desktop nav_bar_list">
 							<Link href={"/#hero"}>Accueil</Link>
-							<Link href={"/projects"}>Projets</Link>
+							<Link href={pathname.includes("/projects") ? "/projects" : "/#projects"}>Projets</Link>
 							<Link href={"/#skills"}>Compétences</Link>
 						</ul>
 						<div

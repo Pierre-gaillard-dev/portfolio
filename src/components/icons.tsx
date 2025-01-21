@@ -93,6 +93,29 @@ export const Mail: React.FC = () => {
 	)
 }
 
+export const File: React.FC = () => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className="feather feather-file-text"
+		>
+			<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+			<polyline points="14 2 14 8 20 8"></polyline>
+			<line x1="16" y1="13" x2="8" y2="13"></line>
+			<line x1="16" y1="17" x2="8" y2="17"></line>
+			<polyline points="10 9 9 9 8 9"></polyline>
+		</svg>
+	)
+}
+
 export const Github: React.FC = () => {
 	return (
 		<svg
@@ -113,15 +136,31 @@ export const Github: React.FC = () => {
 
 export const Linkedin: React.FC = () => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-			<path
-				style={{ fillRule: "evenodd" }}
-				d="M512,475.14,195.04,195.04h68.93v35.14h.76c10.51-18.94,41.54-38.18,79.92-38.18,73.65,0,94.21,39.11,94.21,111.54v135.32h-73.15v-121.98c0-32.43-12.95-60.88-43.23-60.88-36.77,0-54.3,24.89-54.3,65.76v117.1h-73.15v-243.82h0ZM73.14,438.86h73.15v-243.82h-73.15v243.82ZM155.43,109.71c0,25.26-20.46,45.71-45.71,45.71s-45.72-20.46-45.72-45.71,20.46-45.72,45.72-45.72,45.71,20.46,45.71,45.72Z"
-			/>
-			<path
-				style={{ fillRule: "evenodd", fill: "#fff" }}
-				d="M474.92,0H38.59C17.72,0,0,16.5,0,36.84v438.3c0,20.36,11.63,36.86,32.49,36.86h436.33c20.9,0,43.18-16.5,43.18-36.86V36.84c0-20.34-16.19-36.84-37.08-36.84ZM195.04,195.04h68.93v35.14h.76c10.51-18.94,41.54-38.18,79.92-38.18,73.65,0,94.21,39.11,94.21,111.54v135.32h-73.15v-121.98c0-32.43-12.95-60.88-43.23-60.88-36.77,0-54.3,24.89-54.3,65.76v117.1h-73.15v-243.82h0ZM73.14,438.86h73.15v-243.82h-73.15v243.82ZM155.43,109.71c0,25.26-20.46,45.71-45.71,45.71s-45.72-20.46-45.72-45.71,20.46-45.72,45.72-45.72,45.71,20.46,45.71,45.72Z"
-			/>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			className="feather feather-linkedin"
+		>
+			<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+			<rect x="2" y="9" width="4" height="12"></rect>
+			<circle cx="4" cy="4" r="2"></circle>
 		</svg>
 	)
+}
+
+export const Icons: Record<string, React.FC> = {
+	ChevronLeft: ChevronLeft,
+	ChevronRight: ChevronRight,
+	X: X,
+	Menu: Menu,
+	Mail: Mail,
+	Github: Github,
+	Linkedin: Linkedin,
 }

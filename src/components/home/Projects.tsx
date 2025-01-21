@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 
 import Project from "../Project"
-
+import Overlay from "../Overlay"
+import ProjectDetail from "../projectDetail"
 import { ChevronRight } from "../icons"
 
 import type { Project as ProjectType } from "@/src/type"
@@ -18,6 +19,9 @@ const positions = ["left", "middle", "right"]
 const Projects: React.FC = () => {
 	const [index, setIndex] = useState<number>(0)
 	const [sreenwidth, setScreenwidth] = useState<number | null>(null)
+	const [overlayedProjectID, setOverlayedProjectID] = useState<string | null>(
+		null
+	)
 
 	const ProjectsID = ["chess", "thalia", "portfolio"]
 	const projects: ProjectType[] = ProjectsID.map((id) => getProject(id)!)
@@ -87,6 +91,10 @@ const Projects: React.FC = () => {
 		dragging = false
 	}
 
+	const handleclick = (id: string) => setOverlayedProjectID(id)
+
+	const closeOverlay = () => setOverlayedProjectID(null)
+
 	return (
 		<section id="projects" className="container">
 			<div className="split">
@@ -113,9 +121,9 @@ const Projects: React.FC = () => {
 					img={projects[0].img}
 					description={projects[0].description}
 					languages={projects[0].languages}
-					href={`/projects/${projects[0].id}`}
 					selected={index === 0}
 					onHover={() => hoverHandler(0)}
+					onClick={() => handleclick(projects[0].id)}
 				/>
 				<Project
 					id={
@@ -127,9 +135,9 @@ const Projects: React.FC = () => {
 					img={projects[1].img}
 					description={projects[1].description}
 					languages={projects[1].languages}
-					href={`/projects/${projects[1].id}`}
 					selected={index === 1}
 					onHover={() => hoverHandler(1)}
+					onClick={() => handleclick(projects[1].id)}
 				/>
 				<Project
 					id={
@@ -141,11 +149,25 @@ const Projects: React.FC = () => {
 					img={projects[2].img}
 					description={projects[2].description}
 					languages={projects[2].languages}
-					href={`/projects/${projects[1].id}`}
 					selected={index === 2}
 					onHover={() => hoverHandler(2)}
+					onClick={() => handleclick(projects[2].id)}
 				/>
 			</div>
+			<div id="projects_link_bottom">
+				<Link href="/projects">
+					Tous mes projets
+					<ChevronRight />
+				</Link>
+			</div>
+			{overlayedProjectID && (
+				<Overlay close={closeOverlay}>
+					<ProjectDetail
+						id={overlayedProjectID}
+						close={closeOverlay}
+					/>
+				</Overlay>
+			)}
 		</section>
 	)
 }

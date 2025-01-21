@@ -1,3 +1,7 @@
+a.project:hover {
+    text-decoration: none;
+}
+
 article.card {
     width: 360px;
     max-width: 40vw;
@@ -53,7 +57,7 @@ article.card p {
 }
 
 .html_css{
-    background-color: var(--button-color);
+    background-color: #e34c26;
 }
 
 .js{

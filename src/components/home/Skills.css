@@ -17,7 +17,7 @@
 }
 
 #skills > .container > .split > div {
-    width: 20vw;
+	width: 20vw;
 }
 
 #skills .split.left {
@@ -36,8 +36,8 @@
 	background-color: var(--background-080);
 	backdrop-filter: blur(10px);
 	overflow: hidden;
-    box-shadow: var(--shadow-neo);
-    padding: 20px;
+	box-shadow: var(--shadow-neo-light);
+	padding: 20px;
 }
 
 #skills h2,
@@ -45,14 +45,35 @@
 	margin-bottom: 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
+	#skills > .container > .split {
+		flex-direction: column;
+		gap: 20px;
+	}
+
 	#skills .separator {
-		width: 1px;
+		height: 1px;
+		width: 100% !important;
+	}
+
+	#skills > .container > .split > div {
+		width: 100%;
+	}
+
+	#skills .skills {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
 	}
 }
 
 @media screen and (max-width: 500px) {
 	#skills .split.left {
 		margin-bottom: 0;
+	}
+
+	#skills img {
+		height: 40px;
+		width: 40px;
 	}
 }

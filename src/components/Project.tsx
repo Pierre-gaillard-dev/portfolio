@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 
-import "./Project.css"
+import "./css/Project.css"
 
 const Project: React.FC<{
 	id: string
@@ -9,12 +9,12 @@ const Project: React.FC<{
 	img: string
 	description: string
 	languages: { text: string; className: string }[]
-	href: string
     selected?: boolean
     onHover?: () => void
+	onClick?: () => void
 }> = (props) => {
 	return (
-		<Link href={props.href} className={"project" + (props.selected ? " selected" : "")} id={props.id} onMouseEnter={props.onHover}>
+		<a onClick={props.onClick} className={"project" + (props.selected ? " selected" : "")} id={props.id} onMouseEnter={props.onHover}>
 			<article className="card">
 				<div className="image_container">
 					<img src={props.img} />
@@ -31,7 +31,7 @@ const Project: React.FC<{
 					})}
 				</div>
 			</article>
-		</Link>
+		</a>
 	)
 }
 
