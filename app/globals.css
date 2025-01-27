@@ -123,6 +123,10 @@ ul {
 	padding: 30px 50px;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 .card {
 	border-radius: 24px;
 	padding: 10px;

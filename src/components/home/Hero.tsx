@@ -1,8 +1,9 @@
-'use client'
+"use client"
 import React from "react"
 import { useState } from "react"
 
 import { Github, Mail, File } from "../icons"
+import Activity from "../Activity"
 import Button from "../Button"
 import Overlay from "../Overlay"
 import CV from "../CV"
@@ -16,7 +17,7 @@ const Hero: React.FC = () => {
 		<section id="hero" className="background_light">
 			{CVOpened && (
 				<Overlay close={() => setCVOpened(false)}>
-					<CV/>
+					<CV />
 				</Overlay>
 			)}
 			<div className="container split">
@@ -24,7 +25,11 @@ const Hero: React.FC = () => {
 					<h1>Pierre Gaillard</h1>
 					<h2>Développeur web</h2>
 					<div className="split left button_container">
-						<Button link="https://github.com/Pierre-gaillard-dev" id="github" target="_blank">
+						<Button
+							link="https://github.com/Pierre-gaillard-dev"
+							id="github"
+							target="_blank"
+						>
 							<Github />
 							<span>Github</span>
 						</Button>
@@ -43,7 +48,14 @@ const Hero: React.FC = () => {
 					</p>
 				</div>
 				<div id="hero_image">
-					<img src="../img/photo.png" alt="Pierre Gaillard" />
+					<img
+						id="photo"
+						src="../img/photo.png"
+						alt="Pierre Gaillard"
+					/>
+					<div>
+						<Activity />
+					</div>
 				</div>
 			</div>
 		</section>
