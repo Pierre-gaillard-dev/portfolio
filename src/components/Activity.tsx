@@ -7,8 +7,6 @@ import ProjectDetail from "./projectDetail"
 import "./css/activity.css"
 
 import { getProjectByFolderName } from "../projects.json"
-import { actionAsyncStorage } from "next/dist/server/app-render/action-async-storage.external"
-import { get } from "http"
 
 const fileExtensionToIconLink: { [key: string]: string } = {
 	jsx: "../icons/react.webp",
@@ -64,13 +62,6 @@ const Activity: React.FC = () => {
 			const data = await response.json()
 			const projectId = getProjectByFolderName(data.projectName)?.id
 			setActivity({ ...data, projectId: projectId })
-
-			let a: Date = data.timestamp
-			console.log(
-				a,
-				"testestetsestsetstestsetestestest",
-				new Date().valueOf()
-			)
 		}
 
 		fetchActivity()

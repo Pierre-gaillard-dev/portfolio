@@ -1,7 +1,22 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+	/* config options here */
+}
 
-export default nextConfig;
+const headers = async () => {
+	return [
+		{
+			source: "/(.*)",
+			headers: [
+				{
+					key: "X-Content-Type-Options",
+					value: "",
+				},
+			],
+		},
+	]
+}
+
+export default nextConfig
+export { headers }

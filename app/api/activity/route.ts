@@ -18,6 +18,11 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+	const headers = new Headers({
+		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*",
+		"Access-Control-Allow-Methods": "POST",
+	})
 	const contentLength = req.headers.get("content-length")
 	if (!contentLength || parseInt(contentLength) === 0) {
 		currentActivity = {
