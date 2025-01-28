@@ -13,7 +13,7 @@
 
 .overlay {
 	background-color: var(--background);
-	width: 800px;
+	width: 80%;
 	height: 90%;
 	padding: 0px;
 	border-radius: 10px;

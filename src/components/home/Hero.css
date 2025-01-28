@@ -1,86 +1,97 @@
 #hero {
-    .container.split {
-        gap : 50px;
-        padding-top : 100px;
-        padding-bottom: 100px;
-    }
+	.container.split {
+		gap: 50px;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
 
-    #hero_text {
-        flex: 4;
-    }
-    #hero_image {
-        flex: 3;
-        max-height: 100%;
-    }
+	#hero_text {
+		flex: 4;
+	}
 
-    #hero_image img {
-        border-radius: 1000px;
-    }
+	#hero_image {
+		flex: 3;
+		max-height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+	}
 
-    a.button {
-        height: 100%;
-        font-size: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
+	#hero_image img#photo {
+		border-radius: 1000px;
+	}
 
-    .button_container {
-        height: 60px;
-    }
+	a.button {
+		height: 100%;
+		font-size: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
 
-    h2 {
-        font-size: 48px;
-        font-weight: 300;
-    }
+	.button_container {
+		height: 60px;
+	}
 
-    p {
-        margin-top: 40px;
-    }
+	h2 {
+		font-size: 48px;
+		font-weight: 300;
+	}
 
-    @media screen and (max-width: 1400px) {
-        h2 {
-            font-size: 3vw;
-        }
+	p {
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
 
-        .button_container {
-            height: 50px;
-        }
-    }
+	#activity {
+		box-shadow: var(--shadow-neo-light);
+	}
 
-    @media screen and (max-width: 1000px) {
-        .button_container {
-            height: 40px;
-        }
-    }
+	@media screen and (max-width: 1400px) {
+		h2 {
+			font-size: 3vw;
+		}
 
-    @media screen and (max-width: 800px) {
-        h2 {
-            font-size: 24px;
-        }
+		.button_container {
+			height: 50px;
+		}
+	}
 
-        .button_container {
-            height: 35px;
-            margin: 10px 0px
-        }
+	@media screen and (max-width: 1000px) {
+		.button_container {
+			height: 40px;
+		}
+	}
 
-        .button_container #github {
-            display: none;
-        }
+	@media screen and (max-width: 800px) {
+		h2 {
+			font-size: 24px;
+		}
 
-        p {
-            margin-top: 20px;
-        }
-    }
+		.button_container {
+			height: 35px;
+			margin: 10px 0px;
+		}
 
-    @media screen and (max-width: 500px) {
-        > .container.split {
-            flex-direction: column-reverse;
-            padding-top: 20px;
-        }
+		.button_container #github {
+			display: none;
+		}
 
-        .button_container #github {
-            display: none;
-        }
-    }
+		p {
+			margin-top: 20px;
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		> .container.split {
+			flex-direction: column-reverse;
+			padding-top: 20px;
+		}
+
+		.button_container #github {
+			display: none;
+		}
+	}
 }
