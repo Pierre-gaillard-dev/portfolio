@@ -44,8 +44,12 @@ const Hero: React.FC = () => {
 					</div>
 					<p>
 						Je m’appelle Pierre Gaillard, je suis étudiant à
-						MyDigitalSchool Vannes et je suis{" "}
+						MyDigitalSchool Vannes et je suis passionné par le
+						développement depuis des années
 					</p>
+					<div>
+						<Activity />
+					</div>
 				</div>
 				<div id="hero_image">
 					<img
@@ -53,9 +57,6 @@ const Hero: React.FC = () => {
 						src="../img/photo.png"
 						alt="Pierre Gaillard"
 					/>
-					<div>
-						<Activity />
-					</div>
 				</div>
 			</div>
 		</section>

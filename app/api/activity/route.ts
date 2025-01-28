@@ -1,11 +1,11 @@
 let currentActivity: {
 	projectName: string
 	fileName: string
-	timestamp: string
+	timeStamp: Date | null
 } = {
 	projectName: "",
 	fileName: "",
-	timestamp: "",
+	timeStamp: null,
 }
 
 export async function GET(req: Request) {
@@ -18,15 +18,21 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-	const data = await req.json()
-
-	if (!data) {
+	const contentLength = req.headers.get("content-length")
+	if (!contentLength || parseInt(contentLength) === 0) {
 		currentActivity = {
 			projectName: "",
 			fileName: "",
-			timestamp: "",
+			timeStamp: null,
 		}
+		return new Response(JSON.stringify({ success: true }), {
+			headers: {
+				"Content-Type": "application/json",
+			},
+			status: 200,
+		})
 	}
+	const data = await req.json()
 
 	const projectName: string = data.projectName ? data.projectName : ""
 	const fileName: string = data?.fileName ? data.fileName : ""
@@ -44,7 +50,7 @@ export async function POST(req: Request) {
 	currentActivity = {
 		projectName,
 		fileName,
-		timestamp: currentActivity.timestamp || Date().toString(),
+		timeStamp: currentActivity.timeStamp || new Date(),
 	}
 
 	return new Response(JSON.stringify({ success: true }), {

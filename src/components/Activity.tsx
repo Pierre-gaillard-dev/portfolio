@@ -8,6 +8,7 @@ import "./css/activity.css"
 
 import { getProjectByFolderName } from "../projects.json"
 import { actionAsyncStorage } from "next/dist/server/app-render/action-async-storage.external"
+import { get } from "http"
 
 const fileExtensionToIconLink: { [key: string]: string } = {
 	jsx: "../icons/react.webp",
@@ -20,15 +21,42 @@ const fileExtensionToIconLink: { [key: string]: string } = {
 	html: "../icons/html5.svg",
 }
 
+export type Activity = {
+	projectName: string
+	fileName: string
+	timeStamp: Date | null
+	projectId: string
+}
+
 const Activity: React.FC = () => {
-	const [activity, setActivity] = useState({
+	const [activity, setActivity] = useState<Activity>({
 		projectName: "",
 		fileName: "",
-		timeStamp: "",
+		timeStamp: null,
 		projectId: "",
 	})
 
 	const [overlay, setOverlay] = useState<boolean>(false)
+
+	const getDuration = () => {
+		if (activity.timeStamp) {
+			const duration =
+				new Date().valueOf() -
+				Date.parse(activity.timeStamp.toString()).valueOf()
+			const durationInMinutes = duration / 60000
+			const durationInHours = durationInMinutes / 60
+			if (durationInHours >= 1) {
+				return (
+					Math.round(durationInHours) +
+					"h" +
+					Math.round(durationInMinutes) +
+					"min"
+				)
+			} else {
+				return Math.round(durationInMinutes) + "min"
+			}
+		}
+	}
 
 	useEffect(() => {
 		const fetchActivity = async () => {
@@ -36,7 +64,13 @@ const Activity: React.FC = () => {
 			const data = await response.json()
 			const projectId = getProjectByFolderName(data.projectName)?.id
 			setActivity({ ...data, projectId: projectId })
-			console.log(data, projectId)
+
+			let a: Date = data.timestamp
+			console.log(
+				a,
+				"testestetsestsetstestsetestestest",
+				new Date().valueOf()
+			)
 		}
 
 		fetchActivity()
@@ -84,7 +118,12 @@ const Activity: React.FC = () => {
 									{activity.projectName}
 								</span>
 							</p>
-							<p>{activity.timeStamp}</p>
+							<p>
+								Depuis :{" "}
+								<span className="bold">
+									{activity.timeStamp && getDuration()}
+								</span>
+							</p>
 						</div>
 					</div>
 				</>
