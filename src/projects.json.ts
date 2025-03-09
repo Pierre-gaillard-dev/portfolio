@@ -33,7 +33,7 @@ export const projects: Project[] = [
 			},
 			{
 				text: "PostgreSQL",
-				className: "postgresql",
+				className: "postgres",
 			},
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/Netflix",
