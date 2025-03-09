@@ -30,7 +30,7 @@
 	width: auto;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
 	.projects_container {
 		position: relative;
 		justify-content: center;

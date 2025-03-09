@@ -1,23 +1,79 @@
+// React
 import React from "react"
 import Link from "next/link"
-
-import { ChevronLeft, Github } from "@/src/components/icons"
-
-import type { language } from "@/src/type"
-
-import { getProject } from "@/src/projects.json"
 import { notFound } from "next/navigation"
-
+// components
+import { ChevronLeft, Github } from "@/src/components/icons"
+import Button from "@/src/components/Button"
+// types
+import type { Project, language } from "@/src/type"
+// data
+import { getProject } from "@/src/projects.json"
+// css
 import "@/src/components/css/ProjectDetail.css"
 import "@/src/components/css/Project.css"
-import Button from "@/src/components/Button"
 
-const ProjectDetail: React.FC<{ id: string, close: () => void }> = ({ id, close }) => {
+export const getIframe = (project: Project, ref: React.RefObject<any>) => {
+	const url = project.demoLink
+	if (!url) return <div>Demo not found</div>
+
+	//github
+	if (url.startsWith("https://github.com/")) {
+		return (
+			<iframe
+				src={url}
+				width={"100%"}
+				height={"100%"}
+				frameBorder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowFullScreen
+				ref={ref}
+			></iframe>
+		)
+	}
+
+	//itch.io
+	if (url.includes("itch.io")) {
+		return (
+			<iframe
+				frameBorder="0"
+				src={url}
+				allowFullScreen
+				width={"100%"}
+				height={"100%"}
+				ref={ref}
+			>
+				<a href="https://pierre-gaillard-dev.itch.io/gipoulet">
+					Play Gipoulet on itch.io
+				</a>
+			</iframe>
+		)
+	}
+
+	return (
+		<iframe
+			src={url}
+			width={"100%"}
+			height={"100%"}
+			frameBorder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allowFullScreen
+			ref={ref}
+		></iframe>
+	)
+}
+
+const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
+	id,
+	close,
+}) => {
 	const project = getProject(id)
 
 	if (!project) {
 		notFound()
 	}
+
+	const iframeRef = React.useRef<HTMLIFrameElement>(null)
 
 	const formatText = (text: string) => {
 		let result = text.split("\n").map((line, index) => {
@@ -66,15 +122,17 @@ const ProjectDetail: React.FC<{ id: string, close: () => void }> = ({ id, close 
 			{project.demoLink ? (
 				<section id="demo" className="container">
 					<h2>Testez-le</h2>
-					<div className="center">
-						<iframe
-							src={project.demoLink}
-							width={project.demoWidth || "100%"}
-							height={project.demoHeight || "450px"}
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowFullScreen
-						></iframe>
+					<div
+						className="center"
+						style={{
+							width: project.demoWidth || "100%",
+							height:
+								project.demoHeight ||
+								(iframeRef.current?.clientWidth || 600) /
+									(project.aspectRatio || 16 / 9),
+						}}
+					>
+						{getIframe(project, iframeRef)}
 					</div>
 				</section>
 			) : null}
