@@ -13,20 +13,21 @@ import { getProject } from "@/src/projects.json"
 import "@/src/components/css/ProjectDetail.css"
 import "@/src/components/css/Project.css"
 
-const getIframe = (project: Project) => {
+export const getIframe = (project: Project, ref: React.RefObject<any>) => {
 	const url = project.demoLink
-	if (!url) return null
+	if (!url) return <div>Demo not found</div>
 
 	//github
 	if (url.startsWith("https://github.com/")) {
 		return (
 			<iframe
 				src={url}
-				width={project.demoWidth || "100%"}
-				height={project.demoHeight || "450px"}
+				width={"100%"}
+				height={"100%"}
 				frameBorder="0"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen
+				ref={ref}
 			></iframe>
 		)
 	}
@@ -38,8 +39,9 @@ const getIframe = (project: Project) => {
 				frameBorder="0"
 				src={url}
 				allowFullScreen
-				width={project.demoWidth || "100%"}
-				height={project.demoHeight || "450px"}
+				width={"100%"}
+				height={"100%"}
+				ref={ref}
 			>
 				<a href="https://pierre-gaillard-dev.itch.io/gipoulet">
 					Play Gipoulet on itch.io
@@ -47,6 +49,18 @@ const getIframe = (project: Project) => {
 			</iframe>
 		)
 	}
+
+	return (
+		<iframe
+			src={url}
+			width={"100%"}
+			height={"100%"}
+			frameBorder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allowFullScreen
+			ref={ref}
+		></iframe>
+	)
 }
 
 const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
@@ -58,6 +72,8 @@ const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
 	if (!project) {
 		notFound()
 	}
+
+	const iframeRef = React.useRef<HTMLIFrameElement>(null)
 
 	const formatText = (text: string) => {
 		let result = text.split("\n").map((line, index) => {
@@ -106,15 +122,17 @@ const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
 			{project.demoLink ? (
 				<section id="demo" className="container">
 					<h2>Testez-le</h2>
-					<div className="center">
-						<iframe
-							src={project.demoLink}
-							width={project.demoWidth || "100%"}
-							height={project.demoHeight || "450px"}
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowFullScreen
-						></iframe>
+					<div
+						className="center"
+						style={{
+							width: project.demoWidth || "100%",
+							height:
+								project.demoHeight ||
+								(iframeRef.current?.clientWidth || 600) /
+									(project.aspectRatio || 16 / 9),
+						}}
+					>
+						{getIframe(project, iframeRef)}
 					</div>
 				</section>
 			) : null}
