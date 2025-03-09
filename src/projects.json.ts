@@ -21,7 +21,7 @@ export const projects: Project[] = [
 	{
 		id: "Netflix-clone",
 		title: "Netflix clone",
-		img: "../img/projects/netflix-clone.webp",
+		img: "../img/projects/netflix.webp",
 		languages: [
 			{
 				text: "React",

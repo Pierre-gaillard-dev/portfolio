@@ -23,9 +23,8 @@ const Projects: React.FC = () => {
 		null
 	)
 
-	const ProjectsID = ["gipoulet", "thalia", "Netflix-clone"]
+	const ProjectsID = ["pokedex", "Netflix-clone", "thalia"]
 	const projects: ProjectType[] = ProjectsID.map((id) => getProject(id)!)
-	console.log(projects)
 
 	useEffect(() => {
 		setIndex(0)
