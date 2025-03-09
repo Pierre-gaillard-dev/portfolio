@@ -52,6 +52,39 @@ export const projects: Project[] = [
 			"J'ai réalisé ce projet seul. Toutes les données et les images proviennent de TheMovieDatabase, en respectant leues conditions d'utilisation.",
 	},
 	{
+		id: "pokedex",
+		title: "Pokedex",
+		img: "../img/projects/pokedex.webp",
+		languages: [
+			{
+				text: "React",
+				className: "react",
+			},
+			{
+				text: "Express",
+				className: "express",
+			},
+			{
+				text: "PostgreSQL",
+				className: "postgres",
+			},
+		],
+		githubLink: "https://github.com/Pierre-gaillard-dev/pokedex",
+		demoLink: "https://pokedex.pierre-gaillard.mds-vannes.yt",
+		demoHeight: 450,
+		demoWidth: null,
+		videoLink: null,
+		startDate: "11 février 2025",
+		endDate: null,
+		duration: "25h",
+		description:
+			"J'ai souhaité créer un pokédex pour prendre une revanche sur un échec précédent.\nJ'ai essayé d'apprendre à créer un site web avec une base de données en suivant un tutoriel de 7h permettant de créer un pokédex. J'avais passé plus de 20h à suivre ce tutoriel pour me retrouver au final avec quelque chose de fonctionnel dont je ne savais pas quoi faire.\nJe ne le savais pas mais ce tutoriel n'apprenait qu'à créer une API et pas un site complet.\nJ'ai donc décidé de recommencer ce projet, 2 ans après, en partant de zéro mais en gardant les mêmes technologies. Suele le type de base de données a changé, passant de mariaDB à PostgreSQL.\nCette nouvelle version est à la fois plus copmplète (Types de pokémons mieux gérés dans la base de données et il y a des liens entre les pokémons pour les évolutions) et plus facilement utilisable (displonible en ligne depuis un site plutôt que via des requêtes HTTP en local).",
+		conditions:
+			"Ce projet a été réalisé à la suite de mon projet Netflix, en 25h seulement. Il a été beaucoup plus rapide à réaliser car il utilise les mêmes technologies que j'avais appris pendant le projet Netflix.\nIl a été réalisé entièrement sur mon temps libre, mais pour un projet demandé par mon école.\nJe me suis aidé de chatGPT pour me débloquer uniquement, et de Github Copilot pour la saisie semi-automatique du code.",
+		copyright:
+			"J'ai réalisé ce projet seul. Les données des pokémons proviennent de pokebuildapi.fr car il me permettait de récupérer les données en français avec toutes les informations dont j'avais besoin.",
+	},
+	{
 		id: "gipoulet",
 		title: "Gipoulet",
 		img: "../img/projects/gipoulet.webp",
