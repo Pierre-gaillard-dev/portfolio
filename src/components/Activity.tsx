@@ -47,7 +47,7 @@ const Activity: React.FC = () => {
 				return (
 					Math.round(durationInHours) +
 					"h" +
-					Math.round(durationInMinutes) +
+					Math.round(durationInMinutes % 60) +
 					"min"
 				)
 			} else {

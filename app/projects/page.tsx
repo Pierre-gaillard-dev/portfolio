@@ -17,7 +17,9 @@ const Projects: React.FC = () => {
 		[key: string]: { active: boolean; className: string }
 	}>({})
 
-	const [OverlayedProjectID, setOverlayedProjectID] = useState<string | null>(null)
+	const [OverlayedProjectID, setOverlayedProjectID] = useState<string | null>(
+		null
+	)
 
 	const activeFilters = () => {
 		return Object.values(filters).some((filter) => filter.active)
@@ -116,9 +118,12 @@ const Projects: React.FC = () => {
 					</div>
 				</AnimatePresence>
 				{OverlayedProjectID && (
-				<Overlay close={handleclose}>
-					<ProjectDetail id={OverlayedProjectID} close={handleclose} />
-				</Overlay>
+					<Overlay close={handleclose}>
+						<ProjectDetail
+							id={OverlayedProjectID}
+							close={handleclose}
+						/>
+					</Overlay>
 				)}
 			</section>
 		</div>

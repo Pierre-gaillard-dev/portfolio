@@ -23,8 +23,9 @@ const Projects: React.FC = () => {
 		null
 	)
 
-	const ProjectsID = ["chess", "thalia", "portfolio"]
+	const ProjectsID = ["gipoulet", "thalia", "Netflix-clone"]
 	const projects: ProjectType[] = ProjectsID.map((id) => getProject(id)!)
+	console.log(projects)
 
 	useEffect(() => {
 		setIndex(0)
@@ -43,7 +44,7 @@ const Projects: React.FC = () => {
 	}, [])
 
 	const hoverHandler = (index: number) => {
-		if (screen.width > 1200) {
+		if (screen.width > 1300) {
 			setIndex(index)
 		}
 	}

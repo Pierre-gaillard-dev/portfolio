@@ -71,7 +71,15 @@ const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 					<div>
 						<ul className="desktop nav_bar_list">
 							<Link href={"/#hero"}>Accueil</Link>
-							<Link href={pathname.includes("/projects") ? "/projects" : "/#projects"}>Projets</Link>
+							<Link
+								href={
+									pathname.includes("/projects")
+										? "/projects"
+										: "/#projects"
+								}
+							>
+								Projets
+							</Link>
 							<Link href={"/#skills"}>Compétences</Link>
 						</ul>
 						<div

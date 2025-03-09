@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
 							<Github />
 						</Button>
 						<Button
-							link="linkedin.com/in/pierre-gaillard-dev/"
+							link="https://linkedin.com/in/pierre-gaillard-dev/"
 							target="_blank"
 						>
 							<Linkedin />

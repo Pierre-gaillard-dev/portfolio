@@ -1,18 +1,58 @@
+// React
 import React from "react"
 import Link from "next/link"
-
-import { ChevronLeft, Github } from "@/src/components/icons"
-
-import type { language } from "@/src/type"
-
-import { getProject } from "@/src/projects.json"
 import { notFound } from "next/navigation"
-
+// components
+import { ChevronLeft, Github } from "@/src/components/icons"
+import Button from "@/src/components/Button"
+// types
+import type { Project, language } from "@/src/type"
+// data
+import { getProject } from "@/src/projects.json"
+// css
 import "@/src/components/css/ProjectDetail.css"
 import "@/src/components/css/Project.css"
-import Button from "@/src/components/Button"
 
-const ProjectDetail: React.FC<{ id: string, close: () => void }> = ({ id, close }) => {
+const getIframe = (project: Project) => {
+	const url = project.demoLink
+	if (!url) return null
+
+	//github
+	if (url.startsWith("https://github.com/")) {
+		return (
+			<iframe
+				src={url}
+				width={project.demoWidth || "100%"}
+				height={project.demoHeight || "450px"}
+				frameBorder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowFullScreen
+			></iframe>
+		)
+	}
+
+	//itch.io
+	if (url.includes("itch.io")) {
+		return (
+			<iframe
+				frameBorder="0"
+				src={url}
+				allowFullScreen
+				width={project.demoWidth || "100%"}
+				height={project.demoHeight || "450px"}
+			>
+				<a href="https://pierre-gaillard-dev.itch.io/gipoulet">
+					Play Gipoulet on itch.io
+				</a>
+			</iframe>
+		)
+	}
+}
+
+const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
+	id,
+	close,
+}) => {
 	const project = getProject(id)
 
 	if (!project) {
