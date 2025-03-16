@@ -113,7 +113,7 @@ const Projects: React.FC = () => {
 			>
 				<Project
 					id={
-						(sreenwidth ? sreenwidth : 1200) >= 1200
+						(sreenwidth ? sreenwidth : 1300) >= 1300
 							? "left"
 							: positions[+(4 - index) % 3]
 					}

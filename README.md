@@ -15,6 +15,14 @@
     -   empty filters by default
     -   project detail page in overlay only
 -   responsive
+-   is deving on {{project name}}
+    -   Create a VSCode extension that gets current project, current file and sends it to the portfolio API
+    -   Create an API for the portfolio that gets the informations from the API and push it in a DB
+    -   Create A DB with the the informations, when I started deving and when I stoppe deving
+    -   From that calculate the time spent on deving for each project
+    -   link each project in JSON to DB
+    -   Display the real time spent on deving for each project
+    -   Display wich project I'm currently working on.
 
 ## to add :
 
@@ -40,11 +48,3 @@
 -   dark mode / light mode
 -   english
 -   elements in background (little stars or things like that)
--   is deving on {{project name}}
-    -   Create a VSCode extension that gets current project, current file and sends it to the portfolio API
-    -   Create an API for the portfolio that gets the informations from the API and push it in a DB
-    -   Create A DB with the the informations, when I started deving and when I stoppe deving
-    -   From that calculate the time spent on deving for each project
-    -   link each project in JSON to DB
-    -   Display the real time spent on deving for each project
-    -   Display wich project I'm currently working on.

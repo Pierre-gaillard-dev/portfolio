@@ -42,11 +42,17 @@ const Hero: React.FC = () => {
 							<span>CV</span>
 						</Button>
 					</div>
-					<p>
-						Je m’appelle Pierre Gaillard, je suis étudiant à
-						MyDigitalSchool Vannes et je suis passionné par le
-						développement depuis des années
-					</p>
+					<div className="presentation">
+						<p>
+							Je m’appelle Pierre Gaillard, je suis étudiant à
+							MyDigitalSchool Vannes et je suis passionné par le
+							développement informatique depuis des années.
+						</p>
+						<p>
+							Pour moi, chaque problème a une solution. si on ne
+							la trouve pas, alors il suffit de l'inventer.
+						</p>
+					</div>
 					<div>
 						<Activity />
 					</div>
