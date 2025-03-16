@@ -233,4 +233,8 @@ ul {
 	h3 {
 		font-size: 16px;
 	}
+
+	.container {
+		padding: 30px 30px;
+	}
 }

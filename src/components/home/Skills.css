@@ -67,13 +67,23 @@
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 	#skills .split.left {
 		margin-bottom: 0;
+		transition: gap 0.3s;
+		gap: 0px;
+		aspect-ratio: 1/1;
 	}
 
 	#skills img {
-		height: 40px;
-		width: 40px;
+		height: 60px;
+		width: 60px;
+		max-width: 13vw;
+	}
+
+	#skills h4 {
+		width: 0px;
+		overflow: hidden;
+		transition: width 0.3s;
 	}
 }
