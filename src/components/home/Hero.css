@@ -41,6 +41,12 @@
 	}
 
 	p {
+		font-size: 16px;
+		font-weight: 300;
+		margin-bottom: 10px;
+	}
+
+	.presentation {
 		margin-top: 40px;
 		margin-bottom: 40px;
 	}
@@ -79,8 +85,9 @@
 			display: none;
 		}
 
-		p {
+		.presentation {
 			margin-top: 20px;
+			margin-bottom: 20px;
 		}
 	}
 

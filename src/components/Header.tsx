@@ -109,8 +109,7 @@ const Header: React.FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
 
 				<div
 					id="nav_bar_popup"
-					className="mobile"
-					style={{ display: opened ? "block" : "none" }}
+					className={"mobile" + (opened ? " opened" : "")}
 				>
 					<div
 						id="menu_close_button"
