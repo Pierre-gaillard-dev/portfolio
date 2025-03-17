@@ -165,15 +165,15 @@ export const projects: Project[] = [
 		img: "../img/projects/portfolio.webp",
 		languages: [
 			{
-				text: "typescript",
+				text: "Typescript",
 				className: "ts",
 			},
 			{
-				text: "react",
+				text: "React",
 				className: "react",
 			},
 			{
-				text: "next.js",
+				text: "Next.js",
 				className: "next",
 			},
 		],
