@@ -5,6 +5,7 @@ export type Project = {
 	languages: language[]
 	githubLink: string
 	demoLink: string | null
+	playableDemo?: boolean
 	demoWidth: number | null
 	demoHeight: number | null
 	aspectRatio?: number | null
