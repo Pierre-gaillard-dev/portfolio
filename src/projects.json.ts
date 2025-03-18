@@ -38,18 +38,19 @@ export const projects: Project[] = [
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/Netflix",
 		demoLink: "https://netflix.pierre-gaillard.mds-vannes.yt",
+		playableDemo: false,
 		demoHeight: 450,
 		demoWidth: null,
 		videoLink: null,
 		startDate: "14 janvier 2025",
 		endDate: null,
-		duration: "80h",
+		duration: "100h",
 		description:
 			"Netflix est mon premier projet full-stack. J'ai fait le choix de gérer de A à Z le fonctionnement du site web, pour ne pas être dépendant de services tels que TheMovieDatabase et surtout pour apprendre à créer une API ett à gérer une base de données.\n" +
 			"Le site est un clone de Netflix, avec une page d'accueil, une page de détail pour chaque film et une page de connexion.\n" +
 			"Je gère moi-même les connexions au site avec les données stockées dans la base de données avec le mot de passe hashé. Il est cependant déconseillé de créer un compte avec un mot de passe que vous utilisez ailleurs, car je ne suis pas un expert en sécurité informatique.",
 		conditions:
-			"Ce projet fait partie de mon cursus scolaire en deuxième année de Bachelor. Il a été réalisé en environ 80h, réparties sur 3 mois, dont la moitié sur mon temps personnel.",
+			"Ce projet fait partie de mon cursus scolaire en deuxième année de Bachelor. Il a été réalisé en environ 100h, réparties sur 3 mois, dont la moitié sur mon temps personnel.",
 		copyright:
 			"J'ai réalisé ce projet seul. Toutes les données et les images proviennent de TheMovieDatabase, en respectant leurs conditions d'utilisation.",
 	},
@@ -73,6 +74,7 @@ export const projects: Project[] = [
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/pokedex",
 		demoLink: "https://pokedex.pierre-gaillard.mds-vannes.yt",
+		playableDemo: true,
 		demoHeight: null,
 		demoWidth: null,
 		aspectRatio: 16 / 9,
@@ -105,6 +107,7 @@ export const projects: Project[] = [
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/Gipoulet",
 		demoLink: "https://itch.io/embed-upload/12743416?color=333333",
+		playableDemo: true,
 		demoHeight: 668,
 		demoWidth: 1152,
 		videoLink: null,
@@ -145,6 +148,7 @@ export const projects: Project[] = [
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/Chess",
 		demoLink: "https://pierre-gaillard-dev.github.io/chess/",
+		playableDemo: true,
 		demoHeight: 450,
 		demoWidth: null,
 		videoLink: null,
@@ -212,6 +216,7 @@ export const projects: Project[] = [
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/Thalias-story/",
 		demoLink: "https://pierre-gaillard-dev.github.io/Thalias-story/",
+		playableDemo: true,
 		demoHeight: null,
 		demoWidth: 800,
 		videoLink: null,

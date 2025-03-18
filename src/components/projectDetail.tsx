@@ -1,9 +1,8 @@
 // React
 import React from "react"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 // components
-import { ChevronLeft, Github } from "@/src/components/icons"
+import { ChevronLeft, ExternalLink, Github } from "@/src/components/icons"
 import Button from "@/src/components/Button"
 // types
 import type { Project, language } from "@/src/type"
@@ -112,14 +111,22 @@ const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
 								)}
 							</div>
 						</div>
-						<Button link={project.githubLink} color="white">
-							<Github />
-							<span>Github</span>
-						</Button>
+						<div className="split links">
+							<Button link={project.githubLink} color="white">
+								<Github />
+								<span>Github</span>
+							</Button>
+							{project.demoLink ? (
+								<Button link={project.demoLink} color="white">
+									<ExternalLink />
+									<span>Demo</span>
+								</Button>
+							) : null}
+						</div>
 					</div>
 				</div>
 			</section>
-			{project.demoLink ? (
+			{project.demoLink && project.playableDemo ? (
 				<section id="demo" className="container">
 					<h2>Testez-le</h2>
 					<div
@@ -133,6 +140,13 @@ const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
 						}}
 					>
 						{getIframe(project, iframeRef)}
+						<a
+							className="full-screen"
+							href={project.demoLink}
+							target="_blank"
+						>
+							<ExternalLink />
+						</a>
 					</div>
 				</section>
 			) : null}
@@ -153,7 +167,8 @@ const ProjectDetail: React.FC<{ id: string; close: () => void }> = ({
 					</div>
 				</section>
 			) : null}
-			{!project.demoLink && !project.videoLink ? (
+			{(!project.demoLink && !project.videoLink) ||
+			!project.playableDemo ? (
 				<section id="image" className="container">
 					<img src={project.img} alt={project.title} />
 				</section>
