@@ -37,7 +37,7 @@ export const projects: Project[] = [
 			},
 		],
 		githubLink: "https://github.com/Pierre-gaillard-dev/Netflix",
-		demoLink: "https://netflix.pierre-gaillard.mds-vannes.yt",
+		demoLink: "https://netflix-two-olive-11.vercel.app",
 		playableDemo: false,
 		demoHeight: 450,
 		demoWidth: null,
