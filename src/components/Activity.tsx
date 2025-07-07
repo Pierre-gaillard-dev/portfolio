@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 import Overlay from "./Overlay"
 import ProjectDetail from "./projectDetail"
+import { getApiUrl, API_CONFIG } from "../config/api"
 
 import "./css/activity.css"
 
@@ -57,10 +58,15 @@ const Activity: React.FC = () => {
 
   useEffect(() => {
     const fetchActivity = async () => {
-      const response = await fetch("/api/activity")
-      const data = await response.json()
-      const projectId = getProjectByFolderName(data.projectName)?.id
-      setActivity({ ...data, projectId: projectId })
+      try {
+        const apiUrl = getApiUrl(API_CONFIG.ENDPOINTS.ACTIVITY)
+        const response = await fetch(apiUrl)
+        const data = await response.json()
+        const projectId = getProjectByFolderName(data.projectName)?.id
+        setActivity({ ...data, projectId: projectId })
+      } catch (error) {
+        console.error("Erreur lors de la récupération de l'activité:", error)
+      }
     }
 
     fetchActivity()
