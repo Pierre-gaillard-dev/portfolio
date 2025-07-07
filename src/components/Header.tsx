@@ -1,6 +1,8 @@
 import { FC, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
+import scrollToAnchor from "../util/scrollToAnchor"
+
 import "./css/Header.css"
 
 const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
@@ -20,7 +22,7 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
     <section id="header">
       <header className={sticky ? "sticky" : ""}>
         <nav id="nav_bar">
-          <Link to="/#hero" id="logo">
+          <Link to="/#hero" onClick={() => scrollToAnchor("hero")} id="logo">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 327.42 348.68"
@@ -67,13 +69,20 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
           </Link>
           <div>
             <ul className="desktop nav_bar_list">
-              <Link to="/#hero">Accueil</Link>
+              <Link to="/#hero" onClick={() => scrollToAnchor("hero")}>
+                Accueil
+              </Link>
               <Link
                 to={pathname.includes("/projects") ? "/projects" : "/#projects"}
+                onClick={() =>
+                  !pathname.includes("/projects") && scrollToAnchor("projects")
+                }
               >
                 Projets
               </Link>
-              <Link to="/#skills">Compétences</Link>
+              <Link to="/#skills" onClick={() => scrollToAnchor("skills")}>
+                Compétences
+              </Link>
             </ul>
             <div id="menu_icon" className="mobile" onClick={switch_popup}>
               <svg
@@ -120,7 +129,9 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
           <ul className="nav_bar_list">
             <Link to="/">Accueil</Link>
             <Link to="/projects">Projets</Link>
-            <Link to="/#skills">Compétences</Link>
+            <Link to="/#skills" onClick={() => scrollToAnchor("skills")}>
+              Compétences
+            </Link>
           </ul>
         </div>
       </header>

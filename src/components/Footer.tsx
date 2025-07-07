@@ -4,13 +4,19 @@ import { Link } from "react-router-dom"
 import { Mail, Github, Linkedin } from "./icons"
 import Button from "./Button"
 
+import scrollToAnchor from "../util/scrollToAnchor"
+
 import "./css/Footer.css"
 
 const Footer: FC = () => {
   return (
     <footer className="footer">
       <div className="container split">
-        <Link to="/#hero" className="logo">
+        <Link
+          to="/#hero"
+          onClick={() => scrollToAnchor("hero")}
+          className="logo"
+        >
           <div className="image_container">
             <img src="/img/photo.png" alt="Logo" />
           </div>
