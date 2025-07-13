@@ -4,11 +4,11 @@ export const API_CONFIG = {
   BASE_URL:
     process.env.NODE_ENV === "development"
       ? "http://localhost:8000" // Pour le développement local avec PHP
-      : "https://pierre-gaillard.com/api", // Remplacez par votre vrai domaine
+      : "https://pierre-gaillard.mds-vannes.yt/api", // Remplacez par votre vrai domaine
 
   // Endpoints
   ENDPOINTS: {
-    ACTIVITY: "/activity.php",
+    ACTIVITY: "/activity",
   },
 }
 
