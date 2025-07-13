@@ -30,7 +30,7 @@ jobs:
           cp -r api/* build/api/
 
       - name: FTP Deploy to N0C
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
