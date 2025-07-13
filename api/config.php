@@ -1,16 +1,13 @@
 <?php
 // Configuration générale de l'API
 define('API_VERSION', '1.0');
-define('API_BASE_URL', 'https://pierre-gaillard.com/api/'); // Remplacez par votre domaine
+define('API_BASE_URL', 'https://pierre-gaillard.mds-vannes.yt/api/');
 
 // Configuration CORS pour production
 define('CORS_ORIGINS', [
-    'http://localhost:3000',  // Développement local
     'http://localhost:5173',  // Développement Vite
-    'https://pierre-gaillard.com',  // Production - remplacez par votre domaine
-    'https://www.pierre-gaillard.com',  // Production avec www
-    'https://pierre-gaillard.netlify.app',  // Si vous utilisez Netlify
-    'https://pierre-gaillard.vercel.app'   // Si vous utilisez Vercel
+    'https://pierre-gaillard.mds-vannes.yt/',
+    'https://www.pierre-gaillard.mds-vannes.yt/',
 ]);
 
 // Configuration pour la production
