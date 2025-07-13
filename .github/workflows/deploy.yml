@@ -1,0 +1,39 @@
+name: Deploy to PlanetHoster (N0C)
+
+on:
+  push:
+    branches:
+      - main # Déclenche quand tu merges une PR dans main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Copy React + PHP files into one folder
+        run: |
+          mkdir build/api
+          cp -r api/* build/api/
+
+      - name: FTP Deploy to N0C
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: build/
+          server-dir: /public_html/
