@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/env.php';
+require_once __DIR__ . '/../config/router.php';
 require_once __DIR__ . '/../controllers/ProjectController.php';
 
 // Parse the URL path
@@ -16,24 +19,18 @@ if (strpos($request, 'api/') === 0) {
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($method !== "GET") {
-  http_response_code(405);
-  echo json_encode(['error' => 'Method not allowed']);
-  exit;
-}
+$router = new Router();
 
-switch ($request) {
-  case 'projects':
-    $controller = new ProjectController();
-    $controller->index();
-    break;
-  default:
-    if (preg_match('/^projects\/(\d+)$/', $request, $matches)) {
-      $controller = new ProjectController();
-      $controller->show($matches[1]);
-    } else {
-      http_response_code(404);
-      echo json_encode(['error' => 'Not found']);
-    }
-    break;
+// Define your routes with middleware
+$router->get('projects', 'ProjectController', 'index');
+$router->get('projects/{id}', 'ProjectController', 'show');
+$router->post('projects', 'ProjectController', 'create');
+$router->put('projects/{id}', 'ProjectController', 'edit');
+
+// Dispatch the request
+try {
+  $router->dispatch($request, $method);
+} catch (Exception $e) {
+  http_response_code(500);
+  echo json_encode(['error' => 'Internal Server Error: ' . $e->getMessage()]);
 }
