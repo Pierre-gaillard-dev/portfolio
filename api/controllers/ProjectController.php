@@ -29,4 +29,45 @@ class ProjectController
       echo json_encode(['error' => 'Project not found']);
     }
   }
+
+  public function create()
+  {
+    Project::init(); // Assurez-vous que le modèle est initialisé
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (!$data) {
+      http_response_code(400);
+      echo json_encode(['error' => 'Invalid input']);
+      return;
+    }
+
+    $project = Project::create($data);
+    header('Content-Type: application/json');
+    echo json_encode($project);
+  }
+
+  public function edit($id)
+  {
+    Project::init(); // Assurez-vous que le modèle est initialisé
+    $project = Project::get($id);
+    if ($project) {
+      header('Content-Type: application/json');
+      echo json_encode($project);
+    } else {
+      http_response_code(404);
+      echo json_encode(['error' => 'Project not found']);
+    }
+  }
+
+  public function delete($id)
+  {
+    Project::init(); // Assurez-vous que le modèle est initialisé
+    $project = Project::get($id);
+    if ($project) {
+      Project::delete($id);
+      http_response_code(204); // No content
+    } else {
+      http_response_code(404);
+      echo json_encode(['error' => 'Project not found']);
+    }
+  }
 }

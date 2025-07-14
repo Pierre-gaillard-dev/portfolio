@@ -43,4 +43,42 @@ class Project extends Model
     Database::disconnect();
     return $project;
   }
+
+  public static function create($data)
+  {
+    $pdo = Database::connect();
+    $sanitizedData = static::sanitize($data);
+    $fields = implode(", ", array_keys($sanitizedData));
+    $placeholders = implode(", ", array_fill(0, count($sanitizedData), '?'));
+    $stmt = $pdo->prepare("INSERT INTO projects ($fields) VALUES ($placeholders)");
+    $stmt->execute(array_values($sanitizedData));
+    $sanitizedData['id'] = $pdo->lastInsertId();
+    Database::disconnect();
+    return $sanitizedData;
+  }
+
+  public static function update($id, $data)
+  {
+    $pdo = Database::connect();
+    $sanitizedData = static::sanitize($data);
+    $fields = [];
+    foreach ($sanitizedData as $field => $value) {
+      $fields[] = "$field = ?";
+    }
+    $fieldsString = implode(", ", $fields);
+    $stmt = $pdo->prepare("UPDATE projects SET $fieldsString WHERE id = ?");
+    $sanitizedData['id'] = $id;
+    $stmt->execute(array_values($sanitizedData));
+    Database::disconnect();
+    return $sanitizedData;
+  }
+
+  public static function delete($id)
+  {
+    $pdo = Database::connect();
+    $stmt = $pdo->prepare("DELETE FROM projects WHERE id = ?");
+    $stmt->execute([$id]);
+    Database::disconnect();
+    return $stmt->rowCount() > 0;
+  }
 }

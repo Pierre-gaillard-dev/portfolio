@@ -26,6 +26,7 @@ $router->get('projects', 'ProjectController', 'index');
 $router->get('projects/{id}', 'ProjectController', 'show');
 $router->post('projects', 'ProjectController', 'create');
 $router->put('projects/{id}', 'ProjectController', 'edit');
+$router->delete('projects/{id}', 'ProjectController', 'delete');
 
 // Dispatch the request
 try {
