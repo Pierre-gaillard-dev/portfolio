@@ -67,4 +67,60 @@ class ProjectController
       Response::json(['error' => 'Failed to create project', 'details' => $e->getMessage()], 500);
     }
   }
+
+  public function update(int $id)
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (!$data || !isset($data['title'])) {
+      Response::json(['error' => 'Invalid input'], 400);
+      return;
+    }
+    $project = ProjectService::getById($id);
+    if (!$project) {
+      Response::json(['error' => 'Project not found'], 404);
+      return;
+    }
+
+    $started_at = null;
+    if (isset($data['started_at'])) {
+      try {
+        $started_at = new \DateTime($data['started_at']);
+      } catch (\Exception) {
+        Response::json(['error' => 'Invalid started_at date format'], 400);
+        return;
+      }
+    }
+
+    $finished_at = null;
+    if (isset($data['finished_at'])) {
+      try {
+        $finished_at = new \DateTime($data['finished_at']);
+      } catch (\Exception) {
+        Response::json(['error' => 'Invalid finished_at date format'], 400);
+        return;
+      }
+    }
+
+    $updatedProject = new Project(
+      id: $project->id,
+      title: $data['title'],
+      img: $data['img'] ?? $project->img,
+      github: $data['github'] ?? $project->github,
+      demo: $data['demo'] ?? $project->demo,
+      is_playable_demo: $data['is_playable_demo'] ?? $project->is_playable_demo,
+      demo_height: $data['demo_height'] ?? $project->demo_height,
+      demo_width: $data['demo_width'] ?? $project->demo_width,
+      aspect_ratio: $data['aspect_ratio'] ?? $project->aspect_ratio,
+      video: $data['video'] ?? $project->video,
+      description: $data['description'] ?? $project->description,
+      conditions: $data['conditions'] ?? $project->conditions,
+      copyright: $data['copyright'] ?? $project->copyright,
+      started_at: $started_at,
+      finished_at: $finished_at,
+      duration: $data['duration'] ?? $project->duration
+    );
+    $updatedProject->updateTimestamps(); // Update the updated_at timestamp
+    $updatedProject = ProjectService::update($updatedProject);
+    Response::json($updatedProject);
+  }
 }

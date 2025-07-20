@@ -56,6 +56,33 @@ class ProjectRepository
     return $project;
   }
 
+  public static function update(Project $project): Project
+  {
+    $project->updateTimestamps();
+    $pdo = Database::connect();
+    $stmt = $pdo->prepare("UPDATE projects SET title = ?, img = ?, github = ?, demo = ?, is_playable_demo = ?, demo_height = ?, demo_width = ?, aspect_ratio = ?, video = ?, description = ?, conditions = ?, copyright = ?, started_at = ?, finished_at = ?, duration = ? WHERE id = ?");
+    $stmt->execute([
+      $project->title,
+      $project->img,
+      $project->github,
+      $project->demo,
+      $project->is_playable_demo,
+      $project->demo_height,
+      $project->demo_width,
+      $project->aspect_ratio,
+      $project->video,
+      $project->description,
+      $project->conditions,
+      $project->copyright,
+      $project->started_at ? $project->started_at->format('Y-m-d H:i:s') : null,
+      $project->finished_at ? $project->finished_at->format('Y-m-d H:i:s') : null,
+      $project->duration,
+      $project->id
+    ]);
+    Database::disconnect();
+    return $project;
+  }
+
   private static function map(array $row): Project
   {
     return new Project(

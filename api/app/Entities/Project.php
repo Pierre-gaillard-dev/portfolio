@@ -67,4 +67,9 @@ class Project implements \JsonSerializable
     return json_encode($this->toArray());
   }
 
+  public function updateTimestamps(): void
+  {
+    $this->updated_at = new \DateTime();
+  }
+
 }

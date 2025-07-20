@@ -33,7 +33,7 @@ $router = new Router();
 $router->get('projects', ProjectController::class, 'index');
 $router->get('projects/{id}', ProjectController::class, 'show');
 $router->post('projects', ProjectController::class, 'create');
-$router->put('projects/{id}', ProjectController::class, 'edit');
+$router->put('projects/{id}', ProjectController::class, 'update');
 $router->delete('projects/{id}', ProjectController::class, 'delete');
 
 // Dispatch the request

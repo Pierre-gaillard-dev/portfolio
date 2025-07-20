@@ -23,4 +23,10 @@ class ProjectService
   {
     return ProjectRepository::create($project);
   }
+
+  public static function update(Project $project): Project
+  {
+    $project->updateTimestamps(); // Update the updated_at timestamp
+    return ProjectRepository::update($project);
+  }
 }
