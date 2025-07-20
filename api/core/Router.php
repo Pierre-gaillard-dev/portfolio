@@ -1,5 +1,10 @@
 <?php
-require_once __DIR__ . '/../controllers/ProjectController.php';
+
+declare(strict_types=1);
+
+namespace Core;
+
+use Core\Response;
 
 class Router
 {
@@ -8,6 +13,7 @@ class Router
 
   public function addRoute($method, $pattern, $controller, $action, $middlewares = [])
   {
+    // Normalize pattern
     $this->routes[] = [
       'method' => strtoupper($method),
       'pattern' => $pattern,
@@ -39,11 +45,16 @@ class Router
 
   public function dispatch($request, $method)
   {
+    if (substr($request, -1) === '/') {
+      $request = rtrim($request, '/'); // Remove trailing slash
+    }
+
     foreach ($this->routes as $route) {
       if ($route['method'] !== $method) {
         continue;
       }
 
+      // Normalize the pattern
       $pattern = str_replace('/', '\/', $route['pattern']);
       $pattern = preg_replace('/\{(\w+)\}/', '(\d+)', $pattern);
       $pattern = "/^{$pattern}$/";
@@ -62,16 +73,25 @@ class Router
 
         // Instantiate controller and call action
         $controllerClass = $route['controller'];
-        $controller = new $controllerClass();
         $action = $route['action'];
 
+        if (!class_exists($controllerClass)) {
+          Response::json(['error' => 'Controller not found'], 500);
+          return;
+        }
+
+        $controller = new $controllerClass();
+        if (!method_exists($controller, $action)) {
+          Response::json(['error' => 'Action not found'], 500);
+          return;
+        }
+
         call_user_func_array([$controller, $action], $params);
-        return;
+        return; // Exit after handling the request
       }
     }
 
     // No route found
-    http_response_code(404);
-    echo json_encode(['error' => 'Not found']);
+    Response::json(['error' => 'Not found'], 404);
   }
 }

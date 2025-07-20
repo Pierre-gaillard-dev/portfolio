@@ -14,9 +14,10 @@ define('CORS_ORIGINS', [
 define('IS_PRODUCTION', $_SERVER['HTTP_HOST'] !== 'localhost');
 
 // Fonction pour configurer CORS
-function setupCORS() {
+function setupCORS()
+{
     $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-    
+
     if (in_array($origin, CORS_ORIGINS)) {
         header("Access-Control-Allow-Origin: $origin");
     } else {
@@ -25,29 +26,8 @@ function setupCORS() {
             header("Access-Control-Allow-Origin: *");
         }
     }
-    
+
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
     header("Access-Control-Allow-Credentials: true");
 }
-
-// Fonction pour répondre en JSON
-function jsonResponse($data, $status = 200) {
-    http_response_code($status);
-    header('Content-Type: application/json');
-    echo json_encode($data);
-    exit;
-}
-
-// Fonction pour gérer les erreurs
-function errorResponse($message, $status = 400) {
-    jsonResponse(['error' => $message, 'success' => false], $status);
-}
-
-// Fonction pour logger les erreurs en production
-function logError($message, $context = []) {
-    if (IS_PRODUCTION) {
-        error_log("API Error: $message " . json_encode($context));
-    }
-}
-?>

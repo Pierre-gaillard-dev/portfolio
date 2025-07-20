@@ -1,5 +1,36 @@
 # API PHP Portfolio
 
+## Architecture
+
+```bash
+/app
+├── Controllers/
+│   └── ProjectController.php
+├── Entities/
+│   └── Project.php
+├── Services/
+│   └── ProjectService.php
+├── Repositories/
+│   └── ProjectRepository.php
+
+/config
+└── database.php
+
+/core
+├── Router.php                 ← Routeur custom ou minimaliste
+├── Controller.php            ← Base controller (helpers, JSON, etc.)
+├── Request.php               ← Parser HTTP request
+├── Response.php              ← JSON/HTML/redirect helpers
+├── Env.php                   ← Loader .env
+├── DB.php                    ← Singleton PDO
+
+/public
+├── index.php                 ← Front controller (entrypoint)
+└── .htaccess                 ← Redirection vers index.php
+
+/.env
+```
+
 ## Configuration
 
 Cette API PHP remplace l'API Next.js originale pour gérer l'activité de développement.

@@ -1,8 +1,16 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../config/env.php';
-require_once __DIR__ . '/../config/router.php';
-require_once __DIR__ . '/../controllers/ProjectController.php';
+
+declare(strict_types=1);
+
+namespace Public;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Exception;
+
+use Core\Router;
+use App\Controllers\ProjectController;
+
 
 // Parse the URL path
 $requestUri = $_SERVER['REQUEST_URI'];
@@ -22,11 +30,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 $router = new Router();
 
 // Define your routes with middleware
-$router->get('projects', 'ProjectController', 'index');
-$router->get('projects/{id}', 'ProjectController', 'show');
-$router->post('projects', 'ProjectController', 'create');
-$router->put('projects/{id}', 'ProjectController', 'edit');
-$router->delete('projects/{id}', 'ProjectController', 'delete');
+$router->get('projects', ProjectController::class, 'index');
+$router->get('projects/{id}', ProjectController::class, 'show');
+$router->post('projects', ProjectController::class, 'create');
+$router->put('projects/{id}', ProjectController::class, 'edit');
+$router->delete('projects/{id}', ProjectController::class, 'delete');
 
 // Dispatch the request
 try {

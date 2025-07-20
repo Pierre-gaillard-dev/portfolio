@@ -1,5 +1,13 @@
 <?php
-require_once __DIR__ . '/env.php';
+
+declare(strict_types=1);
+
+namespace Config;
+
+use Core\Env;
+
+use PDO;
+use PDOException;
 
 class Database
 {
@@ -44,4 +52,3 @@ class Database
     self::$pdo = null;
   }
 }
-?>
