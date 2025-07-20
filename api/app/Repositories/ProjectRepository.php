@@ -83,6 +83,15 @@ class ProjectRepository
     return $project;
   }
 
+  public static function delete(int $id): bool
+  {
+    $pdo = Database::connect();
+    $stmt = $pdo->prepare("DELETE FROM projects WHERE id = ?");
+    $result = $stmt->execute([$id]);
+    Database::disconnect();
+    return $result;
+  }
+
   private static function map(array $row): Project
   {
     return new Project(

@@ -123,4 +123,13 @@ class ProjectController
     $updatedProject = ProjectService::update($updatedProject);
     Response::json($updatedProject);
   }
+
+  public function delete(int $id)
+  {
+    if (ProjectService::delete($id)) {
+      Response::json(['message' => 'Project deleted successfully']);
+    } else {
+      Response::json(['error' => 'Failed to delete project'], 500);
+    }
+  }
 }

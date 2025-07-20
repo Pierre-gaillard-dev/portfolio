@@ -29,4 +29,9 @@ class ProjectService
     $project->updateTimestamps(); // Update the updated_at timestamp
     return ProjectRepository::update($project);
   }
+
+  public static function delete(int $id): bool
+  {
+    return ProjectRepository::delete($id);
+  }
 }
