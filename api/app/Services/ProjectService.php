@@ -18,4 +18,9 @@ class ProjectService
   {
     return ProjectRepository::findById($id);
   }
+
+  public static function create(Project $project): Project
+  {
+    return ProjectRepository::create($project);
+  }
 }
