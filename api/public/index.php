@@ -10,6 +10,8 @@ use Exception;
 
 use Core\Router;
 use App\Controllers\ProjectController;
+use App\Controllers\LanguageController;
+use App\Controllers\ProjectLanguageController;
 
 
 // Parse the URL path
@@ -37,11 +39,16 @@ $router->put('projects/{id}', ProjectController::class, 'update');
 $router->delete('projects/{id}', ProjectController::class, 'delete');
 
 // Language routes
-$router->get('languages', \App\Controllers\LanguageController::class, 'index');
-$router->get('languages/{id}', \App\Controllers\LanguageController::class, 'show');
-$router->post('languages', \App\Controllers\LanguageController::class, 'create');
-$router->put('languages/{id}', \App\Controllers\LanguageController::class, 'update');
-$router->delete('languages/{id}', \App\Controllers\LanguageController::class, 'delete');
+$router->get('languages', LanguageController::class, 'index');
+$router->get('languages/{id}', LanguageController::class, 'show');
+$router->post('languages', LanguageController::class, 'create');
+$router->put('languages/{id}', LanguageController::class, 'update');
+$router->delete('languages/{id}', LanguageController::class, 'delete');
+
+// Project Language routes
+$router->get('projects/{projectId}/languages', ProjectLanguageController::class, 'getLanguagesByProjectId');
+$router->post('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'attachLanguageToProject');
+$router->delete('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'detachLanguageFromProject');
 
 // Dispatch the request
 try {
