@@ -36,6 +36,13 @@ $router->post('projects', ProjectController::class, 'create');
 $router->put('projects/{id}', ProjectController::class, 'update');
 $router->delete('projects/{id}', ProjectController::class, 'delete');
 
+// Language routes
+$router->get('languages', \App\Controllers\LanguageController::class, 'index');
+$router->get('languages/{id}', \App\Controllers\LanguageController::class, 'show');
+$router->post('languages', \App\Controllers\LanguageController::class, 'create');
+$router->put('languages/{id}', \App\Controllers\LanguageController::class, 'update');
+$router->delete('languages/{id}', \App\Controllers\LanguageController::class, 'delete');
+
 // Dispatch the request
 try {
   $router->dispatch($request, $method);
