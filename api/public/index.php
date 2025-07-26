@@ -50,6 +50,11 @@ $router->get('projects/{projectId}/languages', ProjectLanguageController::class,
 $router->post('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'attachLanguageToProject');
 $router->delete('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'detachLanguageFromProject');
 
+// Activity routes
+$router->get('activity', \App\Controllers\ActivityController::class, 'index');
+$router->post('activity', \App\Controllers\ActivityController::class, 'create');
+$router->delete('activity', \App\Controllers\ActivityController::class, 'reset');
+
 // Dispatch the request
 try {
   $router->dispatch($request, $method);
