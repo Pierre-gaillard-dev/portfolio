@@ -10,8 +10,18 @@ use Core\Response;
 
 class ProjectLanguageController
 {
-  public function getLanguagesByProjectId(int $projectId)
+  public function getLanguagesByProjectId(string $projectId)
   {
+    // Ensure the parameter is an integer
+    try {
+      $projectId = (int) $projectId;
+      if ($projectId <= 0) {
+        throw new \InvalidArgumentException('Invalid project ID');
+      }
+    } catch (\InvalidArgumentException $e) {
+      Response::json(['error' => 'Invalid project ID'], 400);
+      return;
+    }
     try {
       $languages = ProjectLanguageService::getLanguagesByProjectId($projectId);
       Response::json(array_map(fn($lang) => $lang->toArray(), $languages));
@@ -27,8 +37,20 @@ class ProjectLanguageController
     }
   }
 
-  public function attachLanguageToProject(int $projectId, int $languageId)
+  public function attachLanguageToProject(string $projectId, string $languageId)
   {
+    // Ensure the parameters are integers
+    try {
+      $projectId = (int) $projectId;
+      $languageId = (int) $languageId;
+      if ($projectId <= 0 || $languageId <= 0) {
+        throw new \InvalidArgumentException('Invalid project or language ID');
+      }
+    } catch (\InvalidArgumentException $e) {
+      Response::json(['error' => 'Invalid parameters'], 400);
+      return;
+    }
+
     try {
       $projectLanguage = ProjectLanguageService::attachLanguageToProject($languageId, $projectId);
       Response::json($projectLanguage->toArray(), 201);
@@ -50,8 +72,19 @@ class ProjectLanguageController
     }
   }
 
-  public function detachLanguageFromProject(int $projectId, int $languageId)
+  public function detachLanguageFromProject(string $projectId, string $languageId)
   {
+    // Ensure the parameters are integers
+    try {
+      $projectId = (int) $projectId;
+      $languageId = (int) $languageId;
+      if ($projectId <= 0 || $languageId <= 0) {
+        throw new \InvalidArgumentException('Invalid project or language ID');
+      }
+    } catch (\InvalidArgumentException $e) {
+      Response::json(['error' => 'Invalid parameters'], 400);
+      return;
+    }
     try {
       ProjectLanguageService::detachLanguageFromProject($languageId, $projectId);
       Response::json(['message' => 'Language detached from project successfully'], 200);

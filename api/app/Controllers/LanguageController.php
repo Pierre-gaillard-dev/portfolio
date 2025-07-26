@@ -16,8 +16,17 @@ class LanguageController
     Response::json($languages);
   }
 
-  public function show(int $id)
+  public function show(string $id)
   {
+    try {
+      $id = (int) $id;
+      if ($id <= 0) {
+        throw new \ValueError('Invalid ID format');
+      }
+    } catch (\ValueError $e) {
+      Response::json(['error' => 'Invalid ID format'], 400);
+      return;
+    }
     $language = LanguageRepository::findById($id);
     if (!$language) {
       Response::json(['error' => 'Language not found'], 404);
@@ -46,8 +55,17 @@ class LanguageController
     Response::json($createdLanguage, 201);
   }
 
-  public function update(int $id)
+  public function update(string $id)
   {
+    try {
+      $id = (int) $id;
+      if ($id <= 0) {
+        throw new \ValueError('Invalid ID format');
+      }
+    } catch (\ValueError $e) {
+      Response::json(['error' => 'Invalid ID format'], 400);
+      return;
+    }
     $data = json_decode(file_get_contents('php://input'), true);
     if (!isset($data['name']) || !isset($data['slug'])) {
       Response::json(['error' => 'Invalid input'], 400);
@@ -66,8 +84,17 @@ class LanguageController
     Response::json($updatedLanguage);
   }
 
-  public function delete(int $id)
+  public function delete(string $id)
   {
+    try {
+      $id = (int) $id;
+      if ($id <= 0) {
+        throw new \ValueError('Invalid ID format');
+      }
+    } catch (\ValueError $e) {
+      Response::json(['error' => 'Invalid ID format'], 400);
+      return;
+    }
     $result = LanguageRepository::delete($id);
     if ($result) {
       Response::json(['message' => 'Language deleted successfully']);

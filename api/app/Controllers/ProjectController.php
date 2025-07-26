@@ -16,8 +16,17 @@ class ProjectController
     Response::json($projects);
   }
 
-  public function show(int $id)
+  public function show(string $id)
   {
+    try {
+      $id = (int) $id;
+      if ($id <= 0) {
+        throw new \ValueError('Invalid ID format');
+      }
+    } catch (\ValueError $e) {
+      Response::json(['error' => 'Invalid ID format'], 400);
+      return;
+    }
     $project = ProjectService::getById($id, true);
     if (!$project) {
       Response::json(['error' => 'Project not found'], 404);
@@ -68,8 +77,17 @@ class ProjectController
     }
   }
 
-  public function update(int $id)
+  public function update(string $id)
   {
+    try {
+      $id = (int) $id;
+      if ($id <= 0) {
+        throw new \ValueError('Invalid ID format');
+      }
+    } catch (\ValueError $e) {
+      Response::json(['error' => 'Invalid ID format'], 400);
+      return;
+    }
     $data = json_decode(file_get_contents('php://input'), true);
     if (!$data || !isset($data['title'])) {
       Response::json(['error' => 'Invalid input'], 400);
@@ -124,8 +142,17 @@ class ProjectController
     Response::json($updatedProject);
   }
 
-  public function delete(int $id)
+  public function delete(string $id)
   {
+    try {
+      $id = (int) $id;
+      if ($id <= 0) {
+        throw new \ValueError('Invalid ID format');
+      }
+    } catch (\ValueError $e) {
+      Response::json(['error' => 'Invalid ID format'], 400);
+      return;
+    }
     if (ProjectService::delete($id)) {
       Response::json(['message' => 'Project deleted successfully']);
     } else {
