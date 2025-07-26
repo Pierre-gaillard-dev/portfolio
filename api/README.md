@@ -6,16 +6,20 @@
 /app
 ├── Controllers/
 │   ├── ProjectController.php
-|   └── LanguageController.php
+|   ├── LanguageController.php
+│   └── ProjectLanguageController.php
 ├── Entities/
 │   ├── Project.php
-│   └── Language.php
+│   ├── Language.php
+│   └── ProjectLanguage.php
 ├── Services/
 │   ├── ProjectService.php
-│   └── LanguageService.php
+│   ├── LanguageService.php
+│   └── ProjectLanguageService.php
 ├── Repositories/
 │   ├── ProjectRepository.php
-│   └── LanguageRepository.php
+│   ├── LanguageRepository.php
+│   └── ProjectLanguageRepository.php
 
 /config
 └── database.php
@@ -122,7 +126,16 @@ Récupère tous les projets
     "finished_at": "2025-06-01 00:00:00",
     "duration": 152,
     "created_at": "2025-01-01 00:00:00",
-    "updated_at": "2025-01-01 00:00:00"
+    "updated_at": "2025-01-01 00:00:00",
+    "languages": [
+      {
+        "id": 1,
+        "name": "JavaScript",
+        "slug": "javascript",
+        "created_at": "2025-01-01 00:00:00",
+        "updated_at": "2025-01-01 00:00:00"
+      }
+    ]
   }
 ]
 ```
@@ -152,7 +165,16 @@ Récupère un projet spécifique par son ID
   "finished_at": "2025-06-01 00:00:00",
   "duration": 152,
   "created_at": "2025-01-01 00:00:00",
-  "updated_at": "2025-01-01 00:00:00"
+  "updated_at": "2025-01-01 00:00:00",
+  "languages": [
+    {
+      "id": 1,
+      "name": "JavaScript",
+      "slug": "javascript",
+      "created_at": "2025-01-01 00:00:00",
+      "updated_at": "2025-01-01 00:00:00"
+    }
+  ]
 }
 ```
 
@@ -286,6 +308,70 @@ Supprime un langage
   "message": "Language deleted successfully"
 }
 ```
+
+### Project to language relation API
+
+#### GET /api/projects/{id}/languages
+
+Récupère tous les langages utilisés par un projet spécifique
+
+**Response:**
+
+```json
+[
+  {
+    "id": 1,
+    "name": "JavaScript",
+    "slug": "javascript",
+    "created_at": "2025-01-01 00:00:00",
+    "updated_at": "2025-01-01 00:00:00"
+  },
+  {
+    "id": 2,
+    "name": "TypeScript",
+    "slug": "typescript",
+    "created_at": "2025-01-01 00:00:00",
+    "updated_at": "2025-01-01 00:00:00"
+  }
+]
+```
+
+#### POST /api/projects/{projectId}/languages/{languageId}
+
+Associe un langage à un projet
+
+**Response:**
+
+```json
+{
+  "id": 1,
+  "language_id": 2,
+  "project_id": 1,
+  "created_at": "2025-01-01 00:00:00",
+  "updated_at": "2025-01-01 00:00:00"
+}
+```
+
+**Codes d'erreur:**
+
+- `404` - Projet ou langage non trouvé
+- `409` - Langage déjà associé à ce projet
+
+#### DELETE /api/projects/{projectId}/languages/{languageId}
+
+Dissocie un langage d'un projet
+
+**Response:**
+
+```json
+{
+  "message": "Language detached from project successfully"
+}
+```
+
+**Codes d'erreur:**
+
+- `404` - Projet non trouvé, langage non trouvé, ou langage non associé à ce projet
 
 ## Déploiement
 
