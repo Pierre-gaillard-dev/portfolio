@@ -1,13 +1,13 @@
 import { useState, useEffect, FC } from "react"
 
-import Project from "../Project"
-import Overlay from "../Overlay"
-import ProjectDetail from "../projectDetail"
-import { ChevronRight } from "../icons"
+import Project from "../../../components/Project"
+import Overlay from "../../../components/Overlay"
+import ProjectDetail from "../../../components/projectDetail"
+import { ChevronRight } from "../../../components/icons"
 
 import type { Project as ProjectType } from "@/src/type"
 
-import { getProject } from "../../projects.json"
+import { getProject } from "../../../projects.json"
 
 import "./Projects.css"
 

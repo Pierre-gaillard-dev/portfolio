@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet"
 
-import Hero from "../components/home/Hero"
-import Projects from "../components/home/Projects"
-import Skills from "../components/home/Skills"
+import Hero from "./partials/Hero"
+import Projects from "./partials/Projects"
+import Skills from "./partials/Skills"
 
 const metadata = {
   title: "Pierre Gaillard, développeur web à Vannes",
