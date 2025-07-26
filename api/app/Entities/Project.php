@@ -3,9 +3,12 @@
 declare(strict_types=1);
 
 namespace App\Entities;
+use App\Repositories\ProjectLanguageRepository;
 
 class Project implements \JsonSerializable
 {
+  private ?array $languages = null;
+
   public function __construct(
     private int $id,
     private string $title,
@@ -26,6 +29,14 @@ class Project implements \JsonSerializable
     private \DateTime $created_at = new \DateTime(),
     private \DateTime|null $updated_at = null
   ) {
+  }
+
+  public function getLanguages(): array
+  {
+    if ($this->languages === null) {
+      $this->languages = ProjectLanguageRepository::findLanguagesByProjectId($this->id);
+    }
+    return $this->languages;
   }
 
   public function __get($name)
@@ -52,6 +63,7 @@ class Project implements \JsonSerializable
       'started_at' => $this->started_at ? $this->started_at->format('Y-m-d H:i:s') : null,
       'finished_at' => $this->finished_at ? $this->finished_at->format('Y-m-d H:i:s') : null,
       'duration' => $this->duration,
+      'languages' => $this->languages ? array_map(fn($lang) => $lang->toArray(), $this->languages) : null,
       'created_at' => $this->created_at->format('Y-m-d H:i:s'),
       'updated_at' => $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null,
     ];

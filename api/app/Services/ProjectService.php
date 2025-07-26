@@ -9,14 +9,24 @@ use App\Repositories\ProjectRepository;
 
 class ProjectService
 {
-  public static function getAll(): array
+  public static function getAll(bool $includeLanguages = false): array
   {
-    return ProjectRepository::getAll();
+    $projects = ProjectRepository::getAll();
+    if ($includeLanguages) {
+      foreach ($projects as $project) {
+        $project->getLanguages();
+      }
+    }
+    return $projects;
   }
 
-  public static function getById(int $id): ?Project
+  public static function getById(int $id, bool $includeLanguages = false): ?Project
   {
-    return ProjectRepository::findById($id);
+    $project = ProjectRepository::findById($id);
+    if ($includeLanguages && $project) {
+      $project->getLanguages();
+    }
+    return $project;
   }
 
   public static function create(Project $project): Project

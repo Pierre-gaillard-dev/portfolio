@@ -12,13 +12,13 @@ class ProjectController
 {
   public function index()
   {
-    $projects = ProjectService::getAll();
+    $projects = ProjectService::getAll(includeLanguages: true);
     Response::json($projects);
   }
 
   public function show(int $id)
   {
-    $project = ProjectService::getById($id);
+    $project = ProjectService::getById($id, true);
     if (!$project) {
       Response::json(['error' => 'Project not found'], 404);
       return;
