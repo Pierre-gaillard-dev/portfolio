@@ -3,15 +3,13 @@ import { ChevronLeft, ExternalLink, Github } from "./icons"
 import Button from "./Button"
 // types
 import type { Project, language } from "../type"
-// data
-import { getProject } from "../projects.json"
 // css
 import "./css/ProjectDetail.css"
 import "./css/Project.css"
 import { FC, RefObject, useRef } from "react"
 
 export const getIframe = (project: Project, ref: RefObject<any>) => {
-  const url = project.demoLink
+  const url = project.demo
   if (!url) return <div>Demo not found</div>
 
   //github
@@ -60,17 +58,10 @@ export const getIframe = (project: Project, ref: RefObject<any>) => {
   )
 }
 
-const ProjectDetail: FC<{ id: string; close: () => void }> = ({
-  id,
-  close,
+const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
+  project,
+  onClose,
 }) => {
-  const project = getProject(id)
-
-  if (!project) {
-    //notFound()
-    return
-  }
-
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const formatText = (text: string) => {
@@ -88,30 +79,32 @@ const ProjectDetail: FC<{ id: string; close: () => void }> = ({
     <div className="content projectDetail">
       <section id="hero" className="background_light">
         <div className="container">
-          <a onClick={close} className="back">
+          <a onClick={onClose} className="back">
             <ChevronLeft />
             Retour
           </a>
           <div className="split">
             <div>
               <h2>{project.title}</h2>
-              <div className="split left languages">
-                {project.languages.map((language: language, index) => {
-                  return (
-                    <p key={index} className={language.className}>
-                      {language.text}
-                    </p>
-                  )
-                })}
-              </div>
+              {project.languages && (
+                <div className="split left languages">
+                  {project.languages.map((language: language, index) => {
+                    return (
+                      <p key={index} className={language.slug}>
+                        {language.name}
+                      </p>
+                    )
+                  })}
+                </div>
+              )}
             </div>
             <div className="split links">
-              <Button link={project.githubLink} color="white">
+              <Button link={project.github} color="white">
                 <Github />
                 <span>Github</span>
               </Button>
-              {project.demoLink ? (
-                <Button link={project.demoLink} color="white">
+              {project.demo ? (
+                <Button link={project.demo} color="white">
                   <ExternalLink />
                   <span>Demo</span>
                 </Button>
@@ -120,34 +113,34 @@ const ProjectDetail: FC<{ id: string; close: () => void }> = ({
           </div>
         </div>
       </section>
-      {project.demoLink && project.playableDemo ? (
+      {project.demo && project.is_playable_demo ? (
         <section id="demo" className="container">
           <h2>Testez-le</h2>
           <div
             className="center"
             style={{
-              width: project.demoWidth || "100%",
+              width: project.demo_width || "100%",
               height:
-                project.demoHeight ||
+                project.demo_height ||
                 (iframeRef.current?.clientWidth || 600) /
-                  (project.aspectRatio || 16 / 9),
+                  (project.aspect_ratio || 16 / 9),
             }}
           >
             {getIframe(project, iframeRef)}
-            <a className="full-screen" href={project.demoLink} target="_blank">
+            <a className="full-screen" href={project.demo} target="_blank">
               <ExternalLink />
             </a>
           </div>
         </section>
       ) : null}
-      {project.videoLink ? (
+      {project.video ? (
         <section id="video" className="container">
           <h2>démonstration</h2>
           <div className="center">
             <iframe
-              width={project.demoWidth || "530px"}
-              height={project.demoHeight || "300px"}
-              src={project.videoLink}
+              width={project.demo_width || "530px"}
+              height={project.demo_height || "300px"}
+              src={project.video}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -157,7 +150,7 @@ const ProjectDetail: FC<{ id: string; close: () => void }> = ({
           </div>
         </section>
       ) : null}
-      {(!project.demoLink && !project.videoLink) || !project.playableDemo ? (
+      {(!project.demo && !project.video) || !project.is_playable_demo ? (
         <section id="image" className="container">
           <img src={project.img} alt={project.title} />
         </section>
@@ -167,11 +160,11 @@ const ProjectDetail: FC<{ id: string; close: () => void }> = ({
         {formatText(project.description)}
         <br style={{ height: "2rem" }} />
         <p>
-          <span className="bold">Début du projet :</span> {project.startDate}
+          <span className="bold">Début du projet :</span> {project.started_at}
         </p>
-        {project.endDate ? (
+        {project.finished_at ? (
           <p>
-            <span className="bold">Fin du projet :</span> {project.endDate}
+            <span className="bold">Fin du projet :</span> {project.finished_at}
           </p>
         ) : null}
         <p>

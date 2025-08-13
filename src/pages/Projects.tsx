@@ -20,9 +20,7 @@ const Projects: FC = () => {
   const [languages, setLanguages] = useState<language[]>([])
   const [activeLanguages, setActiveLanguages] = useState<string[]>([])
 
-  const [OverlayedProjectID, setOverlayedProjectID] = useState<string | null>(
-    null
-  )
+  const [OverlayedProject, setOverlayedProject] = useState<Project | null>(null)
 
   useEffect(() => {
     service
@@ -31,7 +29,7 @@ const Projects: FC = () => {
         setProjects(projects)
         const newLanguages: language[] = []
         projects.forEach(project => {
-          project.languages.forEach(lang => {
+          project.languages?.forEach(lang => {
             if (!newLanguages.some(l => l.slug === lang.slug)) {
               newLanguages.push(lang)
             }
@@ -50,18 +48,18 @@ const Projects: FC = () => {
       setFilteredProjects(projects)
     } else {
       const filtered = projects.filter(project =>
-        project.languages.some(lang => activeLanguages.includes(lang.slug))
+        project.languages?.some(lang => activeLanguages.includes(lang.slug))
       )
       setFilteredProjects(filtered)
     }
   }, [projects, activeLanguages])
 
-  const handleclick = (id: string) => {
-    setOverlayedProjectID(id)
+  const handleclick = (project: Project) => {
+    setOverlayedProject(project)
   }
 
   const handleclose = () => {
-    setOverlayedProjectID(null)
+    setOverlayedProject(null)
   }
 
   const handleFilterChange = (language: string) => {
@@ -113,16 +111,16 @@ const Projects: FC = () => {
                     img={project.img}
                     description={project.description}
                     languages={project.languages}
-                    onClick={() => handleclick(project.id)}
+                    onClick={() => handleclick(project)}
                   />
                 </motion.div>
               )
             })}
           </div>
         </AnimatePresence>
-        {OverlayedProjectID && (
+        {OverlayedProject && (
           <Overlay close={handleclose}>
-            <ProjectDetail id={OverlayedProjectID} close={handleclose} />
+            <ProjectDetail project={OverlayedProject} onClose={handleclose} />
           </Overlay>
         )}
       </section>

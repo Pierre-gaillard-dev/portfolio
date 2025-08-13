@@ -6,7 +6,7 @@ const Project: React.FC<{
   title: string
   img: string
   description: string
-  languages: language[]
+  languages?: language[] | null
   selected?: boolean
   onHover?: () => void
   onClick?: () => void
@@ -25,7 +25,7 @@ const Project: React.FC<{
         <h3>{props.title}</h3>
         <p>{props.description}</p>
         <div className="split left languages">
-          {props.languages.map((language, index) => {
+          {props.languages?.map((language, index) => {
             return (
               <p key={index} className={language.slug}>
                 {language.name}

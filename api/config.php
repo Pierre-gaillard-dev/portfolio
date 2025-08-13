@@ -37,3 +37,5 @@ function setupCORS()
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
     header("Access-Control-Allow-Credentials: true");
 }
+
+setupCORS();

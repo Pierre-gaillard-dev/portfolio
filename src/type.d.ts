@@ -15,7 +15,7 @@ export type Project = {
   started_at: string
   finished_at: string | null
   duration: string | null
-  languages: language[]
+  languages: language[] | null
   created_at: string
   updated_at: string
 }
