@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import ProjectCard from "../components/ProjectCard"
 import Overlay from "../components/Overlay"
 import ProjectDetail from "../components/projectDetail"
+import ProjectCardSkeleton from "../components/ProjectCardSkeleton"
 
 import projectService from "../services/projects"
 
@@ -94,28 +95,46 @@ const Projects: FC = () => {
         </div>
         <AnimatePresence>
           <div className="projectList">
-            {filteredProjects.map(project => {
-              return (
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map(project => {
+                return (
+                  <motion.div
+                    className="grid-item"
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <ProjectCard
+                      id={project.id}
+                      title={project.title}
+                      img={project.img}
+                      description={project.description}
+                      languages={project.languages}
+                      onClick={() => handleclick(project)}
+                    />
+                  </motion.div>
+                )
+              })
+            ) : isLoading ? (
+              Array.from({ length: 3 }).map((_, index) => (
                 <motion.div
                   className="grid-item"
-                  key={project.id}
+                  key={index}
                   layout
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <ProjectCard
-                    id={project.id}
-                    title={project.title}
-                    img={project.img}
-                    description={project.description}
-                    languages={project.languages}
-                    onClick={() => handleclick(project)}
-                  />
+                  <ProjectCardSkeleton />
                 </motion.div>
-              )
-            })}
+              ))
+            ) : (
+              <p>Aucun projet trouvé.</p>
+            )}
           </div>
         </AnimatePresence>
         {OverlayedProject && (

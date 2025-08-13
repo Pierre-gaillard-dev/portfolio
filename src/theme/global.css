@@ -21,6 +21,7 @@
     --consent-accept-background: #6a1aff;
     --consent-decline-background: #efd81d;
     --text: #ffffff;
+    --text-rgb: 255, 255, 255;
     --black: #000000;
   }
 }
@@ -166,8 +167,24 @@ ul {
   text-align: left;
 }
 
-.center {
-  justify-content: center;
+.margin {
+  margin: 24px;
+}
+
+.margin-top {
+  margin-top: 24px;
+}
+
+.margin-bottom {
+  margin-bottom: 24px;
+}
+
+.margin-left {
+  margin-left: 24px;
+}
+
+.margin-right {
+  margin-right: 24px;
 }
 
 .image_container {

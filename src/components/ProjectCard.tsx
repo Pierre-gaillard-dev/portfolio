@@ -1,5 +1,5 @@
 import { language } from "../type"
-import "./css/Project.css"
+import "./css/ProjectCard.css"
 
 const ProjectCard: React.FC<{
   id: string

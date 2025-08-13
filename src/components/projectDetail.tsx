@@ -5,7 +5,7 @@ import Button from "./Button"
 import type { Project, language } from "../type"
 // css
 import "./css/ProjectDetail.css"
-import "./css/Project.css"
+import "./css/ProjectCard.css"
 import { FC, RefObject, useRef } from "react"
 
 export const getIframe = (project: Project, ref: RefObject<any>) => {
