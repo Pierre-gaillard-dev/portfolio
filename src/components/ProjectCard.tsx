@@ -1,7 +1,7 @@
 import { language } from "../type"
 import "./css/Project.css"
 
-const Project: React.FC<{
+const ProjectCard: React.FC<{
   id: string
   title: string
   img: string
@@ -38,4 +38,4 @@ const Project: React.FC<{
   )
 }
 
-export default Project
+export default ProjectCard

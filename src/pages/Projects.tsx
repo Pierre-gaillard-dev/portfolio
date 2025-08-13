@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-import ProjectCard from "../components/Project"
+import ProjectCard from "../components/ProjectCard"
 import Overlay from "../components/Overlay"
 import ProjectDetail from "../components/projectDetail"
 
