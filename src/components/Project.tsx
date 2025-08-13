@@ -1,3 +1,4 @@
+import { language } from "../type"
 import "./css/Project.css"
 
 const Project: React.FC<{
@@ -5,7 +6,7 @@ const Project: React.FC<{
   title: string
   img: string
   description: string
-  languages: { text: string; className: string }[]
+  languages: language[]
   selected?: boolean
   onHover?: () => void
   onClick?: () => void
@@ -26,8 +27,8 @@ const Project: React.FC<{
         <div className="split left languages">
           {props.languages.map((language, index) => {
             return (
-              <p key={index} className={language.className}>
-                {language.text}
+              <p key={index} className={language.slug}>
+                {language.name}
               </p>
             )
           })}
