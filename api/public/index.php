@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Public;
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config.php';
 
 use Exception;
 

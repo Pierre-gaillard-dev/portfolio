@@ -13,6 +13,12 @@ define('CORS_ORIGINS', [
 // Configuration pour la production
 define('IS_PRODUCTION', $_SERVER['HTTP_HOST'] !== 'localhost');
 
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 // Fonction pour configurer CORS
 function setupCORS()
 {
