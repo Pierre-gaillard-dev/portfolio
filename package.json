@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "start": "vite",
+    "start": "vite --host",
     "api": "php -S localhost:3000 -t api/public"
   },
   "dependencies": {
