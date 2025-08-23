@@ -17,7 +17,6 @@ const Projects: FC = () => {
 
   const [projects, setProjects] = useState<ProjectType[]>([])
 
-  const [windowWidth, setWindowWidth] = useState<number>(0)
   const [index, setIndex] = useState<number>(0)
 
   useEffect(() => {
@@ -29,16 +28,6 @@ const Projects: FC = () => {
       .catch(error => {
         console.error("Error fetching projects:", error)
       })
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
   }, [])
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -83,16 +72,14 @@ const Projects: FC = () => {
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
       >
-        <div className="wrapper">
-          {projects.map((project, position) => (
-            <ProjectSliderCard
-              key={project.id}
-              project={project}
-              index={position}
-              currentIndex={index}
-            />
-          ))}
-        </div>
+        {projects.map((project, position) => (
+          <ProjectSliderCard
+            key={project.id}
+            project={project}
+            index={position}
+            currentIndex={index}
+          />
+        ))}
       </div>
       <div id="projects_link_bottom">
         <a href="/projects">
