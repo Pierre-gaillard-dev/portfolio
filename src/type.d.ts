@@ -1,5 +1,5 @@
 export type Project = {
-  id: string
+  id: number
   title: string
   img: string
   github: string
@@ -21,7 +21,7 @@ export type Project = {
 }
 
 export type language = {
-  id: string
+  id: number
   name: string
   slug: string
   created_at: string

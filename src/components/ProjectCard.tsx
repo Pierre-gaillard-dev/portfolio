@@ -2,7 +2,7 @@ import { language } from "../type"
 import "./css/ProjectCard.css"
 
 const ProjectCard: React.FC<{
-  id: string
+  id: number
   title: string
   img: string
   description: string
@@ -10,15 +10,16 @@ const ProjectCard: React.FC<{
   selected?: boolean
   onHover?: () => void
   onClick?: () => void
+  style?: React.CSSProperties
 }> = props => {
   return (
     <a
       onClick={props.onClick}
       className={"project" + (props.selected ? " selected" : "")}
-      id={props.id}
+      id={props.id.toString()}
       onMouseEnter={props.onHover}
     >
-      <article className="card">
+      <article className="card" style={props.style}>
         <div className="image_container">
           <img src={props.img} />
         </div>

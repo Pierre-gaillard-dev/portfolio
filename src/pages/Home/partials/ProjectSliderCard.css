@@ -1,0 +1,10 @@
+.project-slider-card {
+  position: absolute;
+  top: 0;
+  width: fit-content;
+
+  &.active {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+}
