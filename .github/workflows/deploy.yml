@@ -39,8 +39,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          path: api
+
+      - name: enter folder
+        run: cd api
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
