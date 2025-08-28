@@ -40,9 +40,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: enter folder
-        run: cd api
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -50,7 +47,7 @@ jobs:
           extensions: mbstring, xml, pdo, pgsql, pdo_pgsql
 
       - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader
+        run: cd api && composer install --no-dev --optimize-autoloader
 
       - name: FTP Deploy to N0C
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
