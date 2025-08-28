@@ -13,6 +13,7 @@ use Core\Router;
 use App\Controllers\ProjectController;
 use App\Controllers\LanguageController;
 use App\Controllers\ProjectLanguageController;
+use App\Controllers\AuthController;
 
 
 // Parse the URL path
@@ -32,7 +33,13 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $router = new Router();
 
-// Define your routes with middleware
+//Auth Routes
+$router->post('auth/login', AuthController::class, 'login');
+$router->post('auth/register', AuthController::class, 'register');
+$router->post('auth/refresh', AuthController::class, 'refresh');
+$router->get('auth/me', AuthController::class, 'profile');
+
+// Projects Routes
 $router->get('projects', ProjectController::class, 'index');
 $router->get('projects/{id}', ProjectController::class, 'show');
 $router->post('projects', ProjectController::class, 'create');

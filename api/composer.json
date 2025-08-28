@@ -5,5 +5,8 @@
       "Core\\": "core/",
       "Config\\": "config/"
     }
+  },
+  "require": {
+    "firebase/php-jwt": "^6.11"
   }
 }
