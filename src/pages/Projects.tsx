@@ -1,50 +1,74 @@
 import { FC, useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-import Project from "../components/Project"
+import ProjectCard from "../components/ProjectCard"
 import Overlay from "../components/Overlay"
+import ProjectDetail from "../components/projectDetail"
+import ProjectCardSkeleton from "../components/ProjectCardSkeleton"
 
-import { projects } from "../projects.json"
+import projectService from "../services/projects"
+
+import { language, Project } from "../type"
 
 import "./Projects.css"
-import ProjectDetail from "../components/projectDetail"
 
 const Projects: FC = () => {
-  const [filters, setFilters] = useState<{
-    [key: string]: { active: boolean; className: string }
-  }>({})
+  const service = projectService.getInstance()
 
-  const [OverlayedProjectID, setOverlayedProjectID] = useState<string | null>(
-    null
-  )
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [projects, setProjects] = useState<Project[]>([])
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([])
+  const [languages, setLanguages] = useState<language[]>([])
+  const [activeLanguages, setActiveLanguages] = useState<string[]>([])
 
-  const activeFilters = () => {
-    return Object.values(filters).some(filter => filter.active)
-  }
+  const [OverlayedProject, setOverlayedProject] = useState<Project | null>(null)
 
   useEffect(() => {
-    const newFilters: {
-      [key: string]: { active: boolean; className: string }
-    } = {}
-    projects.forEach(project => {
-      project.languages.forEach(language => {
-        if (!newFilters[language.text]) {
-          newFilters[language.text] = {
-            active: false,
-            className: language.className,
-          }
-        }
+    service
+      .getProjects()
+      .then(projects => {
+        setProjects(projects)
+        const newLanguages: language[] = []
+        projects.forEach(project => {
+          project.languages?.forEach(lang => {
+            if (!newLanguages.some(l => l.slug === lang.slug)) {
+              newLanguages.push(lang)
+            }
+          })
+        })
+        setLanguages(newLanguages)
+        setIsLoading(false)
       })
-    })
-    setFilters(newFilters)
+      .catch(error => {
+        console.error("Error fetching projects:", error)
+      })
   }, [])
 
-  const handleclick = (id: string) => {
-    setOverlayedProjectID(id)
+  useEffect(() => {
+    if (activeLanguages.length === 0) {
+      setFilteredProjects(projects)
+    } else {
+      const filtered = projects.filter(project =>
+        project.languages?.some(lang => activeLanguages.includes(lang.slug))
+      )
+      setFilteredProjects(filtered)
+    }
+  }, [projects, activeLanguages])
+
+  const handleclick = (project: Project) => {
+    setOverlayedProject(project)
   }
 
   const handleclose = () => {
-    setOverlayedProjectID(null)
+    setOverlayedProject(null)
+  }
+
+  const handleFilterChange = (language: string) => {
+    setActiveLanguages(prev =>
+      prev.includes(language)
+        ? prev.filter(lang => lang !== language)
+        : [...prev, language]
+    )
   }
 
   return (
@@ -54,68 +78,68 @@ const Projects: FC = () => {
       </section>
       <section id="projects" className="container">
         <div className="filter languages">
-          {Object.keys(filters).map(filter => {
+          {languages.map(lang => {
             return (
               <a
-                key={filter}
-                onClick={() =>
-                  setFilters(filters => ({
-                    ...filters,
-                    [filter]: {
-                      active: !filters[filter].active,
-                      className: filters[filter].className,
-                    },
-                  }))
-                }
+                key={lang.slug}
+                onClick={() => handleFilterChange(lang.slug)}
                 className={
-                  filters[filter].active
-                    ? `${filters[filter].className} selected`
-                    : filters[filter].className
+                  lang.slug +
+                  (activeLanguages.includes(lang.slug) ? " selected" : "")
                 }
               >
-                {filter}
+                {lang.name}
               </a>
             )
           })}
         </div>
         <AnimatePresence>
           <div className="projectList">
-            {projects.map(project => {
-              if (!filters[project.languages[0].text]) return
-              if (
-                !project.languages.some(
-                  language => filters[language.text].active
-                ) &&
-                activeFilters()
-              ) {
-                return
-              }
-              return (
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map(project => {
+                return (
+                  <motion.div
+                    className="grid-item"
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <ProjectCard
+                      id={project.id}
+                      title={project.title}
+                      img={project.img}
+                      description={project.description}
+                      languages={project.languages}
+                      onClick={() => handleclick(project)}
+                    />
+                  </motion.div>
+                )
+              })
+            ) : isLoading ? (
+              Array.from({ length: 3 }).map((_, index) => (
                 <motion.div
                   className="grid-item"
-                  key={project.id}
+                  key={index}
                   layout
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Project
-                    id={project.id}
-                    title={project.title}
-                    img={project.img}
-                    description={project.description}
-                    languages={project.languages}
-                    onClick={() => handleclick(project.id)}
-                  />
+                  <ProjectCardSkeleton />
                 </motion.div>
-              )
-            })}
+              ))
+            ) : (
+              <p>Aucun projet trouvé.</p>
+            )}
           </div>
         </AnimatePresence>
-        {OverlayedProjectID && (
+        {OverlayedProject && (
           <Overlay close={handleclose}>
-            <ProjectDetail id={OverlayedProjectID} close={handleclose} />
+            <ProjectDetail project={OverlayedProject} onClose={handleclose} />
           </Overlay>
         )}
       </section>

@@ -1,0 +1,23 @@
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Définir le dossier public comme racine
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+
+# ============================
+# Protection des fichiers sensibles
+# ============================
+
+# Bloquer .env
+<Files ".env">
+  Require all denied
+</Files>
+
+# Bloquer .htaccess lui-même
+<Files ".htaccess">
+  Require all denied
+</Files>
+
+# Bloquer l'accès direct aux dossiers internes
+RewriteRule ^(config|core|vendor|app|data)/ - [F,L]

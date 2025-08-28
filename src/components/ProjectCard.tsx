@@ -1,33 +1,35 @@
-import "./css/Project.css"
+import { language } from "../type"
+import "./css/ProjectCard.css"
 
-const Project: React.FC<{
-  id: string
+const ProjectCard: React.FC<{
+  id: number
   title: string
   img: string
   description: string
-  languages: { text: string; className: string }[]
+  languages?: language[] | null
   selected?: boolean
   onHover?: () => void
   onClick?: () => void
+  style?: React.CSSProperties
 }> = props => {
   return (
     <a
       onClick={props.onClick}
       className={"project" + (props.selected ? " selected" : "")}
-      id={props.id}
+      id={props.id.toString()}
       onMouseEnter={props.onHover}
     >
-      <article className="card">
+      <article className="card" style={props.style}>
         <div className="image_container">
           <img src={props.img} />
         </div>
         <h3>{props.title}</h3>
         <p>{props.description}</p>
         <div className="split left languages">
-          {props.languages.map((language, index) => {
+          {props.languages?.map((language, index) => {
             return (
-              <p key={index} className={language.className}>
-                {language.text}
+              <p key={index} className={language.slug}>
+                {language.name}
               </p>
             )
           })}
@@ -37,4 +39,4 @@ const Project: React.FC<{
   )
 }
 
-export default Project
+export default ProjectCard

@@ -6,7 +6,7 @@ on:
       - main # Déclenche quand tu merges une PR dans main
 
 jobs:
-  build-and-deploy:
+  build-and-deploy-frontend:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,11 +24,6 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Copy React + PHP files into one folder
-        run: |
-          mkdir build/api
-          cp -r api/* build/api/
-
       - name: FTP Deploy to N0C
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -37,3 +32,30 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir: build/
           server-dir: /public_html/
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: api
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          extensions: mbstring, xml, pdo, pgsql, pdo_pgsql
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: FTP Deploy to N0C
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: api/
+          server-dir: /portfolio_api

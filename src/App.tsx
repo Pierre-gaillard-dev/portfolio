@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 /* import pages */
-import Home from "./pages/Home"
+import Home from "./pages/Home/index"
 import CookiePolicy from "./pages/CookiePolicy"
 import LegalNotices from "./pages/LegalNotices"
 import PrivacyPolicy from "./pages/PrivacyPolicy"

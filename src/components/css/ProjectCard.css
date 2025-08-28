@@ -1,0 +1,112 @@
+a.project:hover {
+  text-decoration: none;
+}
+
+article.card {
+  width: 360px;
+  max-width: 40vw;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(22, 8, 51, 0.8);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  cursor: pointer;
+}
+
+article.card > * {
+  margin: 10px;
+}
+
+article.card .image_container {
+  height: unset;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  margin: 0;
+}
+
+article.card .image_container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+article.card .split {
+  margin-top: 20px;
+  gap: 15px;
+}
+
+article.card p {
+  max-height: 130px;
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+}
+
+.languages > * {
+  padding: 3px 7px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.html_css {
+  background-color: #e34c26;
+}
+
+.js {
+  background-color: #efd81d;
+  color: var(--black);
+}
+
+.ts {
+  background-color: #007acc;
+}
+
+.react {
+  background-color: #61dbfb;
+  color: var(--black);
+}
+
+.next {
+  background-color: #ffffff;
+  color: var(--black);
+}
+
+.python {
+  background-color: #4380b0;
+}
+
+.godot {
+  background-color: #478cbf;
+}
+
+.express {
+  background-color: #0c0c0c;
+}
+
+.postgres {
+  background-color: #336791;
+}
+
+@media screen and (max-width: 1200px) {
+  article.card .languages > p {
+    font-size: 1vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  article.card .languages {
+    flex-wrap: wrap;
+  }
+
+  article.card .languages > p {
+    font-size: 10px;
+  }
+}

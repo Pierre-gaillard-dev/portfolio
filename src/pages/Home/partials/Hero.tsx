@@ -1,10 +1,10 @@
 import { FC, useState } from "react"
 
-import { Github, Mail, File } from "../icons"
-import Activity from "../Activity"
-import Button from "../Button"
-import Overlay from "../Overlay"
-import CV from "../CV"
+import { Github, Mail, File } from "../../../components/icons"
+import Activity from "../../../components/Activity"
+import Button from "../../../components/Button"
+import Overlay from "../../../components/Overlay"
+import CV from "../../../components/CV"
 
 import "./Hero.css"
 

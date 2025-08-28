@@ -68,7 +68,7 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
             </svg>
           </Link>
           <div>
-            <ul className="desktop nav_bar_list">
+            <ul className="desktop nav_bar_list margin">
               <Link to="/#hero" onClick={() => scrollToAnchor("hero")}>
                 Accueil
               </Link>
