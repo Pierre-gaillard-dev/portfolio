@@ -5,49 +5,125 @@
 ```bash
 /app
 ├── Controllers/
+│   ├── ActivityController.php
+│   ├── AuthController.php
 │   ├── ProjectController.php
 |   ├── LanguageController.php
 │   └── ProjectLanguageController.php
 ├── Entities/
 │   ├── Project.php
 │   ├── Language.php
-│   └── ProjectLanguage.php
-├── Services/
-│   ├── ProjectService.php
-│   ├── LanguageService.php
-│   └── ProjectLanguageService.php
+│   ├── ProjectLanguage.php
+│   └── User.php
+├── Middlewares/
+│   └── AuthMiddleware.php
 ├── Repositories/
 │   ├── ProjectRepository.php
 │   ├── LanguageRepository.php
-│   └── ProjectLanguageRepository.php
+│   ├── ProjectLanguageRepository.php
+│   └── UserRepository.php
+├── Services/
+│   ├── AuthService.php
+│   ├── ProjectService.php
+│   ├── LanguageService.php
+│   └── ProjectLanguageService.php
 
 /config
 └── database.php
 
 /core
 ├── Router.php                 ← Routeur custom ou minimaliste
-├── Controller.php            ← Base controller (helpers, JSON, etc.)
-├── Request.php               ← Parser HTTP request
 ├── Response.php              ← JSON/HTML/redirect helpers
-├── Env.php                   ← Loader .env
-├── DB.php                    ← Singleton PDO
+└── Env.php                   ← Loader .env
 
 /public
-├── index.php                 ← Front controller (entrypoint)
-└── .htaccess                 ← Redirection vers index.php
+└── index.php                 ← Front controller (entrypoint)
 
+/.htaccess                 ← Redirection vers public/index.php
 /.env
+/composer.json            ← Dépendances
 ```
 
 ## Configuration
 
 Cette API PHP remplace l'API Next.js originale pour gérer l'activité de développement.
+J'utilise [Composer](https://getcomposer.org/) pour gérer les dépendances. avant utilisation, il faut donc exécuter la commande
+
+```bash
+composer install
+```
 
 ## Endpoints
 
+### Auth API
+
+#### POST /api/auth/register
+Crée un nouvel utilisateur
+
+**Body:**
+
+```json
+{
+  "name": "John Doe",
+  "password": "password"
+}
+```
+
+**Response:**
+
+```json
+{
+    "token": "XXXXXXX",
+    "user": {
+        "id": 0,
+        "name": "John Doe"
+    },
+    "expires_in": 3600
+}
+```
+
+#### POST /api/auth/login
+Authentifie un utilisateur existant
+
+**Body:**
+
+```json
+{
+  "email": "user@example.com",
+  "password": "password"
+}
+```
+
+**Response:**
+
+```json
+{
+    "token": "XXXXXXX",
+    "user": {
+        "id": 0,
+        "name": "John Doe"
+    },
+    "expires_in": 3600
+}
+```
+
+#### /api/auth/me
+Récupère les informations de l'utilisateur authentifié
+
+**Response:**
+
+```json
+{
+  "user": {
+    "id": 0,
+    "name": "John Doe"
+  }
+}
+```
+
 ### Activity API
 
-#### GET /api/activity.php
+#### GET /api/activity
 
 Récupère l'activité actuelle
 
@@ -61,7 +137,7 @@ Récupère l'activité actuelle
 }
 ```
 
-#### POST /api/activity.php
+#### POST /api/activity
 
 Met à jour l'activité actuelle
 
@@ -82,7 +158,7 @@ Met à jour l'activité actuelle
 }
 ```
 
-#### POST /api/activity.php (reset)
+#### DELETE /api/activity (reset)
 
 **body :**
 
