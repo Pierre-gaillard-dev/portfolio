@@ -10,11 +10,15 @@ require_once __DIR__ . '/../config.php';
 use Exception;
 
 use Core\Router;
+
+// controllers
 use App\Controllers\ProjectController;
 use App\Controllers\LanguageController;
 use App\Controllers\ProjectLanguageController;
 use App\Controllers\AuthController;
 
+// midlewares
+use App\Middlewares\AuthMiddleware;
 
 // Parse the URL path
 $requestUri = $_SERVER['REQUEST_URI'];
@@ -35,33 +39,33 @@ $router = new Router();
 
 //Auth Routes
 $router->post('auth/login', AuthController::class, 'login');
-$router->post('auth/register', AuthController::class, 'register');
+$router->post('auth/register', AuthController::class, 'register', [AuthMiddleware::class]);
 $router->post('auth/refresh', AuthController::class, 'refresh');
 $router->get('auth/me', AuthController::class, 'profile');
 
 // Projects Routes
 $router->get('projects', ProjectController::class, 'index');
 $router->get('projects/{id}', ProjectController::class, 'show');
-$router->post('projects', ProjectController::class, 'create');
-$router->put('projects/{id}', ProjectController::class, 'update');
-$router->delete('projects/{id}', ProjectController::class, 'delete');
+$router->post('projects', ProjectController::class, 'create', [AuthMiddleware::class]);
+$router->put('projects/{id}', ProjectController::class, 'update', [AuthMiddleware::class]);
+$router->delete('projects/{id}', ProjectController::class, 'delete', [AuthMiddleware::class]);
 
 // Language routes
 $router->get('languages', LanguageController::class, 'index');
 $router->get('languages/{id}', LanguageController::class, 'show');
-$router->post('languages', LanguageController::class, 'create');
-$router->put('languages/{id}', LanguageController::class, 'update');
-$router->delete('languages/{id}', LanguageController::class, 'delete');
+$router->post('languages', LanguageController::class, 'create', [AuthMiddleware::class]);
+$router->put('languages/{id}', LanguageController::class, 'update', [AuthMiddleware::class]);
+$router->delete('languages/{id}', LanguageController::class, 'delete', [AuthMiddleware::class]);
 
 // Project Language routes
 $router->get('projects/{projectId}/languages', ProjectLanguageController::class, 'getLanguagesByProjectId');
-$router->post('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'attachLanguageToProject');
-$router->delete('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'detachLanguageFromProject');
+$router->post('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'attachLanguageToProject', [AuthMiddleware::class]);
+$router->delete('projects/{projectId}/languages/{languageId}', ProjectLanguageController::class, 'detachLanguageFromProject', [AuthMiddleware::class]);
 
 // Activity routes
 $router->get('activity', \App\Controllers\ActivityController::class, 'index');
-$router->post('activity', \App\Controllers\ActivityController::class, 'create');
-$router->delete('activity', \App\Controllers\ActivityController::class, 'reset');
+$router->post('activity', \App\Controllers\ActivityController::class, 'create', [AuthMiddleware::class]);
+$router->delete('activity', \App\Controllers\ActivityController::class, 'reset', [AuthMiddleware::class]);
 
 // Dispatch the request
 try {
