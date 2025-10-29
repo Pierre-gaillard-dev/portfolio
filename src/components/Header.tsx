@@ -4,8 +4,12 @@ import { Link, useLocation } from "react-router-dom"
 import scrollToAnchor from "../util/scrollToAnchor"
 
 import "./css/Header.css"
+import { useTheme } from "../contexts/ThemeContext"
+import { Moon, Sun } from "./icons"
 
 const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
+  const { theme, toggleTheme } = useTheme()
+
   const [opened, setOpened] = useState<boolean>(false)
 
   const switch_popup = () => {
@@ -69,6 +73,13 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
           </Link>
           <div>
             <ul className="desktop nav_bar_list margin">
+              <a onClick={toggleTheme} id="theme_switcher">
+                {theme === "dark" ? (
+                  <Sun />
+                ) : (
+                  <Moon />
+                )}
+              </a>
               <Link to="/#hero" onClick={() => scrollToAnchor("hero")}>
                 Accueil
               </Link>
