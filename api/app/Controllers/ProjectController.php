@@ -89,7 +89,7 @@ class ProjectController
       return;
     }
     $data = json_decode(file_get_contents('php://input'), true);
-    if (!$data || !isset($data['title'])) {
+    if (!$data) {
       Response::json(['error' => 'Invalid input'], 400);
       return;
     }

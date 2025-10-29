@@ -1,25 +1,71 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@200;300;400;500;600;700;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
 :root {
-  .dark_mode {
+  --background: #fff;
+  --background-080: rgba(255, 255, 255, 0.8);
+  --background-light: #f5f5fa;
+  --background-light-080: rgba(245, 245, 250, 0.8);
+  --background-3: #e0e0ff;
+  --background-3-080: rgba(224, 224, 255, 0.8);
+
+  --button-shadow: var(--background) 5px 5px 10px;
+  --button-white: #000000;
+  --button-white-hover: #202020;
+  --button-white-background: #00000033;
+
+  --shadow: #cfb5ff33 5px 5px 10px;
+  --shadow-large: #cfb5ff33 10px 10px 20px;
+  --shadow-neo-light: var(--background) -5px -5px 10px,
+    var(--background-3-080) 5px 5px 10px,
+    inset var(--background-3-080) -5px -5px 10px,
+    inset var(--background) 5px 5px 10px;
+  --shadow-neo-light-small: var(--background) -3px -3px 6px,
+    var(--background-3-080) 3px 3px 6px,
+    inset var(--background-3-080) -3px -3px 6px,
+    inset var(--background) 3px 3px 6px;
+  --shadow-neo-light-inverted: var(--background) 5px 5px 10px,
+    var(--background-3-080) -2px -2px 5px,
+    inset var(--background-3-080) 5px 5px 10px,
+    inset var(--background) -5px -5px 10px;
+
+  --consent-accept-background: #6a1aff;
+  --consent-decline-background: #efd81d;
+
+  --text: #000000;
+  --text-rgb: 0, 0, 0;
+  --black: #ffffff;
+
+  &.dark-mode {
     --background: #0e0323;
     --background-080: rgba(14, 3, 35, 0.8);
     --background-light: #160833;
     --background-light-080: rgba(22, 8, 51, 0.8);
     --background-3: #2b0f61;
     --background-3-080: rgba(43, 15, 97, 0.8);
+
     --button-shadow: var(--background) 5px 5px 10px;
     --button-white: #ffffff;
     --button-white-hover: #dfdfdf;
     --button-white-background: #ffffff33;
+
     --shadow: #6a1aff33 5px 5px 10px;
     --shadow-large: #6a1aff33 10px 10px 20px;
     --shadow-neo-light: var(--background) 5px 5px 10px,
       var(--background-3-080) -5px -5px 10px,
       inset var(--background-3-080) 5px 5px 10px,
       inset var(--background) -5px -5px 10px;
+    --shadow-neo-light-small: var(--background) 3px 3px 6px,
+      var(--background-3-080) -3px -3px 6px,
+      inset var(--background-3-080) 3px 3px 6px,
+      inset var(--background) -3px -3px 6px;
+    --shadow-neo-light-inverted: var(--background) -5px -5px 10px,
+      var(--background-3-080) 2px 2px 5px,
+      inset var(--background-3-080) -5px -5px 10px,
+      inset var(--background) 5px 5px 10px;
+
     --consent-accept-background: #6a1aff;
     --consent-decline-background: #efd81d;
+
     --text: #ffffff;
     --text-rgb: 255, 255, 255;
     --black: #000000;
@@ -30,6 +76,8 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s,
+    border-color 0.3s;
 }
 
 html,

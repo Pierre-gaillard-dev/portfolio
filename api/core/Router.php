@@ -62,6 +62,10 @@ class Router
       if (preg_match($pattern, $request, $matches)) {
         // Run middlewares
         foreach ($route['middlewares'] as $middleware) {
+          if (!class_exists($middleware)) {
+            Response::json(['error' => "Middleware class not found: {$middleware}"], 500);
+            return;
+          }
           $middlewareInstance = new $middleware();
           if (!$middlewareInstance->handle()) {
             return;
