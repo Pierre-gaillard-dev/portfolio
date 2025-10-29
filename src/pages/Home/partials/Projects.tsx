@@ -67,7 +67,7 @@ const Projects: FC = () => {
         </Link>
       </div>
       <div
-        className="projects_container" // split"
+        className="projects_container"
         ref={containerRef}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

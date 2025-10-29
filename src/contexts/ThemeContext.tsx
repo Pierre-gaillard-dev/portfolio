@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { setCookie, getCookie } from "../util/cookiesHandler";
 
 type theme = "light" | "dark";
 
@@ -20,8 +21,16 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
+    const savedTheme = getCookie("theme-preference") as theme | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
+  useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark-mode", theme === "dark");
+    setCookie("theme-preference", theme, 365);
   }, [theme]);
 
   const contextValue: ThemeContextType = {

@@ -1,75 +1,78 @@
-import { FC, useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { FC, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-import ProjectCard from "../components/ProjectCard"
-import Overlay from "../components/Overlay"
-import ProjectDetail from "../components/projectDetail"
-import ProjectCardSkeleton from "../components/ProjectCardSkeleton"
+import ProjectCard from "../components/ProjectCard";
+import Overlay from "../components/Overlay";
+import ProjectDetail from "../components/projectDetail";
+import ProjectCardSkeleton from "../components/ProjectCardSkeleton";
 
-import projectService from "../services/projects"
+import projectService from "../services/projects";
 
-import { language, Project } from "../type"
+import { language, Project } from "../type";
 
-import "./Projects.css"
+import "./Projects.css";
 
 const Projects: FC = () => {
-  const service = projectService.getInstance()
+  const service = projectService.getInstance();
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [projects, setProjects] = useState<Project[]>([])
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([])
-  const [languages, setLanguages] = useState<language[]>([])
-  const [activeLanguages, setActiveLanguages] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+  const [languages, setLanguages] = useState<language[]>([]);
+  const [activeLanguages, setActiveLanguages] = useState<string[]>([]);
 
-  const [OverlayedProject, setOverlayedProject] = useState<Project | null>(null)
+  const [OverlayedProject, setOverlayedProject] = useState<Project | null>(
+    null
+  );
 
   useEffect(() => {
     service
       .getProjects()
       .then(projects => {
-        setProjects(projects)
-        const newLanguages: language[] = []
+        console.log(projects);
+        setProjects(projects);
+        const newLanguages: language[] = [];
         projects.forEach(project => {
           project.languages?.forEach(lang => {
             if (!newLanguages.some(l => l.slug === lang.slug)) {
-              newLanguages.push(lang)
+              newLanguages.push(lang);
             }
-          })
-        })
-        setLanguages(newLanguages)
-        setIsLoading(false)
+          });
+        });
+        setLanguages(newLanguages);
+        setIsLoading(false);
       })
       .catch(error => {
-        console.error("Error fetching projects:", error)
-      })
-  }, [])
+        console.error("Error fetching projects:", error);
+      });
+  }, []);
 
   useEffect(() => {
     if (activeLanguages.length === 0) {
-      setFilteredProjects(projects)
+      setFilteredProjects(projects);
     } else {
       const filtered = projects.filter(project =>
         project.languages?.some(lang => activeLanguages.includes(lang.slug))
-      )
-      setFilteredProjects(filtered)
+      );
+      setFilteredProjects(filtered);
     }
-  }, [projects, activeLanguages])
+  }, [projects, activeLanguages]);
 
   const handleclick = (project: Project) => {
-    setOverlayedProject(project)
-  }
+    setOverlayedProject(project);
+  };
 
   const handleclose = () => {
-    setOverlayedProject(null)
-  }
+    setOverlayedProject(null);
+  };
 
   const handleFilterChange = (language: string) => {
     setActiveLanguages(prev =>
       prev.includes(language)
         ? prev.filter(lang => lang !== language)
         : [...prev, language]
-    )
-  }
+    );
+  };
 
   return (
     <div className="content projects">
@@ -90,7 +93,7 @@ const Projects: FC = () => {
               >
                 {lang.name}
               </a>
-            )
+            );
           })}
         </div>
         <AnimatePresence>
@@ -116,7 +119,7 @@ const Projects: FC = () => {
                       onClick={() => handleclick(project)}
                     />
                   </motion.div>
-                )
+                );
               })
             ) : isLoading ? (
               Array.from({ length: 3 }).map((_, index) => (
@@ -144,7 +147,7 @@ const Projects: FC = () => {
         )}
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
