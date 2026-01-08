@@ -1,4 +1,4 @@
-const CookiePolicy: React.FC = () => {
+const CookiePolicy = () => {
   return (
     <div className="content">
       <section id="hero" className="background_light">
@@ -158,7 +158,7 @@ const CookiePolicy: React.FC = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CookiePolicy
+export default CookiePolicy;

@@ -1,20 +1,12 @@
-import { FC } from "react"
-import { Helmet } from "react-helmet"
-
 export const metadata = {
   title: "Pierre Gaillard, mentions légales",
   description:
     "Mentions légales du site portfolio de Pierre Gaillard, développeur web.",
-}
+};
 
-const LegalNotices: FC = () => {
+const LegalNotices = () => {
   return (
     <div className="content">
-      <Helmet>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </Helmet>
-
       <section id="hero" className="background_light">
         <div className="container">
           <h1 className="center">Mentions L&eacute;gales</h1>
@@ -137,7 +129,7 @@ const LegalNotices: FC = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default LegalNotices
+export default LegalNotices;

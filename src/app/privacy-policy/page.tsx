@@ -1,19 +1,12 @@
-import { Helmet } from "react-helmet"
-
-const metadata = {
+export const metadata = {
   title: "Pierre Gaillard, politique de confidentialité",
   description:
     "Politique de confidentialité du site portfolio de Pierre Gaillard, développeur web.",
-}
+};
 
-const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicy = () => {
   return (
     <div className="content">
-      <Helmet>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </Helmet>
-
       <section id="hero" className="background_light">
         <div className="container">
           <h1>Politique de confidentialité</h1>
@@ -192,7 +185,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default PrivacyPolicy
+export default PrivacyPolicy;
