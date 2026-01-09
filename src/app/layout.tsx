@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" data-scroll-behaviour="smooth">
       <body>
         <ThemeProvider>
           <Header sticky />

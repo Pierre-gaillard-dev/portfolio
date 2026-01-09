@@ -2,6 +2,7 @@
 
 import { FC, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import scrollToAnchor from "../util/scrollToAnchor"
 import { useTheme } from "../contexts/ThemeContext"
@@ -11,6 +12,7 @@ import "@/styles/components/Header.css"
 
 const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
   const { theme, toggleTheme } = useTheme()
+  const pathname = usePathname()
 
   const [opened, setOpened] = useState<boolean>(false)
 
@@ -21,7 +23,6 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
       setOpened(true)
     }
   }
-  const pathname = typeof window !== "undefined" ? window.location.pathname : ""
 
   return (
     <section id="header">
