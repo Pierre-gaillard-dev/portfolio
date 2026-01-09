@@ -66,6 +66,7 @@ const ProjectSliderCard: FC<{
         title={project.title}
         description={project.description}
         img={project.img}
+        languages={project.languages}
       />
     </div>
   )

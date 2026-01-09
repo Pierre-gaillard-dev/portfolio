@@ -17,6 +17,10 @@ a.button {
   cursor: pointer;
 }
 
+a.button:hover {
+  text-decoration: none;
+}
+
 a.button span {
   font-size: inherit;
   font-weight: inherit;
@@ -46,7 +50,9 @@ a.button svg {
   border: none;
 }
 
-.button_background > a.button.white {
+.button_background > a.button.white,
+.button_background > a.button.white:hover,
+.button_background > a.button.white:active {
   box-shadow: unset;
 }
 
