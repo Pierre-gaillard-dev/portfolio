@@ -23,6 +23,7 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isPointerDown = useRef<boolean>(false);
   const pointerPosition = useRef<number>(0);
+  const isDragged = useRef<boolean>(false);
 
   const [projects, setProjects] = useState<ProjectType[]>(initialProjects);
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
@@ -43,12 +44,17 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
     e.preventDefault();
     pointerPosition.current = e.clientX;
     isPointerDown.current = true;
+    isDragged.current = false;
   };
 
   const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (!isPointerDown.current) return;
     const delta = (e.clientX - pointerPosition.current) / 360;
+    // Mark as dragged if movement is significant (more than 5px)
+    if (Math.abs(e.clientX - pointerPosition.current) > 5) {
+      isDragged.current = true;
+    }
     // Do something with the delta
     setIndex(prevIndex => {
       return (prevIndex + 3 - delta) % 3;
@@ -66,6 +72,7 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
   };
 
   const handleProjectClick = (project: ProjectType) => {
+    if (isDragged.current) return;
     setSelectedProject(project);
   };
 
