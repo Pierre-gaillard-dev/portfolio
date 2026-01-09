@@ -1,12 +1,14 @@
+"use client"
+
 import { FC, useState } from "react"
 
-import { Github, Mail, File } from "../../../components/icons"
-import Activity from "../../../components/Activity"
-import Button from "../../../components/Button"
-import Overlay from "../../../components/Overlay"
-import CV from "../../../components/CV"
+import { Github, Mail, File } from "@/components/ui/Icons"
+import Activity from "@/components/Activity"
+import Button from "@/components/ui/Button"
+import Overlay from "@/components/ui/Overlay"
+import CV from "@/components/CV"
 
-import "./Hero.css"
+import "@/styles/partials/home/Hero.css"
 
 const Hero: FC = () => {
   const [CVOpened, setCVOpened] = useState<boolean>(false)

@@ -1,27 +1,33 @@
+"use client";
+
 import { useState, useEffect, FC, useRef } from "react";
+import Link  from "next/link";
 
-import { ChevronRight } from "../../../components/icons";
+import type { Project as ProjectType } from "@/type";
 
-import type { Project as ProjectType } from "@/src/type";
+import projectService from "@/services/projects";
 
-import "./Projects.css";
-import projectService from "@/src/services/projects";
+import { ChevronRight } from "@/components/ui/Icons";
 import ProjectSliderCard from "./ProjectSliderCard";
-import { Link } from "react-router-dom";
 
-const Projects: FC = () => {
-  const service = projectService.getInstance();
+import "@/styles/partials/home/Projects.css";
+
+interface ProjectsProps {
+  initialProjects?: ProjectType[];
+}
+
+const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const isPointerDown = useRef<boolean>(false);
   const pointerPosition = useRef<number>(0);
 
-  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>(initialProjects);
 
   const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
-    service
+    projectService
       .getProjects()
       .then(data => {
         setProjects(data.splice(0, 3));
@@ -61,7 +67,7 @@ const Projects: FC = () => {
     <section id="projects" className="container">
       <div className="split">
         <h2>Mes projets</h2>
-        <Link to="/projects" id="projects_link">
+        <Link href="/projects" id="projects_link">
           Tous mes projets
           <ChevronRight />
         </Link>

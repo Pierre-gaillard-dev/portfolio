@@ -1,5 +1,5 @@
 import { FC } from "react"
-import "./Skills.css"
+import "@/styles/partials/home/Skills.css"
 
 const Skills: FC = () => {
   return (

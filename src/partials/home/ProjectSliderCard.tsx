@@ -1,8 +1,10 @@
+"use client";
+
 import { FC } from "react"
-import useBreakpoints from "@/src/hooks/useBreakpoints"
-import ProjectCard from "@/src/components/ProjectCard"
-import type { Project } from "@/src/type"
-import "./ProjectSliderCard.css"
+import type { Project } from "@/type"
+import useBreakpoints from "@/hooks/useBreakpoints"
+import ProjectCard from "@/components/ProjectCard"
+import "@/styles/partials/home/ProjectSliderCard.css"
 
 const ProjectSliderCard: FC<{
   project: Project
