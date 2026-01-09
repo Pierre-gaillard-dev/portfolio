@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, FC, useRef } from "react";
+import { useState, useEffect, FC, useRef, PointerEvent } from "react";
 import Link  from "next/link";
 
 import type { Project as ProjectType } from "@/type";
@@ -11,6 +11,8 @@ import { ChevronRight } from "@/components/ui/Icons";
 import ProjectSliderCard from "./ProjectSliderCard";
 
 import "@/styles/partials/home/Projects.css";
+import Overlay from "@/components/ui/Overlay";
+import ProjectDetail from "@/components/projectDetail";
 
 interface ProjectsProps {
   initialProjects?: ProjectType[];
@@ -23,7 +25,7 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
   const pointerPosition = useRef<number>(0);
 
   const [projects, setProjects] = useState<ProjectType[]>(initialProjects);
-
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -37,13 +39,13 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
       });
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerDown = (e: PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     pointerPosition.current = e.clientX;
     isPointerDown.current = true;
   };
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (!isPointerDown.current) return;
     const delta = (e.clientX - pointerPosition.current) / 360;
@@ -54,7 +56,7 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
     pointerPosition.current = e.clientX;
   };
 
-  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerUp = (e: PointerEvent<HTMLDivElement>) => {
     e.preventDefault();
     isPointerDown.current = false;
     pointerPosition.current = 0;
@@ -62,6 +64,14 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
       return Math.round(prevIndex);
     });
   };
+
+  const handleProjectClick = (project: ProjectType) => {
+    setSelectedProject(project);
+  };
+
+  const handleProjectUnclick = () => {
+    setSelectedProject(null);
+  }
 
   return (
     <section id="projects" className="container">
@@ -85,6 +95,7 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
             project={project}
             index={position}
             currentIndex={index}
+            onClick={handleProjectClick}
           />
         ))}
       </div>
@@ -94,6 +105,11 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
           <ChevronRight />
         </a>
       </div>
+      {selectedProject && (
+        <Overlay close={handleProjectUnclick}>
+          <ProjectDetail project={selectedProject} onClose={handleProjectUnclick} />
+        </Overlay>
+      )}
     </section>
   );
 };

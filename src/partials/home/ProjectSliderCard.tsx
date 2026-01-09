@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react"
+import type { CSSProperties, FC } from "react"
 import type { Project } from "@/type"
 import useBreakpoints from "@/hooks/useBreakpoints"
 import ProjectCard from "@/components/ProjectCard"
@@ -10,11 +10,12 @@ const ProjectSliderCard: FC<{
   project: Project
   index: number
   currentIndex: number
-}> = ({ project, index, currentIndex }) => {
+  onClick?: (project: Project) => void
+}> = ({ project, index, currentIndex, onClick }) => {
   const { isBelow } = useBreakpoints()
 
   const position = (index - currentIndex + 3) % 3
-  let style: React.CSSProperties = {}
+  let style: CSSProperties = {}
   if (isBelow("xl")) {
     // Calculates position of the card
     switch (Math.floor(position)) {
@@ -52,8 +53,14 @@ const ProjectSliderCard: FC<{
     }
   }
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick(project)
+    }
+  }
+
   return (
-    <div className={`project-slider-card`} style={style}>
+    <div className={`project-slider-card`} style={style} onClick={handleClick}>
       <ProjectCard
         id={project.id}
         title={project.title}
