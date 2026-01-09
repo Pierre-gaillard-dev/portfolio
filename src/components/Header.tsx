@@ -1,11 +1,11 @@
 import { FC, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import Link from "next/link"
 
 import scrollToAnchor from "../util/scrollToAnchor"
-
-import "./css/Header.css"
 import { useTheme } from "../contexts/ThemeContext"
-import { Moon, Sun } from "./icons"
+import { Moon, Sun } from "./ui/Icons"
+
+import "@/styles/components/Header.css"
 
 const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
   const { theme, toggleTheme } = useTheme()
@@ -19,14 +19,13 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
       setOpened(true)
     }
   }
-
-  let { pathname } = useLocation()
+  const pathname = typeof window !== "undefined" ? window.location.pathname : ""
 
   return (
     <section id="header">
       <header className={sticky ? "sticky" : ""}>
         <nav id="nav_bar">
-          <Link to="/#hero" onClick={() => scrollToAnchor("hero")} id="logo">
+          <Link href="/#hero" onClick={() => scrollToAnchor("hero")} id="logo">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 327.42 348.68"
@@ -80,18 +79,18 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
                   <Moon />
                 )}
               </a>
-              <Link to="/#hero" onClick={() => scrollToAnchor("hero")}>
+              <Link href="/#hero" onClick={() => scrollToAnchor("hero")}>
                 Accueil
               </Link>
               <Link
-                to={pathname.includes("/projects") ? "/projects" : "/#projects"}
+                href={pathname.includes("/projects") ? "/projects" : "/#projects"}
                 onClick={() =>
                   !pathname.includes("/projects") && scrollToAnchor("projects")
                 }
               >
                 Projets
               </Link>
-              <Link to="/#skills" onClick={() => scrollToAnchor("skills")}>
+              <Link href="/#skills" onClick={() => scrollToAnchor("skills")}>
                 Compétences
               </Link>
             </ul>
@@ -138,9 +137,9 @@ const Header: FC<{ sticky?: boolean | undefined }> = ({ sticky }) => {
             </svg>
           </div>
           <ul className="nav_bar_list">
-            <Link to="/">Accueil</Link>
-            <Link to="/projects">Projets</Link>
-            <Link to="/#skills" onClick={() => scrollToAnchor("skills")}>
+            <Link href="/">Accueil</Link>
+            <Link href="/projects">Projets</Link>
+            <Link href="/#skills" onClick={() => scrollToAnchor("skills")}>
               Compétences
             </Link>
           </ul>

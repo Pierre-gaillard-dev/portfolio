@@ -1,12 +1,14 @@
-// components
-import { ChevronLeft, ExternalLink, Github } from "./icons"
-import Button from "./Button"
-// types
-import type { Project, language } from "../type"
-// css
-import "./css/ProjectDetail.css"
-import "./css/ProjectCard.css"
+"use client"
+
 import { FC, RefObject, useRef } from "react"
+// components
+import { ChevronLeft, ExternalLink, Github } from "./ui/Icons"
+import Button from "./ui/Button"
+// types
+import type { Project } from "../type"
+// css
+import "@styles/components/ProjectDetail.css"
+import "@styles/components/ProjectCard.css"
 
 export const getIframe = (project: Project, ref: RefObject<any>) => {
   const url = project.demo
@@ -88,7 +90,7 @@ const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
               <h2>{project.title}</h2>
               {project.languages && (
                 <div className="split left languages">
-                  {project.languages.map((language: language, index) => {
+                  {project.languages.map((language, index) => {
                     return (
                       <p key={index} className={language.slug}>
                         {language.name}

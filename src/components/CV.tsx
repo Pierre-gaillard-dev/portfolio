@@ -1,8 +1,8 @@
 import { FC } from "react"
-import { ChevronLeft } from "./icons"
+import { ChevronLeft } from "./ui/Icons"
 
-import Button from "./Button"
-import "./css/CV.css"
+import Button from "./ui/Button"
+import "@/styles/components/CV.css"
 
 const CV: FC = () => {
   return (

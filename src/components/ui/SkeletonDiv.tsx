@@ -1,5 +1,5 @@
 import { FC } from "react"
-import "./css/SkeletonDiv.css"
+import "@/styles/components/ui/SkeletonDiv.css"
 
 interface SkeletonDivProps {
   width?: string

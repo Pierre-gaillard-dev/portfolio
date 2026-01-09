@@ -1,10 +1,12 @@
+"use client"
+
 import { useEffect, useState } from "react"
 
-import Overlay from "./Overlay"
+import Overlay from "./ui/Overlay"
 import ProjectDetail from "./projectDetail"
 // import  from "../config/api"
 
-import "./css/activity.css"
+import "@/styles/components/activity.css"
 
 import { getProjectByFolderName } from "../projects.json"
 
@@ -75,14 +77,14 @@ const Activity: React.FC = () => {
     <>
       {activity.projectName !== "" && (
         <>
-          {overlay && (
+          {/* {overlay && (
             <Overlay close={() => setOverlay(false)}>
               <ProjectDetail
-                id={activity.projectId}
+                id={activity.}
                 close={() => setOverlay(false)}
               />
             </Overlay>
-          )}
+          )} */}
           <div
             className={
               activity.projectId ? "card split clickable" : "card split"

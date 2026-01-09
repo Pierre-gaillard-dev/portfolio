@@ -1,19 +1,19 @@
 import { FC } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
-import { Mail, Github, Linkedin } from "./icons"
-import Button from "./Button"
+import { Mail, Github, Linkedin } from "./ui/Icons"
+import Button from "./ui/Button"
 
 import scrollToAnchor from "../util/scrollToAnchor"
 
-import "./css/Footer.css"
+import "@/styles/components/Footer.css"
 
 const Footer: FC = () => {
   return (
     <footer className="footer">
       <div className="container split">
         <Link
-          to="/#hero"
+          href="/#hero"
           onClick={() => scrollToAnchor("hero")}
           className="logo"
         >
@@ -45,11 +45,11 @@ const Footer: FC = () => {
         <div id="legal">
           <h3>Liens utiles</h3>
           <div className="split">
-            <Link to="/legal-notices">Mentions L&eacute;gales</Link>
-            <Link to="/privacy-policy">
+            <Link href="/legal-notices">Mentions L&eacute;gales</Link>
+            <Link href="/privacy-policy">
               Politique de confidentialit&eacute;
             </Link>
-            <Link to="/cookie-policy">Politique de cookies</Link>
+            <Link href="/cookie-policy">Politique de cookies</Link>
           </div>
         </div>
       </div>

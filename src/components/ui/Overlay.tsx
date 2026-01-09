@@ -1,7 +1,14 @@
-import { FC, ReactNode } from "react"
-import "./css/Overlay.css"
+"use client"
 
-const Overlay: FC<{ children: ReactNode; close: () => void }> = ({
+import { FC, ReactNode } from "react"
+import "@/styles/components/ui/Overlay.css"
+
+export interface OverlayProps { 
+  children: ReactNode
+  close: () => void 
+}
+
+const Overlay: FC<OverlayProps> = ({
   children,
   close,
 }) => {

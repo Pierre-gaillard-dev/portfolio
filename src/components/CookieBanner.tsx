@@ -1,5 +1,4 @@
 import { FC } from "react"
-import CookieConsent from "react-cookie-consent"
 
 const CookieBanner: FC = () => {
   const handleAccept = () => {
@@ -17,34 +16,34 @@ const CookieBanner: FC = () => {
       analytics_storage: "denied",
     })
   }
-
-  return (
-    <CookieConsent
-      location="bottom"
-      buttonText="Accepter"
-      declineButtonText="Refuser"
-      enableDeclineButton
-      cookieName="cookie-consent"
-      onAccept={handleAccept}
-      onDecline={handleDeclide}
-      style={{ background: "var(--background)", fontSize: "13px" }}
-      buttonStyle={{
-        color: "var(--text)",
-        background: "var(--consent-accept-background)",
-        borderRadius: "128px",
-        fontSize: "13px",
-      }}
-      declineButtonStyle={{
-        color: "var(--black)",
-        background: "var(--consent-decline-background)",
-        borderRadius: "128px",
-        fontSize: "13px",
-      }}
-    >
-      Ce site utilise des cookies pour vous garantir la meilleure expérience sur
-      notre site. <a href="/politique-de-cookies">En savoir plus</a>
-    </CookieConsent>
-  )
+  return null
+  // return (
+  //   <CookieConsent
+  //     location="bottom"
+  //     buttonText="Accepter"
+  //     declineButtonText="Refuser"
+  //     enableDeclineButton
+  //     cookieName="cookie-consent"
+  //     onAccept={handleAccept}
+  //     onDecline={handleDeclide}
+  //     style={{ background: "var(--background)", fontSize: "13px" }}
+  //     buttonStyle={{
+  //       color: "var(--text)",
+  //       background: "var(--consent-accept-background)",
+  //       borderRadius: "128px",
+  //       fontSize: "13px",
+  //     }}
+  //     declineButtonStyle={{
+  //       color: "var(--black)",
+  //       background: "var(--consent-decline-background)",
+  //       borderRadius: "128px",
+  //       fontSize: "13px",
+  //     }}
+  //   >
+  //     Ce site utilise des cookies pour vous garantir la meilleure expérience sur
+  //     notre site. <a href="/politique-de-cookies">En savoir plus</a>
+  //   </CookieConsent>
+  // )
 }
 
 export default CookieBanner
