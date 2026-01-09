@@ -1,4 +1,6 @@
-export const metadata = {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Pierre Gaillard, mentions légales",
   description:
     "Mentions légales du site portfolio de Pierre Gaillard, développeur web.",

@@ -1,4 +1,6 @@
-export const metadata = {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Pierre Gaillard, politique de confidentialité",
   description:
     "Politique de confidentialité du site portfolio de Pierre Gaillard, développeur web.",

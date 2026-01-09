@@ -1,9 +1,10 @@
 import projectService from "@/services/projects";
 
-import "./Projects.css";
+import ProjectList from "@/partials/projects/ProjectList";
+import "@/styles/pages/Projects.css";
 
-const Projects = () => {
-  const projects = projectService.getProjects();
+const Projects = async () => {
+  const projects = await projectService.getProjects();
 
   return (
     <div className="content projects">
@@ -11,7 +12,7 @@ const Projects = () => {
         <h1>Mes projets</h1>
       </section>
       <section id="projects" className="container">
-        <ProjectList projects={projects} />
+        <ProjectList initialProjects={projects} />
       </section>
     </div>
   );

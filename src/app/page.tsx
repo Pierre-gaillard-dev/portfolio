@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 import projects from "@/services/projects";
 
-import Hero from "./partials/Hero";
-import Projects from "./partials/Projects";
-import Skills from "./partials/Skills";
+import Hero from "@/partials/home/Hero";
+import Projects from "@/partials/home/Projects";
+import Skills from "@/partials/home/Skills";
 
 export const metadata: Metadata = {
   title: "Pierre Gaillard, développeur web à Vannes",
@@ -18,7 +18,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <Projects projects={projectList} />
+      <Projects initialProjects={projectList} />
       <Skills />
     </>
   );
