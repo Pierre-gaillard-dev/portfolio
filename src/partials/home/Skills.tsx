@@ -1,5 +1,6 @@
 import { FC } from "react"
 import "@/styles/partials/home/Skills.css"
+import { Github } from "@/components/ui/Icons"
 
 const Skills: FC = () => {
   return (
@@ -43,7 +44,7 @@ const Skills: FC = () => {
             <h3>Outils</h3>
             <div className="skills">
               <div className="split left card">
-                <img src="../icons/github-mark/github-mark-white.svg" />
+                <Github size={60} />
                 <h4>Github</h4>
               </div>
               <div className="split left card">

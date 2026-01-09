@@ -1,5 +1,9 @@
 import { FC } from "react";
 
+export interface IconProps {
+  size?: number;
+}
+
 export const ChevronLeft: FC = () => {
   return (
     <svg
@@ -139,11 +143,11 @@ export const ExternalLink: FC = () => {
   );
 };
 
-export const Github: FC = () => {
+export const Github: FC<IconProps> = ({ size = 98 }) => {
   return (
     <svg
-      width="98"
-      height="96"
+      width={size}
+      height={size}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 98 96"
     >
