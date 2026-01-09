@@ -4,8 +4,6 @@ import Link from "next/link"
 import { Mail, Github, Linkedin } from "./ui/Icons"
 import Button from "./ui/Button"
 
-import scrollToAnchor from "../util/scrollToAnchor"
-
 import "@/styles/components/Footer.css"
 
 const Footer: FC = () => {
@@ -14,7 +12,6 @@ const Footer: FC = () => {
       <div className="container split">
         <Link
           href="/#hero"
-          onClick={() => scrollToAnchor("hero")}
           className="logo"
         >
           <div className="image_container">

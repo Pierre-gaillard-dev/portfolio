@@ -1,6 +1,6 @@
 import { FC } from "react"
 import SkeletonDiv from "./ui/SkeletonDiv"
-import "@styles/components/ui/ProjectCardSkeleton.css"
+import "@/styles/components/ProjectCardSkeleton.css"
 
 const ProjectCardSkeleton: FC = () => {
   return (

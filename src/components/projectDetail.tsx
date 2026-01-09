@@ -7,8 +7,7 @@ import Button from "./ui/Button"
 // types
 import type { Project } from "../type"
 // css
-import "@styles/components/ProjectDetail.css"
-import "@styles/components/ProjectCard.css"
+import "@/styles/components/ProjectDetail.css"
 
 export const getIframe = (project: Project, ref: RefObject<any>) => {
   const url = project.demo

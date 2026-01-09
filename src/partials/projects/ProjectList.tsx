@@ -1,4 +1,4 @@
-"use Client";
+"use client";
 
 import { FC, useEffect, useState } from "react";
 import {Project, Language} from "@/type"
