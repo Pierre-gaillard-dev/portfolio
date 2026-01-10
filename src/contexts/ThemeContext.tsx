@@ -24,9 +24,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    setMounted(true)
-    const savedTheme = getCookie('theme-preference') as Theme | null
-    setTheme(savedTheme || 'light')
+    const mount = async () => {
+      setMounted(true)
+      const savedTheme = getCookie('theme-preference') as Theme | null
+      setTheme(savedTheme || 'light')
+    }
+    mount()
   }, [])
 
   useEffect(() => {

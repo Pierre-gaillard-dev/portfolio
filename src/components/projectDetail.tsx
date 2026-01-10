@@ -11,7 +11,10 @@ import FormatedText from './ui/FormatedText'
 // components
 import { ChevronLeft, ExternalLink, Github } from './ui/Icons'
 
-export const getIframe = (project: Project, ref: RefObject<any>) => {
+export const getIframe = (
+  project: Project,
+  ref: RefObject<HTMLIFrameElement | null>
+) => {
   const url = project.demo
   if (!url) return <div>Demo not found</div>
 
@@ -121,10 +124,7 @@ const ProjectDetail: FC<ProjectDetailProps> = ({ project, onClose }) => {
             className='center'
             style={{
               width: project.demo_width || '100%',
-              height:
-                project.demo_height ||
-                (iframeRef.current?.clientWidth || 600) /
-                  (project.aspect_ratio || 16 / 9),
+              height: project.demo_height || project.aspect_ratio || 16 / 9,
             }}
           >
             {getIframe(project, iframeRef)}

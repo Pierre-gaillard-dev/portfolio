@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import projectsService from '@/services/projects'
 import { Project, Language } from '@/type'
 import Overlay from '@/components/ui/Overlay'
@@ -15,7 +15,6 @@ interface ProjectListProps {
 const ProjectList: FC<ProjectListProps> = ({ initialProjects = [] }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [projects, setProjects] = useState<Project[]>(initialProjects)
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([])
   const [languages, setLanguages] = useState<Language[]>([])
   const [activeLanguages, setActiveLanguages] = useState<string[]>([])
 
@@ -25,7 +24,6 @@ const ProjectList: FC<ProjectListProps> = ({ initialProjects = [] }) => {
     projectsService
       .getProjects()
       .then((projects) => {
-        console.log(projects)
         if (projects.length === 0) {
           setIsLoading(false)
           return
@@ -42,20 +40,18 @@ const ProjectList: FC<ProjectListProps> = ({ initialProjects = [] }) => {
         setLanguages(newLanguages)
         setIsLoading(false)
       })
-      .catch((error) => {
-        console.error('Error fetching projects:', error)
+      .catch((_) => {
+        setIsLoading(false)
       })
   }, [])
 
-  useEffect(() => {
+  const filteredProjects = useMemo(() => {
     if (activeLanguages.length === 0) {
-      setFilteredProjects(projects)
-    } else {
-      const filtered = projects.filter((project) =>
-        project.languages?.some((lang) => activeLanguages.includes(lang.slug))
-      )
-      setFilteredProjects(filtered)
+      return projects
     }
+    return projects.filter((project) =>
+      project.languages?.some((lang) => activeLanguages.includes(lang.slug))
+    )
   }, [projects, activeLanguages])
 
   const handleclick = (project: Project) => {

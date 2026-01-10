@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@tanstack/eslint-plugin-query": "^5.91.2",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -28,7 +27,6 @@
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.1",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.26",
     "globals": "^17.0.0",
     "typescript": "^5",
     "typescript-eslint": "^8.52.0"

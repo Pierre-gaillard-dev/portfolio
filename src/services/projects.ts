@@ -17,8 +17,7 @@ class ProjectService {
     try {
       const response = await api.get('/projects')
       return response.data as Project[]
-    } catch (error) {
-      console.error('Error fetching projects:', error)
+    } catch (_) {
       return []
     }
   }
@@ -27,8 +26,7 @@ class ProjectService {
     try {
       const response = await api.get(`/projects/${id}`)
       return response.data as Project
-    } catch (error) {
-      console.error(`Error fetching project with id ${id}:`, error)
+    } catch (_) {
       return null
     }
   }
@@ -37,8 +35,7 @@ class ProjectService {
     try {
       const response = await api.get(`/projects/${slug}`)
       return response.data as Project
-    } catch (error) {
-      console.error(`Error fetching project with slug ${slug}:`, error)
+    } catch (_) {
       return null
     }
   }

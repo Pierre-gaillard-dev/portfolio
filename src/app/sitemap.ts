@@ -34,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...projectEntries,
     ]
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Erreur sitemap:', error)
     // Retourne au moins la home si l'API échoue au build
     return [{ url: baseUrl, lastModified: new Date() }]
