@@ -1,12 +1,15 @@
-// components
-import { ChevronLeft, ExternalLink, Github } from "./icons"
-import Button from "./Button"
-// types
-import type { Project, language } from "../type"
-// css
-import "./css/ProjectDetail.css"
-import "./css/ProjectCard.css"
+"use client"
+
 import { FC, RefObject, useRef } from "react"
+import Link from "next/link"
+// components
+import { ChevronLeft, ExternalLink, Github } from "./ui/Icons"
+import Button from "./ui/Button"
+// types
+import type { Project } from "../type"
+// css
+import "@/styles/components/ProjectDetail.css"
+import FormatedText from "./ui/FormatedText"
 
 export const getIframe = (project: Project, ref: RefObject<any>) => {
   const url = project.demo
@@ -58,37 +61,36 @@ export const getIframe = (project: Project, ref: RefObject<any>) => {
   )
 }
 
-const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
+export interface ProjectDetailProps {
+  project: Project
+  onClose?: () => void
+}
+
+const ProjectDetail: FC<ProjectDetailProps> = ({
   project,
   onClose,
 }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  const formatText = (text: string) => {
-    let result = text.split("\n").map((line, index) => {
-      if (line !== "") {
-        return <p key={index}>{line}</p>
-      } else {
-        return <br key={index} />
-      }
-    })
-    return result
-  }
-
   return (
     <div className="content projectDetail">
       <section id="hero" className="background_light">
         <div className="container">
-          <a onClick={onClose} className="back">
+          {onClose ? (<a onClick={onClose} className="back">
             <ChevronLeft />
             Retour
-          </a>
+          </a>) : (
+            <Link href="/projects" className="back">
+              <ChevronLeft />
+              Retour
+            </Link>
+          )}
           <div className="split">
             <div>
               <h2>{project.title}</h2>
               {project.languages && (
                 <div className="split left languages">
-                  {project.languages.map((language: language, index) => {
+                  {project.languages.map((language, index) => {
                     return (
                       <p key={index} className={language.slug}>
                         {language.name}
@@ -157,7 +159,7 @@ const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
       ) : null}
       <section id="description" className="container">
         <h2>Description</h2>
-        {formatText(project.description)}
+        <FormatedText text={project.description} />
         <br style={{ height: "2rem" }} />
         <p>
           <span className="bold">Début du projet :</span> {project.started_at}
@@ -174,11 +176,11 @@ const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
       </section>
       <section id="conditions" className="container">
         <h2>Conditions</h2>
-        {formatText(project.conditions)}
+        <FormatedText text={project.conditions} />
       </section>
       <section id="droits" className="container">
         <h2>Droits d'auteur</h2>
-        {formatText(project.copyright)}
+        <FormatedText text={project.copyright} />
       </section>
     </div>
   )

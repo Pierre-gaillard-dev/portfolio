@@ -56,12 +56,16 @@ class Router
 
       // Normalize the pattern
       $pattern = str_replace('/', '\/', $route['pattern']);
-      $pattern = preg_replace('/\{(\w+)\}/', '(\d+)', $pattern);
+      $pattern = preg_replace('/\{(\w+)\}/', '([a-zA-Z0-9_-]+)', $pattern);
       $pattern = "/^{$pattern}$/";
 
       if (preg_match($pattern, $request, $matches)) {
         // Run middlewares
         foreach ($route['middlewares'] as $middleware) {
+          if (!class_exists($middleware)) {
+            Response::json(['error' => "Middleware class not found: {$middleware}"], 500);
+            return;
+          }
           $middlewareInstance = new $middleware();
           if (!$middlewareInstance->handle()) {
             return;

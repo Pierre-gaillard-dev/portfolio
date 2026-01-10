@@ -1,32 +1,37 @@
-import { language } from "../type"
-import "./css/ProjectCard.css"
+"use client"
 
-const ProjectCard: React.FC<{
+import { FC } from "react"
+import { Language } from "../type"
+import "@/styles/components/ProjectCard.css"
+
+export interface ProjectCardProps {
   id: number
   title: string
   img: string
   description: string
-  languages?: language[] | null
+  languages?: Language[] | null
   selected?: boolean
   onHover?: () => void
   onClick?: () => void
   style?: React.CSSProperties
-}> = props => {
+}
+
+const ProjectCard: FC<ProjectCardProps> = ({id, title, img, description, languages, selected, onHover, onClick, style}) => {
   return (
     <a
-      onClick={props.onClick}
-      className={"project" + (props.selected ? " selected" : "")}
-      id={props.id.toString()}
-      onMouseEnter={props.onHover}
+      onClick={onClick}
+      className={"project" + (selected ? " selected" : "")}
+      id={id.toString()}
+      onMouseEnter={onHover}
     >
-      <article className="card" style={props.style}>
+      <article className="card" style={style}>
         <div className="image_container">
-          <img src={props.img} />
+          <img src={img} />
         </div>
-        <h3>{props.title}</h3>
-        <p>{props.description}</p>
+        <h3>{title}</h3>
+        <p>{description}</p>
         <div className="split left languages">
-          {props.languages?.map((language, index) => {
+          {languages?.map((language, index) => {
             return (
               <p key={index} className={language.slug}>
                 {language.name}

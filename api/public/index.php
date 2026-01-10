@@ -7,6 +7,7 @@ namespace Public;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config.php';
 
+use Error;
 use Exception;
 
 use Core\Router;
@@ -71,6 +72,9 @@ $router->delete('activity', \App\Controllers\ActivityController::class, 'reset',
 try {
   $router->dispatch($request, $method);
 } catch (Exception $e) {
+  http_response_code(500);
+  echo json_encode(['error' => 'Internal Server Error: ' . $e->getMessage()]);
+} catch (Error $e) {
   http_response_code(500);
   echo json_encode(['error' => 'Internal Server Error: ' . $e->getMessage()]);
 }
