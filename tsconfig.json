@@ -42,9 +42,29 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "build/types/**/*.ts",
-    "build/dev/types/**/*.ts"
+    "build/dev/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  /* Linting */
+  "strict": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noFallthroughCasesInSwitch": true,
+  "noUncheckedSideEffectImports": true,
+  /* Stricter Typechecking Options */
+  "noUncheckedIndexedAccess": true,
+  "exactOptionalPropertyTypes": true,
+  /* Style Options */
+  "noImplicitReturns": true,
+  "noImplicitOverride": true,
+  "noImplicitAny": true,
+  "noImplicitThis": true,
+  "forceConsistentCasingInFileNames": true,
+  "useUnknownInCatchVariables": true,
+  "noEmitOnError": true,
+  "strictNullChecks": true
+  /* Experimental Options */
 }
