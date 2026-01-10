@@ -50,6 +50,9 @@ jobs:
       - name: Install Composer dependencies
         run: cd api && composer install --no-dev --optimize-autoloader
 
+      - name: add Env.php
+        run: echo "${{ secrets.ENV_PHP_CONTENT }}" > api/core/Env.php
+
       - name: SFTP Deploy to OVH
         uses: wlixcc/sftp-upload-action@master
         with:
