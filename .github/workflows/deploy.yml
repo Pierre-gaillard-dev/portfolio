@@ -1,9 +1,9 @@
-name: Deploy to PlanetHoster (N0C)
+name: Deploy to OVH
 
 on:
   push:
     branches:
-      - main # Déclenche quand tu merges une PR dans main
+      - main
 
 jobs:
   build-and-deploy-frontend:
@@ -16,22 +16,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build React app
+      - name: Build Next.js application
         run: npm run build
 
-      - name: FTP Deploy to N0C
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: SFTP Deploy to OVH
+        uses: wlixcc/sftp-upload-action@master
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: build/
-          server-dir: /public_html/
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local_path: './build/*'
+          remote_path: '/www/'
+          sftp_only: true
 
   deploy-backend:
     runs-on: ubuntu-latest
@@ -43,17 +44,21 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
+          php-version: '8.4'
           extensions: mbstring, xml, pdo, pgsql, pdo_pgsql
 
       - name: Install Composer dependencies
         run: cd api && composer install --no-dev --optimize-autoloader
 
-      - name: FTP Deploy to N0C
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: add Env.php
+        run: echo "${{ secrets.ENV_PHP_CONTENT }}" > api/core/Env.php
+
+      - name: SFTP Deploy to OVH
+        uses: wlixcc/sftp-upload-action@master
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: api/
-          server-dir: /portfolio_api/
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local_path: './api/*'
+          remote_path: '/www/api/'
+          sftp_only: true

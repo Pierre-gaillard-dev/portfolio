@@ -1,0 +1,9 @@
+Options -MultiViews
+RewriteEngine On
+
+# Si le fichier existe, on le sert
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Sinon, on essaie d'ajouter .html à l'URL
+RewriteRule ^([^\.]+)$ $1.html [NC,L]

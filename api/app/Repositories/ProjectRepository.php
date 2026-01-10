@@ -31,11 +31,23 @@ class ProjectRepository
     return $row ? self::map($row) : null;
   }
 
+  public static function findBySlug(string $slug): ?Project
+  {
+    $pdo = Database::connect();
+    $stmt = $pdo->prepare("SELECT * FROM projects WHERE slug = ?");
+    $stmt->execute([$slug]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    Database::disconnect();
+
+    return $row ? self::map($row) : null;
+  }
+
   public static function create(Project $project): Project
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("INSERT INTO projects (title, img, github, demo, is_playable_demo, demo_height, demo_width, aspect_ratio, video, description, conditions, copyright, started_at, finished_at, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO projects (slug, title, img, github, demo, is_playable_demo, demo_height, demo_width, aspect_ratio, video, description, conditions, copyright, started_at, finished_at, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
+      $project->slug,
       $project->title,
       $project->img,
       $project->github,
@@ -60,8 +72,9 @@ class ProjectRepository
   {
     $project->updateTimestamps();
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("UPDATE projects SET title = ?, img = ?, github = ?, demo = ?, is_playable_demo = ?, demo_height = ?, demo_width = ?, aspect_ratio = ?, video = ?, description = ?, conditions = ?, copyright = ?, started_at = ?, finished_at = ?, duration = ? WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE projects SET slug = ?, title = ?, img = ?, github = ?, demo = ?, is_playable_demo = ?, demo_height = ?, demo_width = ?, aspect_ratio = ?, video = ?, description = ?, conditions = ?, copyright = ?, started_at = ?, finished_at = ?, duration = ? WHERE id = ?");
     $stmt->execute([
+      $project->slug,
       $project->title,
       $project->img,
       $project->github,
@@ -96,6 +109,7 @@ class ProjectRepository
   {
     return new Project(
       (int) $row['id'],
+      $row['slug'],
       $row['title'],
       $row['img'],
       $row['github'],

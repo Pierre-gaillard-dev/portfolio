@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-package-lock.json
 /.pnp
 .pnp.*
 .yarn/*
@@ -20,6 +19,7 @@ package-lock.json
 
 # production
 /build
+.next
 
 # misc
 .DS_Store

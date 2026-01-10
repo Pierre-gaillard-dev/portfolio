@@ -1,5 +1,6 @@
 export type Project = {
   id: number
+  slug: string
   title: string
   img: string
   github: string
@@ -15,12 +16,12 @@ export type Project = {
   started_at: string
   finished_at: string | null
   duration: string | null
-  languages: language[] | null
+  languages: Language[] | null
   created_at: string
   updated_at: string
 }
 
-export type language = {
+export type Language = {
   id: number
   name: string
   slug: string
@@ -30,6 +31,7 @@ export type language = {
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     gtag?: (...args: any) => void
   }
 }

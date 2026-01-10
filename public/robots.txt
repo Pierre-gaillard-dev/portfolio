@@ -1,0 +1,10 @@
+# Autorise tous les robots (Google, Bing, etc.)
+User-agent: *
+Allow: /
+
+# Interdire l'exploration des fichiers de configuration ou API si nécessaire
+Disallow: /api/
+Disallow: /_next/
+
+# Indiquer l'emplacement du sitemap pour accélérer l'indexation
+Sitemap: https://ton-portfolio.fr/sitemap.xml

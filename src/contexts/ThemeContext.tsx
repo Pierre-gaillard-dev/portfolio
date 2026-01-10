@@ -1,54 +1,65 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { setCookie, getCookie } from "../util/cookiesHandler";
+'use client'
 
-type theme = "light" | "dark";
+import { createContext, useContext, useEffect, useState } from 'react'
+import { setCookie, getCookie } from '../util/cookiesHandler'
+
+type Theme = 'light' | 'dark'
 
 interface ThemeContextType {
-  theme: theme;
-  toggleTheme: () => void;
+  theme: Theme
+  toggleTheme: () => void
 }
 
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: "light",
+  theme: 'light',
   toggleTheme: () => {},
-});
+})
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<theme>("light");
+  const [theme, setTheme] = useState<Theme | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"));
-  };
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
 
   useEffect(() => {
-    const savedTheme = getCookie("theme-preference") as theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    const mount = async () => {
+      setMounted(true)
+      const savedTheme = getCookie('theme-preference') as Theme | null
+      setTheme(savedTheme || 'light')
     }
-  }, []);
+    mount()
+  }, [])
 
   useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark-mode", theme === "dark");
-    setCookie("theme-preference", theme, 365);
-  }, [theme]);
+    if (!mounted || !theme) return
+    const root = document.documentElement
+    root.classList.toggle('dark-mode', theme === 'dark')
+    setCookie('theme-preference', theme, 365)
+  }, [theme, mounted])
 
   const contextValue: ThemeContextType = {
-    theme,
+    theme: theme || 'light',
     toggleTheme,
-  };
+  }
+
+  // Éviter flash de contenu non stylé pendant SSR
+  if (!mounted) {
+    return <>{children}</>
+  }
 
   return (
     <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
-  );
-};
+  )
+}
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
+  const context = useContext(ThemeContext)
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error('useTheme must be used within a ThemeProvider')
   }
-  return context;
-};
+  return context
+}

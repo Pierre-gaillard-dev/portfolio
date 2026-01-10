@@ -1,0 +1,15 @@
+.overlay .CV #hero {
+  min-height: 200px;
+  display: block;
+}
+
+.overlay .CV .back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.overlay .CV .split {
+  margin-top: 20px;
+}

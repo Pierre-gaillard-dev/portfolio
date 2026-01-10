@@ -11,6 +11,7 @@ class Project implements \JsonSerializable
 
   public function __construct(
     private int $id,
+    string $slug,
     private string $title,
     private string $img,
     private string $github,
@@ -29,6 +30,7 @@ class Project implements \JsonSerializable
     private \DateTime $created_at = new \DateTime(),
     private \DateTime|null $updated_at = null
   ) {
+    $this->slug = $slug ?: strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title)));
   }
 
   public function getLanguages(): array
@@ -48,6 +50,7 @@ class Project implements \JsonSerializable
   {
     return [
       'id' => $this->id,
+      'slug' => $this->slug,
       'title' => $this->title,
       'img' => $this->img,
       'github' => $this->github,
