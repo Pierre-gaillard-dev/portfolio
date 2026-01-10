@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start -p 5173",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "api": "php -S localhost:3000 -t api/public"
   },
   "dependencies": {
