@@ -1,11 +1,11 @@
 const CookiePolicy = () => {
   return (
-    <div className="content">
-      <section id="hero" className="background_light">
+    <div className='content'>
+      <section id='hero' className='background_light'>
         <h1>Politique de cookies</h1>
       </section>
 
-      <section id="introduction" className="container">
+      <section id='introduction' className='container'>
         <h2>Introduction</h2>
         <p>
           Cette politique de cookies explique ce que sont les cookies, comment
@@ -19,12 +19,12 @@ const CookiePolicy = () => {
         </p>
       </section>
 
-      <section id="types" className="background_light">
-        <div className="container">
+      <section id='types' className='background_light'>
+        <div className='container'>
           <h2>Les types de cookies que nous uilisons</h2>
           <ol>
             <li>
-              <span className="bold">Cookies nécessaires :</span>
+              <span className='bold'>Cookies nécessaires :</span>
               <br />
               <span>
                 Ces cookies sont indispensables au bon fonctionnement du Site et
@@ -33,14 +33,14 @@ const CookiePolicy = () => {
               </span>
             </li>
             <li>
-              <span className="bold">Cookies analytiques :</span>
+              <span className='bold'>Cookies analytiques :</span>
               <br />
               <ul>
                 <li>
-                  <span className="bold">Outil utilisé :</span> Google Analytics
+                  <span className='bold'>Outil utilisé :</span> Google Analytics
                 </li>
                 <li>
-                  <span className="bold">Finalité :</span> Ces cookies
+                  <span className='bold'>Finalité :</span> Ces cookies
                   collectent des informations anonymisées (nombre de visiteurs,
                   pages consultées, durée de navigation) afin d'améliorer les
                   performances et l'expérience utilisateur du Site.
@@ -48,10 +48,10 @@ const CookiePolicy = () => {
               </ul>
             </li>
             <li>
-              <span className="bold">Cookies tiers :</span>
+              <span className='bold'>Cookies tiers :</span>
               <ul>
                 <li>
-                  <span className="bold">Service utilisé :</span>
+                  <span className='bold'>Service utilisé :</span>
                   Youtube (vidéos intégrées via des iframes)
                 </li>
               </ul>
@@ -60,39 +60,39 @@ const CookiePolicy = () => {
         </div>
       </section>
 
-      <section id="conservation" className="container">
+      <section id='conservation' className='container'>
         <h2>Durée de conservation des cookies</h2>
         <ul>
           <li>
-            Les cookies utilisés par{" "}
-            <span className="bold">Google Analytics</span> sont conservés pour
-            une durée maximale de <span className="bold">14 mois.</span>
+            Les cookies utilisés par{' '}
+            <span className='bold'>Google Analytics</span> sont conservés pour
+            une durée maximale de <span className='bold'>14 mois.</span>
           </li>
           <li>
             Les cookies déposés par YouTube sont gérés conformément à leur
             politique, disponible ici :
-            <a href="https://policies.google.com/privacy">
+            <a href='https://policies.google.com/privacy'>
               https://policies.google.com/privacy
             </a>
           </li>
         </ul>
       </section>
 
-      <section id="gestion" className="background_light">
-        <div className="container">
+      <section id='gestion' className='background_light'>
+        <div className='container'>
           <h2>Gestion des cookies</h2>
           <p>
             Lors de votre première visite sur le Site, une bannière vous informe
             de l’utilisation des cookies. Vous pouvez :
           </p>
           <ul>
-            <li className="bold">Accepter tous les cookies</li>
+            <li className='bold'>Accepter tous les cookies</li>
             <li>
-              <span className="bold">Personnaliser vos choix :</span>{" "}
+              <span className='bold'>Personnaliser vos choix :</span>{' '}
               Sélectionner les catégories de cookies que vous souhaitez activer
               ou désactiver.
             </li>
-            <li className="bold">Refuser tous les cookies non essentiels</li>
+            <li className='bold'>Refuser tous les cookies non essentiels</li>
           </ul>
           <br />
           <p>
@@ -101,22 +101,22 @@ const CookiePolicy = () => {
           </p>
           <ul>
             <li>
-              <span className="bold">Firefox :</span>{" "}
-              <a href="about:config">about:config</a>
+              <span className='bold'>Firefox :</span>{' '}
+              <a href='about:config'>about:config</a>
             </li>
             <li>
-              <span className="bold">Chrome :</span>{" "}
-              <a href="chrome://settings/cookies">chrome://settings/cookies</a>
+              <span className='bold'>Chrome :</span>{' '}
+              <a href='chrome://settings/cookies'>chrome://settings/cookies</a>
             </li>
             <li>
-              <span className="bold">Safari :</span>{" "}
-              <a href="https://support.apple.com/kb/PH21411">
+              <span className='bold'>Safari :</span>{' '}
+              <a href='https://support.apple.com/kb/PH21411'>
                 https://support.apple.com/kb/PH21411
               </a>
             </li>
             <li>
-              <span className="bold">Edge :</span>{" "}
-              <a href="https://support.microsoft.com/fr-fr/microsoft-edge">
+              <span className='bold'>Edge :</span>{' '}
+              <a href='https://support.microsoft.com/fr-fr/microsoft-edge'>
                 https://support.microsoft.com/fr-fr/microsoft-edge
               </a>
             </li>
@@ -124,16 +124,16 @@ const CookiePolicy = () => {
         </div>
       </section>
 
-      <section id="droits" className="container">
+      <section id='droits' className='container'>
         <h2>Vos droits</h2>
         <p>Vous disposez des droits suivants en matière de cookies :</p>
         <ul>
           <li>
-            <span className="bold">Accès et information :</span> Connaître les
+            <span className='bold'>Accès et information :</span> Connaître les
             cookies déposés sur votre appareil.
           </li>
           <li>
-            <span className="bold">Opposition :</span> Refuser ou désactiver les
+            <span className='bold'>Opposition :</span> Refuser ou désactiver les
             cookies non essentiels.
           </li>
         </ul>
@@ -144,8 +144,8 @@ const CookiePolicy = () => {
         </p>
       </section>
 
-      <section id="modifications" className="background_light">
-        <div className="container">
+      <section id='modifications' className='background_light'>
+        <div className='container'>
           <h2>Modifications de la politique de cookies</h2>
           <p>
             Cette politique de cookies peut être mise à jour à tout moment. Nous
@@ -153,12 +153,12 @@ const CookiePolicy = () => {
             informé(e) de tout changement.
           </p>
           <p>
-            <span className="bold">Dernière mise à jour :</span> 04 janvier 2025
+            <span className='bold'>Dernière mise à jour :</span> 04 janvier 2025
           </p>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default CookiePolicy;
+export default CookiePolicy

@@ -58,6 +58,7 @@ composer install
 ### Auth API
 
 #### POST /api/auth/register
+
 Crée un nouvel utilisateur
 
 **Body:**
@@ -73,16 +74,17 @@ Crée un nouvel utilisateur
 
 ```json
 {
-    "token": "XXXXXXX",
-    "user": {
-        "id": 0,
-        "name": "John Doe"
-    },
-    "expires_in": 3600
+  "token": "XXXXXXX",
+  "user": {
+    "id": 0,
+    "name": "John Doe"
+  },
+  "expires_in": 3600
 }
 ```
 
 #### POST /api/auth/login
+
 Authentifie un utilisateur existant
 
 **Body:**
@@ -98,16 +100,17 @@ Authentifie un utilisateur existant
 
 ```json
 {
-    "token": "XXXXXXX",
-    "user": {
-        "id": 0,
-        "name": "John Doe"
-    },
-    "expires_in": 3600
+  "token": "XXXXXXX",
+  "user": {
+    "id": 0,
+    "name": "John Doe"
+  },
+  "expires_in": 3600
 }
 ```
 
 #### /api/auth/me
+
 Récupère les informations de l'utilisateur authentifié
 
 **Response:**

@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { FC, ReactNode } from "react"
-import "@/styles/components/ui/Button.css"
+import { FC, ReactNode } from 'react'
+import '@/styles/components/ui/Button.css'
 
 export interface ButtonProps {
   children: ReactNode
   link?: string
   onClick?: () => void
   download?: string
-  color?: "white"
+  color?: 'white'
   target?: string
   id?: string
 }
@@ -17,14 +17,14 @@ const Button: FC<ButtonProps> = ({
   children,
   onClick,
   download,
-  color = "",
+  color = '',
   target,
   ...props
-})  => {
+}) => {
   return (
-    <div className="button_background" id={props.id}>
+    <div className='button_background' id={props.id}>
       <a
-        className={"button " + color}
+        className={'button ' + color}
         href={props.link}
         onClick={onClick}
         download={download}
