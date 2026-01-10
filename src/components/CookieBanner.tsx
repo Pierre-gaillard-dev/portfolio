@@ -1,23 +1,23 @@
-"use client"
+'use client'
 
-import { FC } from "react"
+import { FC } from 'react'
 
 const CookieBanner: FC = () => {
-  const handleAccept = () => {
-    console.log("Cookies acceptés !")
-    // Activer Google Analytics ici
-    window.gtag?.("consent", "update", {
-      analytics_storage: "granted",
-    })
-  }
+  // const handleAccept = () => {
+  //   console.log("Cookies acceptés !")
+  //   // Activer Google Analytics ici
+  //   window.gtag?.("consent", "update", {
+  //     analytics_storage: "granted",
+  //   })
+  // }
 
-  const handleDeclide = () => {
-    console.log("Cookies refusés !")
-    // Desactiver Google Analytics ici
-    window.gtag?.("consent", "update", {
-      analytics_storage: "denied",
-    })
-  }
+  // const handleDeclide = () => {
+  //   console.log("Cookies refusés !")
+  //   // Desactiver Google Analytics ici
+  //   window.gtag?.("consent", "update", {
+  //     analytics_storage: "denied",
+  //   })
+  // }
   return null
   // return (
   //   <CookieConsent
