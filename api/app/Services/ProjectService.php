@@ -29,6 +29,15 @@ class ProjectService
     return $project;
   }
 
+  public static function getBySlug(string $slug, bool $includeLanguages = false): ?Project
+  {
+    $project = ProjectRepository::findBySlug($slug);
+    if ($includeLanguages && $project) {
+      $project->getLanguages();
+    }
+    return $project;
+  }
+
   public static function create(Project $project): Project
   {
     return ProjectRepository::create($project);

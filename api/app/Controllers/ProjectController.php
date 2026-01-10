@@ -18,16 +18,25 @@ class ProjectController
 
   public function show(string $id)
   {
-    try {
-      $id = (int) $id;
-      if ($id <= 0) {
-        throw new \ValueError('Invalid ID format');
+    $project = null;
+
+    // Essayer de traiter comme un ID numérique
+    if (is_numeric($id)) {
+      try {
+        $numericId = (int) $id;
+        if ($numericId <= 0) {
+          throw new \ValueError('Invalid ID format');
+        }
+        $project = ProjectService::getById($numericId, true);
+      } catch (\ValueError $e) {
+        Response::json(['error' => 'Invalid ID format'], 400);
+        return;
       }
-    } catch (\ValueError $e) {
-      Response::json(['error' => 'Invalid ID format'], 400);
-      return;
+    } else {
+      // Traiter comme un slug
+      $project = ProjectService::getBySlug($id, true);
     }
-    $project = ProjectService::getById($id, true);
+
     if (!$project) {
       Response::json(['error' => 'Project not found'], 404);
       return;

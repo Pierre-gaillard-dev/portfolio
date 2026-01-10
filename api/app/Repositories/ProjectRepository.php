@@ -31,6 +31,17 @@ class ProjectRepository
     return $row ? self::map($row) : null;
   }
 
+  public static function findBySlug(string $slug): ?Project
+  {
+    $pdo = Database::connect();
+    $stmt = $pdo->prepare("SELECT * FROM projects WHERE slug = ?");
+    $stmt->execute([$slug]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    Database::disconnect();
+
+    return $row ? self::map($row) : null;
+  }
+
   public static function create(Project $project): Project
   {
     $pdo = Database::connect();
@@ -96,6 +107,7 @@ class ProjectRepository
   {
     return new Project(
       (int) $row['id'],
+      $row['slug'],
       $row['title'],
       $row['img'],
       $row['github'],
