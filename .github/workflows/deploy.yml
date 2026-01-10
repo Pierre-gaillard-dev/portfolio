@@ -25,14 +25,18 @@ jobs:
         run: npm run build
 
       - name: SFTP Deploy to OVH
-        uses: wlixcc/sftp-upload-action@master
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local_path: './build/*'
-          remote_path: '/www/'
-          sftp_only: true
+          port: 22
+          local_dir: ./build/
+          server_dir: ./www/
+          exclude: |
+            **/.git**
+            **/node_modules/**
+            **/.github/**
 
   deploy-backend:
     runs-on: ubuntu-latest
@@ -54,11 +58,15 @@ jobs:
         run: echo "${{ secrets.ENV_PHP_CONTENT }}" > api/core/Env.php
 
       - name: SFTP Deploy to OVH
-        uses: wlixcc/sftp-upload-action@master
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local_path: './api/*'
-          remote_path: '/www/api/'
-          sftp_only: true
+          port: 22
+          local_dir: ./api/
+          server_dir: ./www/api/
+          exclude: |
+            **/.git**
+            **/node_modules/**
+            **/.github/**
