@@ -32,6 +32,16 @@ class ProjectService {
       return null;
     }
   }
+
+  public async getProjectBySlug(slug: string): Promise<Project | null> {
+    try {
+      const response = await api.get(`/projects/${slug}`);
+      return response.data as Project;
+    } catch (error) {
+      console.error(`Error fetching project with slug ${slug}:`, error);
+      return null;
+    }
+  }
 }
 
 export default ProjectService.getInstance();

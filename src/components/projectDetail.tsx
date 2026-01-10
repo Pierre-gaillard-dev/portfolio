@@ -1,6 +1,7 @@
 "use client"
 
 import { FC, RefObject, useRef } from "react"
+import Link from "next/link"
 // components
 import { ChevronLeft, ExternalLink, Github } from "./ui/Icons"
 import Button from "./ui/Button"
@@ -59,7 +60,12 @@ export const getIframe = (project: Project, ref: RefObject<any>) => {
   )
 }
 
-const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
+export interface ProjectDetailProps {
+  project: Project
+  onClose?: () => void
+}
+
+const ProjectDetail: FC<ProjectDetailProps> = ({
   project,
   onClose,
 }) => {
@@ -80,10 +86,15 @@ const ProjectDetail: FC<{ project: Project; onClose: () => void }> = ({
     <div className="content projectDetail">
       <section id="hero" className="background_light">
         <div className="container">
-          <a onClick={onClose} className="back">
+          {onClose ? (<a onClick={onClose} className="back">
             <ChevronLeft />
             Retour
-          </a>
+          </a>) : (
+            <Link href="/projects" className="back">
+              <ChevronLeft />
+              Retour
+            </Link>
+          )}
           <div className="split">
             <div>
               <h2>{project.title}</h2>
