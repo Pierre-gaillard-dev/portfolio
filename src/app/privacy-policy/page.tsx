@@ -1,21 +1,21 @@
-import { Metadata } from "next";
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Pierre Gaillard, politique de confidentialité",
+  title: 'Pierre Gaillard, politique de confidentialité',
   description:
-    "Politique de confidentialité du site portfolio de Pierre Gaillard, développeur web.",
-};
+    'Politique de confidentialité du site portfolio de Pierre Gaillard, développeur web.',
+}
 
 const PrivacyPolicy = () => {
   return (
-    <div className="content">
-      <section id="hero" className="background_light">
-        <div className="container">
+    <div className='content'>
+      <section id='hero' className='background_light'>
+        <div className='container'>
           <h1>Politique de confidentialité</h1>
         </div>
       </section>
 
-      <section id="introduction" className="container">
+      <section id='introduction' className='container'>
         <h2>Introduction</h2>
         <p>
           La présente politique de confidentialité décrit comment vos données
@@ -26,8 +26,8 @@ const PrivacyPolicy = () => {
         </p>
       </section>
 
-      <section id="collecte" className="background_light">
-        <div className="container">
+      <section id='collecte' className='background_light'>
+        <div className='container'>
           <h2>Données personnelles collectées</h2>
           <p>
             Lors de votre visite sur le Site, nous collectons les types de
@@ -69,26 +69,26 @@ const PrivacyPolicy = () => {
         </div>
       </section>
 
-      <section id="finalites" className="container">
+      <section id='finalites' className='container'>
         <h2>Finalités de l'utilisation des données</h2>
         <p>
           Les données collectées sont utilisées pour les finalités suivantes :
         </p>
         <ul>
           <li>
-            <span className="bold">Statistiques :</span> Suivre l’audience et
+            <span className='bold'>Statistiques :</span> Suivre l’audience et
             améliorer les performances du Site grâce à Google Analytics.
           </li>
           <li>
-            <span className="bold">Améliorer l’Expérience utilisateur :</span>{" "}
+            <span className='bold'>Améliorer l’Expérience utilisateur :</span>{' '}
             Optimiser la navigation sur le Site et personnaliser le contenu
             intégré, comme les vidéos YouTube.
           </li>
         </ul>
       </section>
 
-      <section id="conservation" className="background_light">
-        <div className="container">
+      <section id='conservation' className='background_light'>
+        <div className='container'>
           <h2>Conservation des données</h2>
           <ul>
             <li>
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
         </div>
       </section>
 
-      <section id="droits" className="container">
+      <section id='droits' className='container'>
         <h2>Droits des utilisateurs</h2>
         <p>
           En tant qu'utilisateur, vous disposez des droits suivants concernant
@@ -111,16 +111,16 @@ const PrivacyPolicy = () => {
         </p>
         <ul>
           <li>
-            <span className="bold">Accès :</span> Vous pouvez demander l’accès
+            <span className='bold'>Accès :</span> Vous pouvez demander l’accès
             aux données personnelles collectées vous concernant.
           </li>
           <li>
-            <span className="bold">Rectification et suppression :</span> Vous
+            <span className='bold'>Rectification et suppression :</span> Vous
             avez le droit de demander la correction ou la suppression de vos
             données personnelles.
           </li>
           <li>
-            <span className="bold">Opposition :</span> Vous pouvez vous opposer
+            <span className='bold'>Opposition :</span> Vous pouvez vous opposer
             à la collecte de données non essentielles, notamment via les
             cookies.
           </li>
@@ -133,8 +133,8 @@ const PrivacyPolicy = () => {
         </p>
       </section>
 
-      <section id="cookies" className="background_light">
-        <div className="container">
+      <section id='cookies' className='background_light'>
+        <div className='container'>
           <h2>Gestion des Cookies</h2>
           <p>
             Vous pouvez configurer vos préférences en matière de cookies en
@@ -146,26 +146,26 @@ const PrivacyPolicy = () => {
         </div>
       </section>
 
-      <section id="tiers" className="container">
+      <section id='tiers' className='container'>
         <h2>Services tiers</h2>
         <p>Nous utilisons les services suivants sur ce Site :</p>
         <ul>
           <li>
-            <span className="bold">Google Analytics :</span> Pour des
+            <span className='bold'>Google Analytics :</span> Pour des
             statistiques anonymisées. Ces données sont traitées conformément à
-            la politique de confidentialité de Google, disponible ici :{" "}
-            <a href="https://policies.google.com/privacy" target="_blank">
+            la politique de confidentialité de Google, disponible ici :{' '}
+            <a href='https://policies.google.com/privacy' target='_blank'>
               https://policies.google.com/privacy
             </a>
             .
           </li>
 
           <li>
-            <span className="bold">YouTube :</span> Les vidéos intégrées via des
+            <span className='bold'>YouTube :</span> Les vidéos intégrées via des
             iframes peuvent déposer des cookies et collecter des données. Pour
             plus d’informations, consultez la politique de confidentialité de
-            YouTube :{" "}
-            <a href="https://policies.google.com/privacy" target="_blank">
+            YouTube :{' '}
+            <a href='https://policies.google.com/privacy' target='_blank'>
               https://policies.google.com/privacy
             </a>
             .
@@ -173,8 +173,8 @@ const PrivacyPolicy = () => {
         </ul>
       </section>
 
-      <section id="modifications" className="background_light">
-        <div className="container">
+      <section id='modifications' className='background_light'>
+        <div className='container'>
           <h2>Modifications de cette politique</h2>
           <p>
             Cette politique de confidentialité peut être modifiée à tout moment
@@ -182,12 +182,12 @@ const PrivacyPolicy = () => {
             jour sera publiée sur cette page avec la date de mise à jour.
           </p>
           <p>
-            <span className="bold">Dernière mise à jour :</span> 04 janvier 2025
+            <span className='bold'>Dernière mise à jour :</span> 04 janvier 2025
           </p>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default PrivacyPolicy;
+export default PrivacyPolicy

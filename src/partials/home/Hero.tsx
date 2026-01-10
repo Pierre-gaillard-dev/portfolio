@@ -1,39 +1,37 @@
-"use client"
+'use client'
 
-import { FC, useState } from "react"
-
-import { Github, Mail, File } from "@/components/ui/Icons"
-import Activity from "@/components/Activity"
-import Button from "@/components/ui/Button"
-import Overlay from "@/components/ui/Overlay"
-import CV from "@/components/CV"
-
-import "@/styles/partials/home/Hero.css"
+import { FC, useState } from 'react'
+import '@/styles/partials/home/Hero.css'
+import Button from '@/components/ui/Button'
+import { Github, Mail, File } from '@/components/ui/Icons'
+import Overlay from '@/components/ui/Overlay'
+import Activity from '@/components/Activity'
+import CV from '@/components/CV'
 
 const Hero: FC = () => {
   const [CVOpened, setCVOpened] = useState<boolean>(false)
 
   return (
-    <section id="hero" className="background_light">
+    <section id='hero' className='background_light'>
       {CVOpened && (
         <Overlay close={() => setCVOpened(false)}>
           <CV />
         </Overlay>
       )}
-      <div className="container split">
-        <div id="hero_text">
+      <div className='container split'>
+        <div id='hero_text'>
           <h1>Pierre Gaillard</h1>
           <h2>Développeur web</h2>
-          <div className="split left button_container">
+          <div className='split left button_container'>
             <Button
-              link="https://github.com/Pierre-gaillard-dev"
-              id="github"
-              target="_blank"
+              link='https://github.com/Pierre-gaillard-dev'
+              id='github'
+              target='_blank'
             >
               <Github />
               <span>Github</span>
             </Button>
-            <Button link="mailto:pierre.gaillard.dev@gmail.com">
+            <Button link='mailto:pierre.gaillard.dev@gmail.com'>
               <Mail />
               <span>Mail</span>
             </Button>
@@ -42,7 +40,7 @@ const Hero: FC = () => {
               <span>CV</span>
             </Button>
           </div>
-          <div className="presentation">
+          <div className='presentation'>
             <p>
               Je m’appelle Pierre Gaillard, je suis étudiant à MyDigitalSchool
               Vannes et je suis passionné par le développement informatique
@@ -57,8 +55,8 @@ const Hero: FC = () => {
             <Activity />
           </div>
         </div>
-        <div id="hero_image">
-          <img id="photo" src="../img/photo.png" alt="Pierre Gaillard" />
+        <div id='hero_image'>
+          <img id='photo' src='../img/photo.png' alt='Pierre Gaillard' />
         </div>
       </div>
     </section>

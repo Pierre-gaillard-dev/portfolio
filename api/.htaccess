@@ -19,5 +19,9 @@ RewriteRule ^(.*)$ public/$1 [L]
   Require all denied
 </Files>
 
+<Files "Env.php"
+  Require all denied
+</Files>
+
 # Bloquer l'accès direct aux dossiers internes
 RewriteRule ^(config|core|vendor|app|data)/ - [F,L]

@@ -1,13 +1,13 @@
 <?php
 // Configuration générale de l'API
 define('API_VERSION', '1.0');
-define('API_BASE_URL', 'https://pierre-gaillard.mds-vannes.yt/api/');
+define('API_BASE_URL', 'https://pierre-gaillard.dev/api/');
 
 // Configuration CORS pour production
 define('CORS_ORIGINS', [
     'http://localhost:5173',  // Développement Vite
-    'https://pierre-gaillard.mds-vannes.yt/',
-    'https://www.pierre-gaillard.mds-vannes.yt/',
+    'https://pierre-gaillard.dev/',
+    'https://www.pierre-gaillard.dev/',
 ]);
 
 // Configuration pour la production

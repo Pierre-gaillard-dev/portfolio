@@ -1,20 +1,14 @@
 import globals from 'globals'
 import js from '@eslint/js'
-import pluginQuery from '@tanstack/eslint-plugin-query'
 import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'src/components/ui', 'src/routeTree.gen.ts'] },
-  
+  { ignores: ['build/', '.next/'] },
+
   // Configuration générale pour tous les fichiers TS/TSX
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...pluginQuery.configs['flat/recommended'],
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
@@ -22,20 +16,13 @@ export default tseslint.config(
     },
     plugins: {
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      
-      // React Refresh
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      
+
       // Console - Erreur par défaut, mais autorisé dans scripts
       'no-console': 'error',
-      
+
       // Variables inutilisées
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
@@ -50,19 +37,19 @@ export default tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
-      
+
       // TypeScript - Types plus stricts
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-empty-object-type': 'warn',
       '@typescript-eslint/no-unused-expressions': 'error',
-      
+
       // Code quality (règles JavaScript natives)
       'no-debugger': 'error',
       'no-alert': 'warn',
       'prefer-const': 'error',
     },
   },
-  
+
   // Configuration spéciale pour les scripts de build
   {
     files: ['scripts/**/*.{ts,js}'],
@@ -71,7 +58,7 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
-  
+
   // Configuration pour les tests
   {
     files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],

@@ -1,17 +1,17 @@
-import type { Metadata } from "next"
-import { ThemeProvider } from "@/contexts/ThemeContext"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
-import Analytics from "@/components/Analytics"
-import CookieBanner from "@/components/CookieBanner"
-import "@/styles/global.css"
+import type { Metadata } from 'next'
+import { ThemeProvider } from '@/contexts/ThemeContext'
+import '@/styles/global.css'
+import Analytics from '@/components/Analytics'
+import CookieBanner from '@/components/CookieBanner'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: {
-    default: "Pierre Gaillard — Portfolio",
-    template: "%s — Pierre Gaillard",
+    default: 'Pierre Gaillard — Portfolio',
+    template: '%s — Pierre Gaillard',
   },
-  description: "Portfolio de Pierre Gaillard, développeur web passionné.",
+  description: 'Portfolio de Pierre Gaillard, développeur web passionné.',
 }
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" data-scroll-behaviour="smooth">
+    <html lang='fr' data-scroll-behaviour='smooth'>
       <body>
         <ThemeProvider>
           <Header sticky />

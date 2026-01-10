@@ -24,7 +24,9 @@
   .filter a {
     border: 1px solid transparent;
     cursor: pointer;
-    transition: border, opacity 0.2s ease-in-out;
+    transition:
+      border,
+      opacity 0.2s ease-in-out;
   }
 
   .filter a:not(.selected) {

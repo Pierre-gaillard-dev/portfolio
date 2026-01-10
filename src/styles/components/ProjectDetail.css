@@ -1,123 +1,123 @@
 .content.projectDetail > #hero {
-	align-items: stretch;
-	> .container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: left;
-		position: relative;
-		margin: 0 auto;
-	}
+  align-items: stretch;
+  > .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    position: relative;
+    margin: 0 auto;
+  }
 
-	.container > .split > div {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
+  .container > .split > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-	.container > .split > div.links {
-		flex-direction: row;
-	}
+  .container > .split > div.links {
+    flex-direction: row;
+  }
 
-	.back {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		cursor: pointer;
-		position: absolute;
-		top: 20px;
-		left: 20px;
-	}
+  .back {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
 
-	.languages {
-		display: flex;
-		flex-direction: row;
-		gap: 15px;
-		align-items: left;
-		flex-wrap: nowrap;
-	}
+  .languages {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: left;
+    flex-wrap: nowrap;
+  }
 
-	.languages p {
-		margin: unset;
-	}
+  .languages p {
+    margin: unset;
+  }
 
-	.button_background {
-		height: 60px;
-	}
+  .button_background {
+    height: 60px;
+  }
 }
 
 .content.projectDetail #demo {
-	.center {
-		position: relative;
-	}
+  .center {
+    position: relative;
+  }
 
-	iframe {
-		border-radius: 10px;
-	}
+  iframe {
+    border-radius: 10px;
+  }
 
-	.full-screen {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		height: 70px;
-		width: 70px;
-		padding: 15px;
-		background-color: rgba(0, 0, 0, 0.5);
-		border-top-left-radius: 12px;
-		cursor: pointer;
-	}
+  .full-screen {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 70px;
+    width: 70px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 12px;
+    cursor: pointer;
+  }
 
-	.full-screen > svg {
-		width: 100%;
-		height: 100%;
-	}
+  .full-screen > svg {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .content.projectDetail h2,
 .content.projectDetail #hero h2 {
-	font-size: 75px;
+  font-size: 75px;
 }
 
 @media screen and (max-width: 1400px) {
-	.content.projectDetail h2 {
-		font-size: 5vw;
-	}
+  .content.projectDetail h2 {
+    font-size: 5vw;
+  }
 }
 
 @media screen and (max-width: 800px) {
-	.content.projectDetail > #hero {
-		min-height: unset;
-	}
+  .content.projectDetail > #hero {
+    min-height: unset;
+  }
 
-	.content.projectDetail > #hero .container {
-		gap: 10px;
-	}
+  .content.projectDetail > #hero .container {
+    gap: 10px;
+  }
 
-	.content.projectDetail > #hero .back {
-		position: unset;
-	}
+  .content.projectDetail > #hero .back {
+    position: unset;
+  }
 
-	.content.projectDetail > #hero .button_background {
-		display: none !important;
-	}
+  .content.projectDetail > #hero .button_background {
+    display: none !important;
+  }
 
-	.content.projectDetail > #hero h2 {
-		font-size: 10vw;
-		line-height: 10vw;
-	}
+  .content.projectDetail > #hero h2 {
+    font-size: 10vw;
+    line-height: 10vw;
+  }
 
-	.content.projectDetail h2 {
-		font-size: 30px;
-	}
+  .content.projectDetail h2 {
+    font-size: 30px;
+  }
 
-	.content.projectDetail .container {
-		padding: 30px 30px;
-	}
+  .content.projectDetail .container {
+    padding: 30px 30px;
+  }
 }
 
 @media screen and (max-width: 500px) {
-	.content.projectDetail > #hero h2 {
-		font-size: 50px;
-		line-height: 50px;
-	}
+  .content.projectDetail > #hero h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
 }

@@ -14,16 +14,16 @@
 
   --shadow: #cfb5ff33 5px 5px 10px;
   --shadow-large: #cfb5ff33 10px 10px 20px;
-  --shadow-neo-light: var(--background) -5px -5px 10px,
-    var(--background-3-080) 5px 5px 10px,
+  --shadow-neo-light:
+    var(--background) -5px -5px 10px, var(--background-3-080) 5px 5px 10px,
     inset var(--background-3-080) -5px -5px 10px,
     inset var(--background) 5px 5px 10px;
-  --shadow-neo-light-small: var(--background) -3px -3px 6px,
-    var(--background-3-080) 3px 3px 6px,
+  --shadow-neo-light-small:
+    var(--background) -3px -3px 6px, var(--background-3-080) 3px 3px 6px,
     inset var(--background-3-080) -3px -3px 6px,
     inset var(--background) 3px 3px 6px;
-  --shadow-neo-light-inverted: var(--background) 5px 5px 10px,
-    var(--background-3-080) -2px -2px 5px,
+  --shadow-neo-light-inverted:
+    var(--background) 5px 5px 10px, var(--background-3-080) -2px -2px 5px,
     inset var(--background-3-080) 5px 5px 10px,
     inset var(--background) -5px -5px 10px;
 
@@ -49,16 +49,16 @@
 
     --shadow: #6a1aff33 5px 5px 10px;
     --shadow-large: #6a1aff33 10px 10px 20px;
-    --shadow-neo-light: var(--background) 5px 5px 10px,
-      var(--background-3-080) -5px -5px 10px,
+    --shadow-neo-light:
+      var(--background) 5px 5px 10px, var(--background-3-080) -5px -5px 10px,
       inset var(--background-3-080) 5px 5px 10px,
       inset var(--background) -5px -5px 10px;
-    --shadow-neo-light-small: var(--background) 3px 3px 6px,
-      var(--background-3-080) -3px -3px 6px,
+    --shadow-neo-light-small:
+      var(--background) 3px 3px 6px, var(--background-3-080) -3px -3px 6px,
       inset var(--background-3-080) 3px 3px 6px,
       inset var(--background) -3px -3px 6px;
-    --shadow-neo-light-inverted: var(--background) -5px -5px 10px,
-      var(--background-3-080) 2px 2px 5px,
+    --shadow-neo-light-inverted:
+      var(--background) -5px -5px 10px, var(--background-3-080) 2px 2px 5px,
       inset var(--background-3-080) -5px -5px 10px,
       inset var(--background) 5px 5px 10px;
 
@@ -75,7 +75,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s,
+  transition:
+    color 0.3s,
+    background-color 0.3s,
+    box-shadow 0.3s,
     border-color 0.3s;
 }
 
@@ -89,8 +92,9 @@ body {
 body {
   color: var(--text);
   background: var(--background);
-  font-family: "Nunito Sans", "Lucida Sans", "Lucida Sans Regular",
-    "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family:
+    'Nunito Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
@@ -120,8 +124,8 @@ h4,
 h5,
 h6 {
   color: inherit;
-  font-family: "Mukta Mahee", Impact, Haettenschweiler, "Arial Narrow Bold",
-    sans-serif;
+  font-family:
+    'Mukta Mahee', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 h1 {

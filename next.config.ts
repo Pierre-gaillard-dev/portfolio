@@ -1,8 +1,8 @@
-import { type NextConfig } from "next";
+import { type NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "export",
+  output: 'export',
 
   // Désactiver l'optimisation d'images en mode static export
   images: {
@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
 
   // Build directory
-  distDir: "build",
-};
+  distDir: 'build',
+}
 
-export default nextConfig;
+export default nextConfig

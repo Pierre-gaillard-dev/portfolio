@@ -27,15 +27,10 @@ const Projects: FC<ProjectsProps> = ({ initialProjects = [] }) => {
   const [index, setIndex] = useState<number>(0)
 
   useEffect(() => {
-    projectService
-      .getProjects()
-      .then((data) => {
-        if (data.length === 0) return
-        setProjects(data.splice(0, 3))
-      })
-      .catch((error) => {
-        console.error('Error fetching projects:', error)
-      })
+    projectService.getProjects().then((data) => {
+      if (data.length === 0) return
+      setProjects(data.splice(0, 3))
+    })
   }, [])
 
   const handlePointerDown = (e: PointerEvent<HTMLDivElement>) => {

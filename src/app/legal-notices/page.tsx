@@ -1,85 +1,85 @@
-import { Metadata } from "next";
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Pierre Gaillard, mentions légales",
+  title: 'Pierre Gaillard, mentions légales',
   description:
-    "Mentions légales du site portfolio de Pierre Gaillard, développeur web.",
-};
+    'Mentions légales du site portfolio de Pierre Gaillard, développeur web.',
+}
 
 const LegalNotices = () => {
   return (
-    <div className="content">
-      <section id="hero" className="background_light">
-        <div className="container">
-          <h1 className="center">Mentions L&eacute;gales</h1>
+    <div className='content'>
+      <section id='hero' className='background_light'>
+        <div className='container'>
+          <h1 className='center'>Mentions L&eacute;gales</h1>
         </div>
       </section>
 
-      <section id="proprietaire" className="container">
+      <section id='proprietaire' className='container'>
         <h2>Propri&eacute;taire du site internet</h2>
         <p>
-          <span className="bold">Nom :</span> Pierre Gaillard
+          <span className='bold'>Nom :</span> Pierre Gaillard
         </p>
         <p>
-          <span className="bold">Adresse :</span> 34 rue de Kersalé, 56400
+          <span className='bold'>Adresse :</span> 34 rue de Kersalé, 56400
           Pluneret
         </p>
         <p>
-          <span className="bold">E-mail :</span>
-          <a href="mailto:pierre.gaillard.dev@gmail.com">
+          <span className='bold'>E-mail :</span>
+          <a href='mailto:pierre.gaillard.dev@gmail.com'>
             pierre.gaillard.dev@gmail.com
           </a>
         </p>
       </section>
-      <section id="responsable" className="background_light">
-        <div className="container">
+      <section id='responsable' className='background_light'>
+        <div className='container'>
           <h2>Responsable de publication</h2>
           <p>
-            <span className="bold">Nom :</span> Pierre Gaillard
+            <span className='bold'>Nom :</span> Pierre Gaillard
           </p>
           <p>
-            <span className="bold">Adresse :</span> 34 rue de Kersalé, 56400
+            <span className='bold'>Adresse :</span> 34 rue de Kersalé, 56400
             Pluneret
           </p>
           <p>
-            <span className="bold">E-mail :</span>
-            <a href="mailto:pierre.gaillard.dev@gmail.com">
+            <span className='bold'>E-mail :</span>
+            <a href='mailto:pierre.gaillard.dev@gmail.com'>
               pierre.gaillard.dev@gmail.com
             </a>
           </p>
         </div>
       </section>
-      <section id="hebergement" className="container">
+      <section id='hebergement' className='container'>
         <h2>Hebergement</h2>
         <p>
-          <span className="bold">Nom :</span> PlanetHoster
+          <span className='bold'>Nom :</span> PlanetHoster
         </p>
         <p>
-          <span className="bold">Adresse :</span> 4416 Louis-B.-Mayer, Laval,
+          <span className='bold'>Adresse :</span> 4416 Louis-B.-Mayer, Laval,
           Québec, Canada
         </p>
         <p>
-          <span className="bold">Téléphone :</span> +1 855 774 4678
+          <span className='bold'>Téléphone :</span> +1 855 774 4678
         </p>
         <p>
-          <span className="bold">Site web :</span>
-          <a href="https://www.ovh.com/fr">thhps://www.planethoster.com</a>
+          <span className='bold'>Site web :</span>
+          <a href='https://www.ovh.com/fr'>thhps://www.planethoster.com</a>
         </p>
       </section>
-      <section id="propriete-intellectuelle" className="background_light">
-        <div className="container">
+      <section id='propriete-intellectuelle' className='background_light'>
+        <div className='container'>
           <h2>Propri&eacute;t&eacute; intellectuelle</h2>
           <p>
             Tous les contenus présents sur ce site (textes, images, vidéos,
             projets, etc.) sont protégés par le droit d'auteur. Toute
             reproduction, représentation, modification ou diffusion, sans
             l'autorisation préalable de
-            <span className="">Pierre Gaillard</span>, est strictement
+            <span className=''>Pierre Gaillard</span>, est strictement
             interdite.
           </p>
         </div>
       </section>
-      <section id="donnees-personnelles" className="container">
+      <section id='donnees-personnelles' className='container'>
         <h2>Données personnelles</h2>
         <p>
           Ce site utilise Google Analytics, un service d'analyse de site
@@ -118,8 +118,8 @@ const LegalNotices = () => {
           https://policies.google.com/privacy.
         </p>
       </section>
-      <section id="cookies" className="background_light">
-        <div className="container">
+      <section id='cookies' className='background_light'>
+        <div className='container'>
           <h2>Cookies</h2>
           <p>
             Lors de votre première visite sur ce site, un bandeau de
@@ -131,7 +131,7 @@ const LegalNotices = () => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default LegalNotices;
+export default LegalNotices

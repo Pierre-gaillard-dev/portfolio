@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import type { CSSProperties, FC } from "react"
-import type { Project } from "@/type"
-import useBreakpoints from "@/hooks/useBreakpoints"
-import ProjectCard from "@/components/ProjectCard"
-import "@/styles/partials/home/ProjectSliderCard.css"
+import type { CSSProperties, FC } from 'react'
+import '@/styles/partials/home/ProjectSliderCard.css'
+import type { Project } from '@/type'
+import useBreakpoints from '@/hooks/useBreakpoints'
+import ProjectCard from '@/components/ProjectCard'
 
 const ProjectSliderCard: FC<{
   project: Project
@@ -16,7 +16,7 @@ const ProjectSliderCard: FC<{
 
   const position = (index - currentIndex + 3) % 3
   let style: CSSProperties = {}
-  if (isBelow("xl")) {
+  if (isBelow('xl')) {
     // Calculates position of the card
     switch (Math.floor(position)) {
       case 0:
