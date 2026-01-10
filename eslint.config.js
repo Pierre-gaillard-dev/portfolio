@@ -8,10 +8,7 @@ export default tseslint.config(
 
   // Configuration générale pour tous les fichiers TS/TSX
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
