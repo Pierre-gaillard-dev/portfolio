@@ -31,8 +31,8 @@ jobs:
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
-          local_dir: ./build/
-          server_dir: ./www/
+          local-dir: ./build/
+          server-dir: ./www/
           exclude: |
             **/.git**
             **/node_modules/**
@@ -64,8 +64,8 @@ jobs:
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
-          local_dir: ./api/
-          server_dir: ./www/api/
+          local-dir: ./api/
+          server-dir: ./www/api/
           exclude: |
             **/.git**
             **/node_modules/**
