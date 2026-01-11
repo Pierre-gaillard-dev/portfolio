@@ -57,7 +57,9 @@ jobs:
         run: cd api && composer install --no-dev --optimize-autoloader
 
       - name: add Env.php
-        run: echo "${{ secrets.ENV_PHP_CONTENT }}" > api/core/Env.php
+        run: cat << EOF > api/core/Env.php
+          ${{ secrets.ENV_PHP_CONTENT }}
+          EOF
 
       - name: SFTP Deploy to OVH
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
