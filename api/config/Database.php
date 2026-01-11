@@ -20,7 +20,7 @@ class Database
 
       $host = getenv('DB_HOST');
       $dbName = getenv('DB_NAME');
-      $port = getenv('DB_PORT') ?: '3306'; // Default to 3306 if not set
+      $port = getenv('DB_PORT');
       $user = getenv('DB_USER');
       $pass = getenv('DB_PASS');
       if ($port) {

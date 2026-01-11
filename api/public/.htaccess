@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Empêcher l'accès direct aux fichiers .php (optionnel mais plus propre)
+# Tout doit passer par index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# Sécurité : Empêcher de lister le contenu du dossier
+Options -Indexes

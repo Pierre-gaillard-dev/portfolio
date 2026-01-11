@@ -13,7 +13,7 @@ class LanguageRepository
   public static function getAll(): array
   {
     $pdo = Database::connect();
-    $stmt = $pdo->query("SELECT * FROM languages");
+    $stmt = $pdo->query("SELECT * FROM " . getenv('DB_PREFIX') . "languages");
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     Database::disconnect();
 
@@ -23,7 +23,7 @@ class LanguageRepository
   public static function findById(int $id): ?Language
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("SELECT * FROM languages WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT * FROM " . getenv('DB_PREFIX') . "languages WHERE id = ?");
     $stmt->execute([$id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     Database::disconnect();
@@ -34,7 +34,7 @@ class LanguageRepository
   public static function create(Language $language): Language
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("INSERT INTO languages (name, slug, created_at, updated_at) VALUES (?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO " . getenv('DB_PREFIX') . "languages (name, slug, created_at, updated_at) VALUES (?, ?, ?, ?)");
     $stmt->execute([
       $language->name,
       $language->slug,
@@ -48,7 +48,7 @@ class LanguageRepository
   public static function update(Language $language): Language
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("UPDATE languages SET name = ?, slug = ?, updated_at = ? WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE " . getenv('DB_PREFIX') . "languages SET name = ?, slug = ?, updated_at = ? WHERE id = ?");
     $stmt->execute([
       $language->name,
       $language->slug,
@@ -62,7 +62,7 @@ class LanguageRepository
   public static function delete(int $id): bool
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("DELETE FROM languages WHERE id = ?");
+    $stmt = $pdo->prepare("DELETE FROM " . getenv('DB_PREFIX') . "languages WHERE id = ?");
     $result = $stmt->execute([$id]);
     Database::disconnect();
 
