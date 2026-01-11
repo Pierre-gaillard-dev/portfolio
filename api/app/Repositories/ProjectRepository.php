@@ -13,7 +13,7 @@ class ProjectRepository
   public static function getAll(): array
   {
     $pdo = Database::connect();
-    $stmt = $pdo->query("SELECT * FROM projects");
+    $stmt = $pdo->query("SELECT * FROM " . getenv('DB_PREFIX') . "projects");
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     Database::disconnect();
 
@@ -23,7 +23,7 @@ class ProjectRepository
   public static function findById(int $id): ?Project
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("SELECT * FROM projects WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT * FROM " . getenv('DB_PREFIX') . "projects WHERE id = ?");
     $stmt->execute([$id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     Database::disconnect();
@@ -34,7 +34,7 @@ class ProjectRepository
   public static function findBySlug(string $slug): ?Project
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("SELECT * FROM projects WHERE slug = ?");
+    $stmt = $pdo->prepare("SELECT * FROM " . getenv('DB_PREFIX') . "projects WHERE slug = ?");
     $stmt->execute([$slug]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     Database::disconnect();
@@ -45,7 +45,7 @@ class ProjectRepository
   public static function create(Project $project): Project
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("INSERT INTO projects (slug, title, img, github, demo, is_playable_demo, demo_height, demo_width, aspect_ratio, video, description, conditions, copyright, started_at, finished_at, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO " . getenv('DB_PREFIX') . "projects (slug, title, img, github, demo, is_playable_demo, demo_height, demo_width, aspect_ratio, video, description, conditions, copyright, started_at, finished_at, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
       $project->slug,
       $project->title,
@@ -72,7 +72,7 @@ class ProjectRepository
   {
     $project->updateTimestamps();
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("UPDATE projects SET slug = ?, title = ?, img = ?, github = ?, demo = ?, is_playable_demo = ?, demo_height = ?, demo_width = ?, aspect_ratio = ?, video = ?, description = ?, conditions = ?, copyright = ?, started_at = ?, finished_at = ?, duration = ? WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE " . getenv('DB_PREFIX') . "projects SET slug = ?, title = ?, img = ?, github = ?, demo = ?, is_playable_demo = ?, demo_height = ?, demo_width = ?, aspect_ratio = ?, video = ?, description = ?, conditions = ?, copyright = ?, started_at = ?, finished_at = ?, duration = ? WHERE id = ?");
     $stmt->execute([
       $project->slug,
       $project->title,
@@ -99,7 +99,7 @@ class ProjectRepository
   public static function delete(int $id): bool
   {
     $pdo = Database::connect();
-    $stmt = $pdo->prepare("DELETE FROM projects WHERE id = ?");
+    $stmt = $pdo->prepare("DELETE FROM " . getenv('DB_PREFIX') . "projects WHERE id = ?");
     $result = $stmt->execute([$id]);
     Database::disconnect();
     return $result;

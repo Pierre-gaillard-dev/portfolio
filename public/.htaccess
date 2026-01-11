@@ -1,9 +1,11 @@
-Options -MultiViews
 RewriteEngine On
 
-# Si le fichier existe, on le sert
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
+# 1. Rediriger les appels /api vers le sous-dossier api/public
+# [L] signifie que c'est la dernière règle si elle match
+RewriteRule ^api/(.*)$ api/public/index.php [QSA,L]
 
-# Sinon, on essaie d'ajouter .html à l'URL
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+# 2. Gestion du front Next.js (si export statique)
+# Si le fichier .html existe, on le sert
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
