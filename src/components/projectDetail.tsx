@@ -103,12 +103,12 @@ const ProjectDetail: FC<ProjectDetailProps> = ({ project, onClose }) => {
               )}
             </div>
             <div className='split links'>
-              <Button link={project.github} color='white'>
+              <Button link={project.github} color='white' target='_blank'>
                 <Github />
                 <span>Github</span>
               </Button>
               {project.demo ? (
-                <Button link={project.demo} color='white'>
+                <Button link={project.demo} color='white' target='_blank'>
                   <ExternalLink />
                   <span>Demo</span>
                 </Button>

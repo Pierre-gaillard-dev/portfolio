@@ -33,6 +33,7 @@ jobs:
           port: 22
           local-dir: ./build/
           server-dir: ./www/
+          timeout: 600
           exclude: |
             **/.git**
             **/node_modules/**
@@ -66,6 +67,7 @@ jobs:
           port: 22
           local-dir: ./api/
           server-dir: ./www/api/
+          timeout: 600
           exclude: |
             **/.git**
             **/node_modules/**

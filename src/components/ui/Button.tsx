@@ -29,6 +29,7 @@ const Button: FC<ButtonProps> = ({
         onClick={onClick}
         download={download}
         target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       >
         {children}
       </a>

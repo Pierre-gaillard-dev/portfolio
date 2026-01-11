@@ -8,8 +8,14 @@ interface pageProps {
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const allProjects = await projects.getProjects()
-  return allProjects.map((project) => ({ slug: project.slug }))
+  try {
+    const allProjects = await projects.getProjects()
+    return allProjects.map((project) => ({ slug: project.slug }))
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Failed to fetch projects for static generation:', error)
+    return []
+  }
 }
 
 const Project = async ({ params }: pageProps) => {
