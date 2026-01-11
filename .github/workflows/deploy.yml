@@ -30,7 +30,8 @@ jobs:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          port: 22
+          port: 21
+          protocol: ftps
           local-dir: ./build/
           server-dir: ./www/
           timeout: 120000
@@ -64,7 +65,8 @@ jobs:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          port: 22
+          port: 21
+          protocol: ftps
           local-dir: ./api/
           server-dir: ./www/api/
           timeout: 120000
