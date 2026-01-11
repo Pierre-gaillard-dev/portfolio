@@ -14,7 +14,7 @@ class ProjectLanguageRepository
   public static function findExistingProjectLanguage(int $languageId, int $projectId): ?ProjectLanguage
   {
     $db = Database::connect();
-    $stmt = $db->prepare('SELECT * FROM project_language WHERE language_id = :language_id AND project_id = :project_id');
+    $stmt = $db->prepare('SELECT * FROM ' . getenv('DB_PREFIX') . 'project_language WHERE language_id = :language_id AND project_id = :project_id');
     $stmt->bindParam(':language_id', $languageId);
     $stmt->bindParam(':project_id', $projectId);
     $stmt->execute();
@@ -37,8 +37,8 @@ class ProjectLanguageRepository
     $db = Database::connect();
     $stmt = $db->prepare(
       'SELECT l.* 
-     FROM project_language pl
-     JOIN languages l ON l.id = pl.language_id
+     FROM ' . getenv('DB_PREFIX') . 'project_language pl
+     JOIN ' . getenv('DB_PREFIX') . 'languages l ON l.id = pl.language_id
      WHERE pl.project_id = :project_id'
     );
     $stmt->bindParam(':project_id', $projectId);
@@ -61,7 +61,7 @@ class ProjectLanguageRepository
   public static function attachLanguageToProject(int $languageId, int $projectId): ProjectLanguage
   {
     $db = Database::connect();
-    $stmt = $db->prepare('INSERT INTO project_language (language_id, project_id, created_at, updated_at) VALUES (:language_id, :project_id, NOW(), NOW())');
+    $stmt = $db->prepare('INSERT INTO ' . getenv('DB_PREFIX') . 'project_language (language_id, project_id, created_at, updated_at) VALUES (:language_id, :project_id, NOW(), NOW())');
     $stmt->bindParam(':language_id', $languageId);
     $stmt->bindParam(':project_id', $projectId);
     $succeed = $stmt->execute();
@@ -80,7 +80,7 @@ class ProjectLanguageRepository
   public static function detachLanguageFromProject(int $languageId, int $projectId): bool
   {
     $db = Database::connect();
-    $stmt = $db->prepare('DELETE FROM project_language WHERE language_id = :language_id AND project_id = :project_id');
+    $stmt = $db->prepare('DELETE FROM ' . getenv('DB_PREFIX') . 'project_language WHERE language_id = :language_id AND project_id = :project_id');
     $stmt->bindParam(':language_id', $languageId);
     $stmt->bindParam(':project_id', $projectId);
     return $stmt->execute();
