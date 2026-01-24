@@ -52,7 +52,7 @@ class ProjectController
     $data = json_decode($content, true);
 
     if (is_null($data)) {
-      $data = json_decode(utf8_decode($content), true);
+      $data = json_decode(mb_convert_encoding($content, 'UTF-8', 'ISO-8859-1'), true);
     }
 
     if (!$data || !isset($data['title'])) {
@@ -67,7 +67,7 @@ class ProjectController
         return;
       }
     }
-    echo "creating project";
+
     try {
       $project = new Project(
         id: 0, // Assuming ID is auto-incremented

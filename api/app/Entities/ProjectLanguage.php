@@ -27,7 +27,6 @@ class ProjectLanguage
   public function toArray(): array
   {
     return [
-      'id' => $this->id,
       'language_id' => $this->language_id,
       'project_id' => $this->project_id,
       'created_at' => $this->created_at,

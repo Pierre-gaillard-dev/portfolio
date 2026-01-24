@@ -69,12 +69,12 @@ class ProjectLanguageRepository
       throw new \Exception('Failed to attach language to project');
     }
 
-    $result = new ProjectLanguage(
-      $languageId,
-      $projectId,
-      (new \DateTime())->format('Y-m-d H:i:s'),
-      (new \DateTime())->format('Y-m-d H:i:s')
-    );
+    $result = null;
+    try {
+      $result = self::findExistingProjectLanguage($languageId, $projectId);
+    } catch (\Exception $e) {
+      throw new \Exception('Failed to retrieve attached project language after insertion: ' . $e->getMessage());
+    }
     if (!$result) {
       throw new \Exception('Failed to retrieve attached project language');
     }
