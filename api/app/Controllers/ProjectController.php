@@ -46,22 +46,32 @@ class ProjectController
 
   public function create()
   {
-    $data = json_decode(file_get_contents('php://input'), true);
+    $content = file_get_contents('php://input');
+    $content = preg_replace('/[\x00-\x1F\x7F]/u', '', $content);
+    $content = trim($content, "\xEF\xBB\xBF"); // Remove BOM if present
+    $data = json_decode($content, true);
+
+    if (is_null($data)) {
+      $data = json_decode(utf8_decode($content), true);
+    }
+
     if (!$data || !isset($data['title'])) {
       Response::json(['error' => 'Invalid input'], 400);
       return;
     }
     // Validate required fields
-    $requiredFields = ['title', 'img', 'github', 'description', 'conditions', 'copyright'];
+    $requiredFields = ['title', 'img', 'github', 'description', 'conditions', 'copyright', 'slug'];
     foreach ($requiredFields as $field) {
       if (!isset($data[$field])) {
         Response::json(['error' => "Missing required field: $field"], 400);
         return;
       }
     }
+    echo "creating project";
     try {
       $project = new Project(
         id: 0, // Assuming ID is auto-incremented
+        slug: $data['slug'],
         title: $data['title'],
         img: $data['img'],
         github: $data['github'],
@@ -130,7 +140,8 @@ class ProjectController
 
     $updatedProject = new Project(
       id: $project->id,
-      title: $data['title'],
+      title: $data['title'] ?? $project->title,
+      slug: $data['slug'] ?? $project->slug,
       img: $data['img'] ?? $project->img,
       github: $data['github'] ?? $project->github,
       demo: $data['demo'] ?? $project->demo,

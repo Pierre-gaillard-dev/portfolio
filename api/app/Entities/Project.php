@@ -11,7 +11,7 @@ class Project implements \JsonSerializable
 
   public function __construct(
     private int $id,
-    string $slug,
+    private string $slug,
     private string $title,
     private string $img,
     private string $github,
