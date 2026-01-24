@@ -57,7 +57,8 @@ jobs:
         run: cd api && composer install --no-dev --optimize-autoloader
 
       - name: add Env.php
-        run: cat << EOF > api/core/Env.php
+        run: |
+          cat << 'EOF' > api/core/Env.php
           ${{ secrets.ENV_PHP_CONTENT }}
           EOF
 

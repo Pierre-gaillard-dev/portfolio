@@ -20,9 +20,8 @@ class ProjectLanguageRepository
     $stmt->execute();
 
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($row) {
+    if ($row && isset($row['language_id'], $row['project_id'], $row['created_at'], $row['updated_at'])) {
       return new ProjectLanguage(
-        $row['id'],
         $row['language_id'],
         $row['project_id'],
         $row['created_at'],
@@ -70,7 +69,12 @@ class ProjectLanguageRepository
       throw new \Exception('Failed to attach language to project');
     }
 
-    $result = ProjectLanguageRepository::findExistingProjectLanguage($languageId, $projectId);
+    $result = null;
+    try {
+      $result = self::findExistingProjectLanguage($languageId, $projectId);
+    } catch (\Exception $e) {
+      throw new \Exception('Failed to retrieve attached project language after insertion: ' . $e->getMessage());
+    }
     if (!$result) {
       throw new \Exception('Failed to retrieve attached project language');
     }

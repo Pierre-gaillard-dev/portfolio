@@ -78,8 +78,7 @@ class AuthService
   public static function getBearerToken(): ?string
   {
     $headers = getallheaders();
-    $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? null;
-
+    $authHeader = $headers['X-Authorization'] ?? null;
     if (!$authHeader) {
       return null;
     }
