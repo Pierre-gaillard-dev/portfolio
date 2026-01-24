@@ -14,6 +14,10 @@ class ProjectLanguageController
   {
     // Ensure the parameter is an integer
     try {
+      if (!is_numeric($projectId)) {
+        throw new \InvalidArgumentException('Invalid project ID');
+      }
+
       $projectId = (int) $projectId;
       if ($projectId <= 0) {
         throw new \InvalidArgumentException('Invalid project ID');
@@ -41,6 +45,10 @@ class ProjectLanguageController
   {
     // Ensure the parameters are integers
     try {
+      if (!is_numeric($projectId) || !is_numeric($languageId)) {
+        throw new \InvalidArgumentException('Invalid project or language ID');
+      }
+
       $projectId = (int) $projectId;
       $languageId = (int) $languageId;
       if ($projectId <= 0 || $languageId <= 0) {
@@ -76,6 +84,10 @@ class ProjectLanguageController
   {
     // Ensure the parameters are integers
     try {
+      if (!is_numeric($projectId) || !is_numeric($languageId)) {
+        throw new \InvalidArgumentException('Invalid project or language ID');
+      }
+
       $projectId = (int) $projectId;
       $languageId = (int) $languageId;
       if ($projectId <= 0 || $languageId <= 0) {

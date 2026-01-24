@@ -6,15 +6,13 @@ namespace App\Entities;
 
 class ProjectLanguage
 {
-  private int $id;
   private int $language_id;
   private int $project_id;
   private string $created_at;
   private string $updated_at;
 
-  public function __construct(int $id, int $language_id, int $project_id, string $created_at, string $updated_at)
+  public function __construct(int $language_id, int $project_id, string $created_at, string $updated_at)
   {
-    $this->id = $id;
     $this->language_id = $language_id;
     $this->project_id = $project_id;
     $this->created_at = $created_at;
