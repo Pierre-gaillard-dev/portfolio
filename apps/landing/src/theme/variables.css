@@ -1,0 +1,13 @@
+@layer theme {
+  :root {
+    --background-color: #0a0c1a;
+
+    --text-color: #f0f1f9;
+    --text-color-rgb: 240, 241, 249;
+    --text-reduced: #a5aabe;
+
+    --light: #212538;
+
+    --container-background: #141728;
+  }
+}
