@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@12.8.1",
   "scripts": {
-    "dev": "next dev -p 5173",
+    "dev": "pnpm --filter @portfolio/landing dev",
     "build": "next build",
     "start": "next start -p 5173",
     "lint": "eslint .",

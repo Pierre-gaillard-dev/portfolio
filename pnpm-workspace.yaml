@@ -1,3 +1,5 @@
 packages:
   - apps/landing
   - packages/*
+allowBuilds:
+  esbuild: false
