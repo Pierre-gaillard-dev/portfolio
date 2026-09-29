@@ -1,0 +1,32 @@
+---
+import './Navbar.css'
+
+const links = [
+  {
+    text: 'projects',
+    to: '#projects',
+  },
+  {
+    text: 'skills',
+    to: '#skills',
+  },
+  {
+    text: 'experience',
+    to: '#work-experience',
+  },
+]
+---
+
+<header>
+  <nav class='container'>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.to}>{link.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
