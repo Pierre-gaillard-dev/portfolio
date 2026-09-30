@@ -1,17 +1,25 @@
 ---
+import { useTranslations } from '../i18n'
 import './Navbar.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang).navbar
 
 const links = [
   {
-    text: 'projects',
+    text: t.projects,
     to: '#projects',
   },
   {
-    text: 'skills',
+    text: t.skills,
     to: '#skills',
   },
   {
-    text: 'experience',
+    text: t.experience,
     to: '#work-experience',
   },
 ]

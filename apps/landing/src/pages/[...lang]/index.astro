@@ -1,0 +1,30 @@
+---
+import Head from '../../components/Head.astro'
+import Navbar from '../../components/Navbar.astro'
+import { defaultLanguage, languages } from '../../i18n'
+
+export function getStaticPaths() {
+  const paths = [undefined, ...languages]
+    .map((l) => ({
+      params: { lang: l },
+    }))
+    .filter((path) => path.params.lang != defaultLanguage)
+
+  console.log(
+    `created home routes for languages ${paths.map((p) => p.params.lang).join(',')} `
+  )
+  return paths
+}
+
+const { lang = 'fr' } = Astro.params
+---
+
+<html lang={lang}>
+  <Head>
+    <title>Astro</title>
+  </Head>
+  <body>
+    <Navbar lang={lang} />
+    <h1>Astro</h1>
+  </body>
+</html>

@@ -1,22 +1,20 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import sitemap from "@astrojs/sitemap"
+import sitemap from '@astrojs/sitemap'
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://pierre-gaillard.dev",
-  trailingSlash: "never",
+  site: 'https://pierre-gaillard.dev',
+  trailingSlash: 'never',
   build: {
-    inlineStylesheets: "auto",
+    inlineStylesheets: 'auto',
   },
-  integrations: [
-    sitemap(),
-  ],
+  integrations: [sitemap()],
   i18n: {
-    defaultLocale: "fr",
-    locales: ["fr", "en"],
+    defaultLocale: 'fr',
+    locales: ['fr', 'en'],
     routing: {
-      prefixDefaultLocale: true
-    }
-  }
-});
+      prefixDefaultLocale: false,
+    },
+  },
+})
