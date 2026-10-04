@@ -3,5 +3,12 @@
     "projects": "Projets",
     "skills": "Compétences",
     "experience": "Expérience"
+  },
+  "home": {
+    "hero": {
+      "job": "Développeur full-stack",
+      "name": "Pierre Gaillard",
+      "description": "// TODO"
+    }
   }
 }

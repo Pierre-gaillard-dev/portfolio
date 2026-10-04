@@ -1,7 +1,7 @@
 import en from './locales/en.json'
 import fr from './locales/fr.json'
 
-export type Translations = typeof en
+export type Translations = typeof fr
 
 const ui: { [key: string]: Translations } = {
   en: en,

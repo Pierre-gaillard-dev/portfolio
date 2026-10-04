@@ -1,0 +1,23 @@
+---
+import { useTranslations } from '../../i18n'
+import './Hero.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang).home.hero
+---
+
+<section id='hero'>
+  <div class='container'>
+    <h2>{t.job}</h2>
+    <h1>{t.name}</h1>
+    <p>{t.description}</p>
+  </div>
+  <div>
+    <p>// TODO</p>
+    <p>Stellar navigation map</p>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+#page-home #hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .container {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    max-width: 400px;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 0.8rem;
+    color: var(--text-reduced);
+    text-transform: uppercase;
+  }
+  p {
+    color: var(--text-reduced);
+  }
+}
