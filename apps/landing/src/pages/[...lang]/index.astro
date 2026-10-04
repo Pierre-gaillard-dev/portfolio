@@ -3,6 +3,7 @@ import Head from '../../components/Head.astro'
 import Navbar from '../../components/Navbar.astro'
 import { defaultLanguage, languages } from '../../i18n'
 import Hero from '../../partials/home/Hero.astro'
+import Projects from '../../partials/home/Projects.astro'
 
 export function getStaticPaths() {
   const paths = [undefined, ...languages]
@@ -27,5 +28,6 @@ const { lang = 'fr' } = Astro.params
   <body id='page-home'>
     <Navbar lang={lang} />
     <Hero lang={lang} />
+    <Projects lang={lang} />
   </body>
 </html>

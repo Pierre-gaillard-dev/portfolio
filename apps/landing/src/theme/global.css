@@ -29,13 +29,33 @@
     word-break: break-word;
   }
 
+  section {
+    max-width: 1200px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 64px auto;
+  }
+
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
 
-  a {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  a,
+  button {
     text-decoration: none;
     color: inherit;
   }
@@ -48,6 +68,13 @@
 
 /* globals */
 @layer utilities {
+  button {
+    background-color: rgba(var(--text-color-rgb), 0.05);
+    border: 1px solid rgba(var(--text-color-rgb), 0.5);
+    padding: 16px;
+    border-radius: 999px;
+  }
+
   .container {
     background: var(--container-background);
     border-radius: 16px;

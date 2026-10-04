@@ -9,6 +9,10 @@
       "job": "Développeur full-stack",
       "name": "Pierre Gaillard",
       "description": "// TODO"
+    },
+    "projects": {
+      "title": "Projets",
+      "see-all": "Tous les projets"
     }
   }
 }

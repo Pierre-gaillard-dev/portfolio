@@ -1,0 +1,21 @@
+---
+import type { Project } from '../data/projects/projects.schemas'
+import './ProjectCard.css'
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+---
+
+<a href=`/projects/${project.slug}`>
+  <article class='project container'>
+    <img src={project.cover} />
+    <h3>{project.title}</h3>
+    <p>{project.description}</p>
+    <ul class='stack'>
+      {project.stack.map((l) => <li class='container'>{l.title}</li>)}
+    </ul>
+  </article>
+</a>

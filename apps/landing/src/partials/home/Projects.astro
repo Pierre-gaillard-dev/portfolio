@@ -1,0 +1,31 @@
+---
+import ProjectCard from '../../components/ProjectCard.astro'
+import { getProjects } from '../../data/projects/projects.queries'
+import { useTranslations } from '../../i18n'
+import './Projects.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang).home.projects
+
+const projects = await getProjects(lang)
+---
+
+<section id='projects'>
+  <div class='title'>
+    <h2>{t.title}</h2>
+    <button>{t['see-all']} &#8594;</button>
+  </div>
+  <ul>
+    {
+      projects.map((project) => (
+        <li>
+          <ProjectCard project={project} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
