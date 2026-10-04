@@ -1,21 +1,28 @@
 ---
 import type { Project } from '../data/projects/projects.schemas'
+import { useTranslations } from '../i18n'
+import { urlFor } from '../utils/urlFor'
 import './ProjectCard.css'
 
 interface Props {
+  lang: string
   project: Project
 }
 
-const { project } = Astro.props
+const { lang, project } = Astro.props
+
+const t = useTranslations(lang)
+
+const link = urlFor(lang, t.url.projects, project.slug)
 ---
 
-<a href=`/projects/${project.slug}`>
+<a href={link}>
   <article class='project container'>
     <img src={project.cover} />
     <h3>{project.title}</h3>
     <p>{project.description}</p>
     <ul class='stack'>
-      {project.stack.map((l) => <li class='container'>{l.title}</li>)}
+      {project.stack.map((l) => <li class='pill'>{l.title}</li>)}
     </ul>
   </article>
 </a>
