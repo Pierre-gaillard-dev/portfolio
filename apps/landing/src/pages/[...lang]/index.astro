@@ -2,6 +2,7 @@
 import Head from '../../components/Head.astro'
 import Navbar from '../../components/Navbar.astro'
 import { defaultLanguage, languages } from '../../i18n'
+import Footer from '../../partials/home/Footer.astro'
 import Hero from '../../partials/home/Hero.astro'
 import Projects from '../../partials/home/Projects.astro'
 import Skills from '../../partials/home/Skills.astro'
@@ -31,5 +32,6 @@ const { lang = 'fr' } = Astro.params
     <Hero lang={lang} />
     <Projects lang={lang} />
     <Skills lang={lang} />
+    <Footer lang={lang} />
   </body>
 </html>

@@ -1,0 +1,25 @@
+---
+import { useTranslations } from '../../i18n'
+import { urlFor } from '../../utils/urlFor'
+import './Footer.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang)
+
+const year = new Date().getFullYear()
+---
+
+<footer>
+  <span>&copy; {year} Pierre Gaillard</span>
+  <ul>
+    <li>
+      <a href={urlFor(lang, t.url['legal-notices'])}
+        >{t.footer['legal-notices']}</a
+      >
+    </li>
+  </ul>
+</footer>

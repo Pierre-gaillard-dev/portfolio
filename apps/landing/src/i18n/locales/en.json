@@ -1,8 +1,14 @@
 {
+  "url": {
+    "legal-notices": "legal-notices"
+  },
   "navbar": {
     "projects": "Projects",
     "skills": "Skills",
     "experience": "Experience"
+  },
+  "footer": {
+    "legal-notices": "Legal notices"
   },
   "home": {
     "hero": {

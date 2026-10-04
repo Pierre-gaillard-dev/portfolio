@@ -1,8 +1,14 @@
 {
+  "url": {
+    "legal-notices": "mentions-legales"
+  },
   "navbar": {
     "projects": "Projets",
     "skills": "Compétences",
     "experience": "Expérience"
+  },
+  "footer": {
+    "legal-notices": "Mentions légales"
   },
   "home": {
     "hero": {

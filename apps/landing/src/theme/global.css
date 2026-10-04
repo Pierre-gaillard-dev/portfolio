@@ -29,7 +29,8 @@
     word-break: break-word;
   }
 
-  section {
+  section,
+  footer {
     max-width: 1200px;
     padding-left: 16px;
     padding-right: 16px;
