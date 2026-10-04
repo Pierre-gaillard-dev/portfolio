@@ -75,7 +75,8 @@
     border-radius: 999px;
   }
 
-  .container {
+  .container,
+  .pill {
     background: var(--container-background);
     border-radius: 16px;
     border: 1px solid rgba(var(--text-color-rgb), 0.22);
@@ -85,5 +86,13 @@
       0 10px 30px rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(16px);
+  }
+
+  .pill {
+    border-radius: 999px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 16px;
+    font-size: 0.8rem;
   }
 }

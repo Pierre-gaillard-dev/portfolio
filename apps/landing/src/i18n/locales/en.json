@@ -13,6 +13,15 @@
     "projects": {
       "title": "Projects",
       "see-all": "All projects"
+    },
+    "skills": {
+      "title": "Compétences",
+      "groups": {
+        "front-end": "Front-end",
+        "back-end": "Back-end",
+        "infra": "Infra",
+        "tools": "Tools"
+      }
     }
   }
 }

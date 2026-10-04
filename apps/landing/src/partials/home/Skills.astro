@@ -1,0 +1,32 @@
+---
+import { getSkillGroups } from '../../data/skills/skills.data'
+import { useTranslations } from '../../i18n'
+import './Skills.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang).home.skills
+
+const groups = getSkillGroups(lang)
+---
+
+<section id='skills'>
+  <h2>{t.title}</h2>
+  <ul>
+    {
+      groups.map((group) => (
+        <li class='container'>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.skills.map((skill) => (
+              <li class='pill'>{skill.title}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</section>

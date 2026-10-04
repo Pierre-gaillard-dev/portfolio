@@ -1,0 +1,24 @@
+section#skills {
+  h2 {
+    margin-bottom: 32px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    flex: 1;
+
+    ul {
+      gap: 8px;
+    }
+  }
+}
