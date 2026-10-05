@@ -1,9 +1,14 @@
 #page-home #hero {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 48px;
+  margin-bottom: 0;
+
+  & > * {
+    flex: 1;
+  }
 
   .container {
     padding: 32px;
@@ -11,7 +16,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-    max-width: 400px;
+    max-width: 500px;
   }
   h2 {
     font-size: 0.8rem;

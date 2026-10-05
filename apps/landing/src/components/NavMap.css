@@ -1,0 +1,162 @@
+.nav-map {
+  --planet-1-ring-radius: 40%;
+  --planet-1-spin-duration: 30s;
+  --planet-1-spin-delay: calc(var(--planet-1-spin-duration) * -0.2);
+  --planet-1-radius: 30px;
+  --planet-1-background: radial-gradient(
+    circle at 35% 35%,
+    #ffe1d0,
+    #d7775a 60%,
+    #6b2a1f
+  );
+
+  --planet-2-ring-radius: 60%;
+  --planet-2-spin-duration: 35s;
+  --planet-2-spin-delay: calc(var(--planet-2-spin-duration) * -0.65);
+  --planet-2-radius: 25px;
+  --planet-2-background: radial-gradient(
+    circle at 35% 35%,
+    #d9e6ff,
+    #5a78c8 60%,
+    #243463
+  );
+
+  --planet-3-ring-radius: 80%;
+  --planet-3-spin-duration: 40s;
+  --planet-3-spin-delay: 0;
+  --planet-3-radius: 20px;
+  --planet-3-background: radial-gradient(
+    circle at 35% 35%,
+    #e6fff4,
+    #5cc4a0 60%,
+    #1d5a48
+  );
+
+  position: relative;
+  aspect-ratio: 1;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+
+  .ring-group {
+    position: absolute;
+    inset: 0;
+    transform: rotateZ(-14deg) rotateX(50deg);
+    transform-style: preserve-3d;
+  }
+
+  .sun,
+  .ring,
+  .planet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sun,
+  .planet {
+    aspect-ratio: 1;
+    border-radius: 100%;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .sun {
+    background: radial-gradient(
+      circle at 38% 36%,
+      #fff4dc,
+      #f4b05f 42%,
+      #c4552c 80%
+    );
+    width: 20%;
+    translate: 0 0 100px;
+  }
+
+  .ring {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform-style: preserve-3d;
+    animation: spin linear infinite;
+    transform-origin: top left;
+    pointer-events: none;
+
+    &#ring-1 {
+      width: var(--planet-1-ring-radius);
+      height: var(--planet-1-ring-radius);
+      animation-duration: var(--planet-1-spin-duration);
+      animation-delay: var(--planet-1-spin-delay);
+
+      .planet {
+        width: var(--planet-1-radius);
+        height: var(--planet-1-radius);
+        background: var(--planet-1-background);
+        animation-duration: var(--planet-1-spin-duration);
+        animation-delay: var(--planet-1-spin-delay);
+      }
+    }
+
+    &#ring-2 {
+      width: var(--planet-2-ring-radius);
+      height: var(--planet-2-ring-radius);
+      animation-duration: var(--planet-2-spin-duration);
+      animation-delay: var(--planet-2-spin-delay);
+
+      .planet {
+        width: var(--planet-2-radius);
+        height: var(--planet-2-radius);
+        background: var(--planet-2-background);
+        animation-duration: var(--planet-2-spin-duration);
+        animation-delay: var(--planet-2-spin-delay);
+      }
+    }
+
+    &#ring-3 {
+      width: var(--planet-3-ring-radius);
+      height: var(--planet-3-ring-radius);
+      animation-duration: var(--planet-3-spin-duration);
+      animation-delay: var(--planet-3-spin-delay);
+
+      .planet {
+        width: var(--planet-3-radius);
+        height: var(--planet-3-radius);
+        background: var(--planet-3-background);
+        animation-duration: var(--planet-3-spin-duration);
+        animation-delay: var(--planet-3-spin-delay);
+      }
+    }
+  }
+
+  .planet {
+    display: block;
+    top: 0px;
+    position: relative;
+    transform: rotateX(-50deg) rotateZ(14deg) translateZ(100px);
+    animation: spin-reverse linear infinite;
+    pointer-events: auto;
+
+    span {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      word-break: keep-all;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: -360deg;
+  }
+}

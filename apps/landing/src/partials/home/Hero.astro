@@ -1,4 +1,5 @@
 ---
+import NavMap from '../../components/NavMap.astro'
 import { useTranslations } from '../../i18n'
 import './Hero.css'
 
@@ -16,8 +17,5 @@ const t = useTranslations(lang).home.hero
     <h1>{t.name}</h1>
     <p>{t.description}</p>
   </div>
-  <div>
-    <p>// TODO</p>
-    <p>Stellar navigation map</p>
-  </div>
+  <NavMap lang={lang} />
 </section>
