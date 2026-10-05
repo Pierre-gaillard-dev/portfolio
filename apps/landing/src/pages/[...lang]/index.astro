@@ -1,4 +1,5 @@
 ---
+import Background from '../../components/Background.astro'
 import Head from '../../components/Head.astro'
 import Navbar from '../../components/Navbar.astro'
 import { defaultLanguage, languages } from '../../i18n'
@@ -28,6 +29,7 @@ const { lang = 'fr' } = Astro.params
     <title>Astro</title>
   </Head>
   <body id='page-home'>
+    <Background />
     <Navbar lang={lang} />
     <Hero lang={lang} />
     <Projects lang={lang} />

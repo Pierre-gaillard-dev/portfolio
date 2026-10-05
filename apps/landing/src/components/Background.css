@@ -1,0 +1,31 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  .bg-star {
+    position: absolute;
+    background-color: #fff0;
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+
+    animation: star-appear ease-in-out 1s forwards;
+  }
+}
+
+@keyframes star-appear {
+  0% {
+    background-color: #fff0;
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(2);
+  }
+  100% {
+    background-color: #fff;
+    transform: scale(1);
+  }
+}
