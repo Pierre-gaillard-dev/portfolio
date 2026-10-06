@@ -6,6 +6,7 @@ export const getSkillGroups = (lang: string): SkillGroup[] => {
   return [
     {
       title: t.groups['front-end'],
+      planet: 'blue',
       skills: [
         {
           title: 'React',
@@ -23,6 +24,7 @@ export const getSkillGroups = (lang: string): SkillGroup[] => {
     },
     {
       title: t.groups['back-end'],
+      planet: 'red',
       skills: [
         {
           title: 'Node',
@@ -36,6 +38,7 @@ export const getSkillGroups = (lang: string): SkillGroup[] => {
     },
     {
       title: t.groups.infra,
+      planet: 'green',
       skills: [
         {
           title: 'Linux',
@@ -53,6 +56,7 @@ export const getSkillGroups = (lang: string): SkillGroup[] => {
     },
     {
       title: t.groups.tools,
+      planet: 'purple',
       skills: [
         {
           title: 'Git',

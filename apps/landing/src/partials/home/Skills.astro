@@ -19,6 +19,7 @@ const groups = getSkillGroups(lang)
     {
       groups.map((group) => (
         <li class='container'>
+          <div class={`planet ${group.planet}`} />
           <h3>{group.title}</h3>
           <ul>
             {group.skills.map((skill) => (
