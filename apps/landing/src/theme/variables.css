@@ -8,7 +8,11 @@
 
     --light: #212538;
 
-    --container-background: #141728;
+    --container-background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.02)
+    );
 
     --planet-background-red: radial-gradient(
       circle at 35% 35%,
