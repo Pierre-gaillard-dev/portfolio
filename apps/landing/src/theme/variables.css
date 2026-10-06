@@ -9,5 +9,30 @@
     --light: #212538;
 
     --container-background: #141728;
+
+    --planet-background-red: radial-gradient(
+      circle at 35% 35%,
+      #ffe1d0,
+      #d7775a 60%,
+      #6b2a1f
+    );
+    --planet-background-blue: radial-gradient(
+      circle at 35% 35%,
+      #d9e6ff,
+      #5a78c8 60%,
+      #243463
+    );
+    --planet-background-green: radial-gradient(
+      circle at 35% 35%,
+      #e6fff4,
+      #5cc4a0 60%,
+      #1d5a48
+    );
+    --planet-background-purple: radial-gradient(
+      circle at 35% 35%,
+      rgb(244, 230, 255),
+      rgb(160, 122, 214) 60%,
+      rgb(62, 36, 99)
+    );
   }
 }

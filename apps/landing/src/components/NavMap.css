@@ -3,34 +3,19 @@
   --planet-1-spin-duration: 30s;
   --planet-1-spin-delay: calc(var(--planet-1-spin-duration) * -0.2);
   --planet-1-radius: 30px;
-  --planet-1-background: radial-gradient(
-    circle at 35% 35%,
-    #ffe1d0,
-    #d7775a 60%,
-    #6b2a1f
-  );
+  --planet-1-background: var(--planet-background-red);
 
   --planet-2-ring-radius: 60%;
   --planet-2-spin-duration: 35s;
   --planet-2-spin-delay: calc(var(--planet-2-spin-duration) * -0.65);
   --planet-2-radius: 25px;
-  --planet-2-background: radial-gradient(
-    circle at 35% 35%,
-    #d9e6ff,
-    #5a78c8 60%,
-    #243463
-  );
+  --planet-2-background: var(--planet-background-blue);
 
   --planet-3-ring-radius: 80%;
   --planet-3-spin-duration: 40s;
   --planet-3-spin-delay: 0;
   --planet-3-radius: 20px;
-  --planet-3-background: radial-gradient(
-    circle at 35% 35%,
-    #e6fff4,
-    #5cc4a0 60%,
-    #1d5a48
-  );
+  --planet-3-background: var(--planet-background-green);
 
   position: relative;
   aspect-ratio: 1;
