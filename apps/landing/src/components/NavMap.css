@@ -21,6 +21,8 @@
   aspect-ratio: 1;
   perspective: 1400px;
   transform-style: preserve-3d;
+  /* preserve-3d puts .nav-map's own plane in the hit-test: far-side planets end up behind it */
+  pointer-events: none;
 
   .ring-group {
     position: absolute;
