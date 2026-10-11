@@ -1,0 +1,51 @@
+---
+import Head from '../../../components/Head.astro'
+import Navbar from '../../../components/Navbar.astro'
+import ProjectCard from '../../../components/ProjectCard.astro'
+import { getProjects } from '../../../data/projects/projects.queries'
+import { defaultLanguage, languages, useTranslations } from '../../../i18n'
+import './index.css'
+
+export function getStaticPaths() {
+  const paths = [undefined, ...languages]
+    .map((l) => {
+      const t = useTranslations(l)
+      return {
+        params: { lang: l, projects: t.url.projects },
+      }
+    })
+    .filter((path) => path.params.lang != defaultLanguage)
+
+  console.log(
+    `created home routes for languages ${paths.map((p) => p.params.lang).join(',')} `
+  )
+  return paths
+}
+
+const { lang = 'fr' } = Astro.params
+
+const projects = await getProjects(lang)
+---
+
+<html>
+  <Head>
+    <title></title>
+  </Head>
+  <body class='projects'>
+    <Navbar lang={lang} />
+    <section>
+      <h1>Projects</h1>
+    </section>
+    <section>
+      <ul class='project-list'>
+        {
+          projects.map((project) => (
+            <li>
+              <ProjectCard lang={lang} project={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </body>
+</html>

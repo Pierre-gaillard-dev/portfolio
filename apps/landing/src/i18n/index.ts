@@ -11,6 +11,6 @@ const ui: { [key: string]: Translations } = {
 export const languages = Object.keys(ui)
 export const defaultLanguage = 'fr'
 
-export const useTranslations = (lang: string) => {
-  return ui[lang] ?? ui.fr
+export const useTranslations = (lang: string = defaultLanguage) => {
+  return ui[lang] ?? ui[defaultLanguage]
 }
