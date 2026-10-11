@@ -2,6 +2,7 @@
 import ProjectCard from '../../components/ProjectCard.astro'
 import { getProjects } from '../../data/projects/projects.queries'
 import { useTranslations } from '../../i18n'
+import { urlFor } from '../../utils/urlFor'
 import './Projects.css'
 
 interface Props {
@@ -9,7 +10,8 @@ interface Props {
 }
 const { lang } = Astro.props
 
-const t = useTranslations(lang).home.projects
+const translation = useTranslations(lang)
+const t = translation.home.projects
 
 const projects = await getProjects(lang)
 ---
@@ -17,13 +19,15 @@ const projects = await getProjects(lang)
 <section id='projects'>
   <div class='title'>
     <h2>{t.title}</h2>
-    <button>{t['see-all']} &#8594;</button>
+    <a href={urlFor(lang, translation.url.projects)} class='pill'
+      >{t['see-all']} &#8594;</a
+    >
   </div>
   <ul>
     {
       projects.map((project) => (
         <li>
-          <ProjectCard project={project} />
+          <ProjectCard lang={lang} project={project} />
         </li>
       ))
     }
