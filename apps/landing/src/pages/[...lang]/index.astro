@@ -2,11 +2,12 @@
 import Background from '../../components/Background.astro'
 import Head from '../../components/Head.astro'
 import Navbar from '../../components/Navbar.astro'
-import { defaultLanguage, languages } from '../../i18n'
+import { defaultLanguage, languages, useTranslations } from '../../i18n'
 import Footer from '../../partials/home/Footer.astro'
 import Hero from '../../partials/home/Hero.astro'
 import Projects from '../../partials/home/Projects.astro'
 import Skills from '../../partials/home/Skills.astro'
+import { urlFor } from '../../utils/urlFor'
 
 export function getStaticPaths() {
   const paths = [undefined, ...languages]
@@ -22,11 +23,29 @@ export function getStaticPaths() {
 }
 
 const { lang = 'fr' } = Astro.params
+
+const t = useTranslations(lang)
+
+const alternates = languages.map((l) => ({ lang: l, url: urlFor(l) }))
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: t.home.hero.name,
+  jobTitle: t.home.hero.job,
+  url: urlFor(lang),
+  image: new URL('/img/photo.png', Astro.site).href,
+}
 ---
 
 <html lang={lang}>
-  <Head>
-    <title>Astro</title>
+  <Head
+    title={t.home.title}
+    description={t.home['meta-description']}
+    lang={lang}
+    alternates={alternates}
+  >
+    <script type='application/ld+json' set:html={JSON.stringify(person)} />
   </Head>
   <body id='page-home'>
     <Background />

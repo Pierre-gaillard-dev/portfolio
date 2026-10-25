@@ -4,7 +4,6 @@ import Breadcrumb from '../../../../components/Breadcrumb.astro'
 import Head from '../../../../components/Head.astro'
 import Md from '../../../../components/Md.astro'
 import Navbar from '../../../../components/Navbar.astro'
-import { getDefaultProjectUrl } from '../../../../data/projects/project.utils'
 import { getTranslatedProjects } from '../../../../data/projects/projects.queries'
 import type { TranslatedProject } from '../../../../data/projects/projects.schemas'
 import {
@@ -56,21 +55,17 @@ const { translatedProject } = Astro.props
 
 const t = useTranslations(lang)
 
-const defaultUrl = getDefaultProjectUrl(translatedProject.language_variants)
 ---
 
-<html>
-  <Head>
-    <title>{translatedProject.meta_title}</title>
-    <meta name='description' content={translatedProject.meta_description} />
-
-    {
-      translatedProject.language_variants.map((variant) => (
-        <link rel='alternate' hreflang={variant.lang} href={variant.url} />
-      ))
-    }
-    <link rel='alternate' hreflang='x-default' href={defaultUrl.url} />
-  </Head>
+<html lang={lang}>
+  <Head
+    title={`${translatedProject.meta_title}${t['title-suffix']}`}
+    description={translatedProject.meta_description}
+    lang={lang}
+    alternates={translatedProject.language_variants}
+    image={translatedProject.cover_url}
+    type='article'
+  />
 
   <body class='project'>
     <Background />
@@ -117,7 +112,7 @@ const defaultUrl = getDefaultProjectUrl(translatedProject.language_variants)
       <div class='content'>
         <div class='article-content'>
           {
-            translatedProject.blocs.map((bloc, i) => (
+            translatedProject.blocs.map((bloc) => (
               <section id={slugify(bloc.title)}>
                 <h2>{bloc.title}</h2>
                 <Md content={bloc.content} />

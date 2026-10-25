@@ -18,7 +18,7 @@ export const getBestProjectTranslation = (
     )
 
   const order = [lang, ...languagePriority]
-  for (const l in order) {
+  for (const l of order) {
     const t = translations[l]
     if (t) return t
   }
@@ -54,14 +54,4 @@ export const getProjectTranslations = (
   })
 
   return translatedProjects
-}
-
-export const getDefaultProjectUrl = (
-  variants: TranslatedProject['language_variants']
-) => {
-  for (const l in languagePriority) {
-    const v = variants.find((v) => v.lang === l)
-    if (v) return v
-  }
-  return variants[0]
 }

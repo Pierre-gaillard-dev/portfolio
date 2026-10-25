@@ -30,12 +30,20 @@ const { lang = 'fr' } = Astro.params
 const t = useTranslations(lang)
 
 const projects = await getProjects(lang)
+
+const alternates = languages.map((l) => ({
+  lang: l,
+  url: urlFor(l, useTranslations(l).url.projects),
+}))
 ---
 
-<html>
-  <Head>
-    <title></title>
-  </Head>
+<html lang={lang}>
+  <Head
+    title={`${t['project-list'].title}${t['title-suffix']}`}
+    description={t['project-list']['meta-description']}
+    lang={lang}
+    alternates={alternates}
+  />
   <body class='projects'>
     <Background />
     <Navbar lang={lang} />
@@ -46,7 +54,7 @@ const projects = await getProjects(lang)
           { name: t.navbar.projects, url: urlFor(lang, t.url.projects) },
         ]}
       />
-      <h1>Projects</h1>
+      <h1>{t['project-list'].heading}</h1>
     </section>
     <section>
       <ul class='project-list'>

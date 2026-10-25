@@ -1,11 +1,81 @@
 ---
+import { defaultLanguage } from '../i18n'
 import '../theme/global.css'
+
+interface Alternate {
+  lang: string
+  url: string
+}
+
+interface Props {
+  title: string
+  description: string
+  lang: string
+  // every language variant of the page, the current one included
+  alternates?: Alternate[]
+  // defaults to the default language variant, then to the first alternate
+  xDefault?: string
+  image?: string
+  type?: 'website' | 'article'
+}
+
+const ogLocales: Record<string, string> = {
+  fr: 'fr_FR',
+  en: 'en_US',
+}
+
+const {
+  title,
+  description,
+  lang,
+  alternates = [],
+  xDefault = (
+    alternates.find((a) => a.lang === defaultLanguage) ?? alternates[0]
+  )?.url,
+  image,
+  type = 'website',
+} = Astro.props
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+// the fallback photo is square, so only page-specific images get the large card
+const imageUrl = new URL(image ?? '/img/photo.png', Astro.site).href
+const twitterCard = image ? 'summary_large_image' : 'summary'
 ---
 
 <head>
   <meta charset='UTF-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <meta name='theme-color' content='#70bec6' />
+
+  <title>{title}</title>
+  <meta name='description' content={description} />
+  <link rel='canonical' href={canonical} />
+
+  {
+    alternates.map((alternate) => (
+      <link rel='alternate' hreflang={alternate.lang} href={alternate.url} />
+    ))
+  }
+  {xDefault && <link rel='alternate' hreflang='x-default' href={xDefault} />}
+
+  <meta property='og:type' content={type} />
+  <meta property='og:site_name' content='Pierre Gaillard' />
+  <meta property='og:title' content={title} />
+  <meta property='og:description' content={description} />
+  <meta property='og:url' content={canonical} />
+  <meta property='og:image' content={imageUrl} />
+  <meta property='og:locale' content={ogLocales[lang] ?? lang} />
+  {
+    alternates
+      .filter((alternate) => alternate.lang !== lang)
+      .map((alternate) => (
+        <meta
+          property='og:locale:alternate'
+          content={ogLocales[alternate.lang] ?? alternate.lang}
+        />
+      ))
+  }
+  <meta name='twitter:card' content={twitterCard} />
 
   <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
   <link rel='icon' type='image/x-icon' href='/favicon.ico' />
@@ -20,4 +90,6 @@ import '../theme/global.css'
     href='/font/latin.woff2'
     crossorigin
   />
+
+  <slot />
 </head>

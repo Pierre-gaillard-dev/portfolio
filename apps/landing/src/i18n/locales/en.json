@@ -1,4 +1,5 @@
 {
+  "title-suffix": " | Pierre Gaillard",
   "url": {
     "projects": "projects",
     "legal-notices": "legal-notices"
@@ -13,6 +14,8 @@
     "legal-notices": "Legal notices"
   },
   "home": {
+    "title": "Pierre Gaillard – Full-stack web developer (React & Node)",
+    "meta-description": "Full-stack developer building fast, maintainable web apps with React, Astro, Node and PostgreSQL. Explore my projects and technical skills.",
     "hero": {
       "job": "Full-stack developer",
       "name": "Pierre Gaillard",
@@ -31,6 +34,11 @@
         "tools": "Tools"
       }
     }
+  },
+  "project-list": {
+    "title": "Full-stack web projects",
+    "heading": "My projects",
+    "meta-description": "Web apps, websites and tools built solo or as part of a team: explore my full-stack projects, their tech stack and the problems they solve."
   },
   "project": {
     "stack": "stack",
