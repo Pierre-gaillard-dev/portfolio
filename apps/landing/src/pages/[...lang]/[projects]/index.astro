@@ -1,9 +1,12 @@
 ---
+import Background from '../../../components/Background.astro'
+import Breadcrumb from '../../../components/Breadcrumb.astro'
 import Head from '../../../components/Head.astro'
 import Navbar from '../../../components/Navbar.astro'
 import ProjectCard from '../../../components/ProjectCard.astro'
 import { getProjects } from '../../../data/projects/projects.queries'
 import { defaultLanguage, languages, useTranslations } from '../../../i18n'
+import { urlFor } from '../../../utils/urlFor'
 import './index.css'
 
 export function getStaticPaths() {
@@ -24,6 +27,8 @@ export function getStaticPaths() {
 
 const { lang = 'fr' } = Astro.params
 
+const t = useTranslations(lang)
+
 const projects = await getProjects(lang)
 ---
 
@@ -32,8 +37,15 @@ const projects = await getProjects(lang)
     <title></title>
   </Head>
   <body class='projects'>
+    <Background />
     <Navbar lang={lang} />
     <section>
+      <Breadcrumb
+        parts={[
+          { name: t.navbar.home, url: urlFor(lang) },
+          { name: t.navbar.projects, url: urlFor(lang, t.url.projects) },
+        ]}
+      />
       <h1>Projects</h1>
     </section>
     <section>
