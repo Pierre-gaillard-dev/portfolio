@@ -30,14 +30,16 @@
   }
 
   section,
-  footer {
+  footer,
+  .content {
     max-width: 1200px;
     padding-left: 16px;
     padding-right: 16px;
     margin: 64px auto;
   }
 
-  img {
+  img,
+  picture {
     display: block;
     max-width: 100%;
     height: auto;
