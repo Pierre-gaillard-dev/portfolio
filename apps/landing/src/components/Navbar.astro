@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n'
+import { urlFor } from '../utils/urlFor'
 import './Navbar.css'
 
 interface Props {
@@ -7,20 +8,20 @@ interface Props {
 }
 const { lang } = Astro.props
 
-const t = useTranslations(lang).navbar
+const t = useTranslations(lang)
 
 const links = [
   {
-    text: t.projects,
-    to: '/#projects',
+    text: t.navbar.projects,
+    to: urlFor(lang, t.url.projects),
   },
   {
-    text: t.skills,
-    to: '/#skills',
+    text: t.navbar.skills,
+    to: urlFor(lang, '#skills'),
   },
   {
-    text: t.experience,
-    to: '/#work-experience',
+    text: t.navbar.experience,
+    to: urlFor(lang, '#work-experience'),
   },
 ]
 ---
