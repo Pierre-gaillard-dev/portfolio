@@ -10,6 +10,15 @@ const ui: { [key: string]: Translations } = {
 
 export const languages = Object.keys(ui)
 export const defaultLanguage = 'fr'
+export const pathLanguages = [
+  undefined,
+  ...languages.filter((l) => l !== defaultLanguage),
+]
+export const languagePriority = ['en', 'fr']
+
+export const languagePaths = [undefined, ...languages].filter(
+  (l) => l !== defaultLanguage
+)
 
 export const useTranslations = (lang: string = defaultLanguage) => {
   return ui[lang] ?? ui[defaultLanguage]

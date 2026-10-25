@@ -1,0 +1,146 @@
+---
+import Background from '../../../../components/Background.astro'
+import Breadcrumb from '../../../../components/Breadcrumb.astro'
+import Head from '../../../../components/Head.astro'
+import Md from '../../../../components/Md.astro'
+import Navbar from '../../../../components/Navbar.astro'
+import { getDefaultProjectUrl } from '../../../../data/projects/project.utils'
+import { getTranslatedProjects } from '../../../../data/projects/projects.queries'
+import type { TranslatedProject } from '../../../../data/projects/projects.schemas'
+import {
+  defaultLanguage,
+  pathLanguages,
+  useTranslations,
+} from '../../../../i18n'
+import Footer from '../../../../partials/home/Footer.astro'
+import { slugify } from '../../../../utils/slugify'
+import { urlFor } from '../../../../utils/urlFor'
+import './index.css'
+
+interface Path {
+  params: {
+    lang: string | undefined
+    projects: string
+    slug: string
+  }
+  props: {
+    translatedProject: TranslatedProject
+  }
+}
+
+export async function getStaticPaths(): Promise<Path[]> {
+  const pathsPromise = pathLanguages.map(async (l) => {
+    const t = useTranslations(l)
+    try {
+      const projects = await getTranslatedProjects(l ?? defaultLanguage)
+      return projects.map((project) => ({
+        params: { lang: l, projects: t.url.projects, slug: project.slug },
+        props: { translatedProject: project },
+      }))
+    } catch (error) {
+      console.warn(`failed creating projects for language ${l}`, error)
+      return []
+    }
+  })
+  const paths = (await Promise.all(pathsPromise)).flat()
+  console.log(paths)
+
+  // console.log(
+  //   `created home routes for languages ${paths.map((p) => p.params.lang).join(',')} `
+  // )
+  return paths
+}
+
+const { lang = 'fr', slug } = Astro.params
+const { translatedProject } = Astro.props
+
+const t = useTranslations(lang)
+
+const defaultUrl = getDefaultProjectUrl(translatedProject.language_variants)
+---
+
+<html>
+  <Head>
+    <title>{translatedProject.meta_title}</title>
+    <meta name='description' content={translatedProject.meta_description} />
+
+    {
+      translatedProject.language_variants.map((variant) => (
+        <link rel='alternate' hreflang={variant.lang} href={variant.url} />
+      ))
+    }
+    <link rel='alternate' hreflang='x-default' href={defaultUrl.url} />
+  </Head>
+
+  <body class='project'>
+    <Background />
+    <Navbar lang={lang} />
+    <main>
+      <section>
+        <Breadcrumb
+          parts={[
+            { name: t.navbar.home, url: urlFor(lang) },
+            { name: t.navbar.projects, url: urlFor(lang, t.url.projects) },
+            {
+              name: translatedProject.title,
+              url: urlFor(lang, t.url.projects, slug),
+            },
+          ]}
+        />
+      </section>
+      <section class='hero'>
+        <div>
+          <h1>{translatedProject.title}</h1>
+          <p>
+            {translatedProject.meta_description}
+          </p>
+        </div>
+        <aside class='container'>
+          <div>
+            <span>
+              {t.project.stack}
+            </span>
+            {
+              translatedProject.stacks.map((stack) => (
+                <div class='pill'>{stack.title}</div>
+              ))
+            }
+          </div>
+          <div>
+            <span>
+              {t.project.links}
+            </span>
+            <a href={translatedProject.github_url} class='pill'>Github</a>
+          </div>
+        </aside>
+      </section>
+      <div class='content'>
+        <div class='article-content'>
+          {
+            translatedProject.blocs.map((bloc, i) => (
+              <section id={slugify(bloc.title)}>
+                <h2>{bloc.title}</h2>
+                <Md content={bloc.content} />
+                {bloc.integration_url && (
+                  <div class='container'>
+                    <iframe src={bloc.integration_url} />
+                  </div>
+                )}
+              </section>
+            ))
+          }
+        </div>
+        <aside class='container'>
+          <nav>
+            {
+              translatedProject.blocs.map((bloc) => (
+                <a href={`#${slugify(bloc.title)}`}>{bloc.title}</a>
+              ))
+            }
+          </nav>
+        </aside>
+      </div>
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

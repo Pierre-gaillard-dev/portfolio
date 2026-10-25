@@ -1,0 +1,16 @@
+---
+import type { Line } from '../utils/markdown'
+import MdImage from './MdImage.astro'
+
+interface Props {
+  nodes: Line
+}
+
+const { nodes } = Astro.props
+---
+
+{
+  nodes.map((node) =>
+    node.type === 'text' ? node.value : <MdImage image={node} />
+  )
+}

@@ -1,0 +1,21 @@
+---
+import './Breadcrumb.css'
+
+interface Props {
+  parts: { name: string; url: string }[]
+}
+
+const { parts } = Astro.props
+---
+
+<nav class='breadcrumb'>
+  <ul>
+    {
+      parts.map((part) => (
+        <li>
+          <a href={part.url}>{part.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

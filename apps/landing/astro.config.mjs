@@ -10,6 +10,10 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   integrations: [sitemap()],
+  image: {
+    // remote images allowed to be optimized by astro:assets
+    domains: ['pierral.cluster100.hosting.ovh.net'],
+  },
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],

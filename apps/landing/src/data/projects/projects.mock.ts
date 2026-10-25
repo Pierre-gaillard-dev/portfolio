@@ -4,7 +4,7 @@ import type { Project } from './projects.schemas'
 export const mockProjects: Project[] = [
   {
     cover_url:
-      'https://pierral.cluster100.hosting.ovh.net/img/projects/netflix.webp',
+      'http://pierral.cluster100.hosting.ovh.net/img/projects/netflix.webp',
     github_url: 'https://github.com/Pierre-gaillard-dev/Netflix',
     stacks: [
       { title: 'JavaScript', slug: 'javascript', color: '#F7DF1E' },
@@ -27,7 +27,7 @@ export const mockProjects: Project[] = [
           },
           {
             title: 'Présentation',
-            content: `![Netflix clone](https://pierral.cluster100.hosting.ovh.net/img/projects/netflix.webp)
+            content: `![Netflix clone](http://pierral.cluster100.hosting.ovh.net/img/projects/netflix.webp)
 
 Netflix est mon premier projet full-stack. J'ai fait le choix de gérer de A à Z le fonctionnement du site web, pour ne pas être dépendant de services tels que TheMovieDatabase et surtout pour apprendre à créer une API ett à gérer une base de données.
 
@@ -57,7 +57,7 @@ Je gère moi-même les connexions au site avec les données stockées dans la ba
   },
   {
     cover_url:
-      'https://pierral.cluster100.hosting.ovh.net/img/projects/pokedex.webp',
+      'http://pierral.cluster100.hosting.ovh.net/img/projects/pokedex.webp',
     github_url: 'https://github.com/Pierre-gaillard-dev/pokedex',
     stacks: [{ title: 'JavaScript', slug: 'javascript', color: '#F7DF1E' }],
     translations: {
@@ -77,7 +77,7 @@ Je gère moi-même les connexions au site avec les données stockées dans la ba
           },
           {
             title: 'Présentation',
-            content: `![Pokedex](https://pierral.cluster100.hosting.ovh.net/img/projects/pokedex.webp)
+            content: `![Pokedex](http://pierral.cluster100.hosting.ovh.net/img/projects/pokedex.webp)
 
 J'ai souhaité créer un pokédex pour prendre une revanche sur un échec précédent.
 
@@ -112,7 +112,7 @@ Je me suis aidé de chatGPT pour me débloquer uniquement, et de Github Copilot 
   },
   {
     cover_url:
-      'https://pierral.cluster100.hosting.ovh.net/img/projects/gipoulet.webp',
+      'http://pierral.cluster100.hosting.ovh.net/img/projects/gipoulet.webp',
     github_url: 'https://github.com/Pierre-gaillard-dev/Gipoulet',
     stacks: [{ title: 'Godot', slug: 'godot', color: '#478CBF' }],
     translations: {
@@ -133,7 +133,7 @@ Je me suis aidé de chatGPT pour me débloquer uniquement, et de Github Copilot 
           },
           {
             title: 'Présentation',
-            content: `![Gipoulet](https://pierral.cluster100.hosting.ovh.net/img/projects/gipoulet.webp)
+            content: `![Gipoulet](http://pierral.cluster100.hosting.ovh.net/img/projects/gipoulet.webp)
 
 Gipoulet est un jeu d'action, où le joueur incarne un formateur de My Digital School qui doit arriver à l'heure en cours tout en esquivant une pluie de poulets volants et en attrapant des poussins pour gagner du temps.
 
@@ -176,7 +176,7 @@ Marketing et sound design :
   },
   {
     cover_url:
-      'https://pierral.cluster100.hosting.ovh.net/img/projects/chess.webp',
+      'http://pierral.cluster100.hosting.ovh.net/img/projects/chess.webp',
     github_url: 'https://github.com/Pierre-gaillard-dev/Chess',
     stacks: [{ title: 'JavaScript', slug: 'javascript', color: '#F7DF1E' }],
     translations: {
@@ -196,7 +196,7 @@ Marketing et sound design :
           },
           {
             title: 'Présentation',
-            content: `![Chess](https://pierral.cluster100.hosting.ovh.net/img/projects/chess.webp)
+            content: `![Chess](http://pierral.cluster100.hosting.ovh.net/img/projects/chess.webp)
 
 En tant que grand fan de jeux d'échecs, j'ai souhaité reproduire ce jeu, jouable en local. J'ai choisi de le faire en Javascript uniquement car je ne connissais que ce langage pour du web à ce moment.
 
@@ -224,7 +224,7 @@ Je n'ai que très peu utilisé d'IA sauf pour quelques corrections de bugs.`,
   },
   {
     cover_url:
-      'https://pierral.cluster100.hosting.ovh.net/img/projects/portfolio.webp',
+      'http://pierral.cluster100.hosting.ovh.net/img/projects/portfolio.webp',
     github_url: 'https://github.com/Pierre-gaillard-dev/portfolio',
     stacks: [
       { title: 'TypeScript', slug: 'typescript', color: '#3178C6' },
@@ -242,7 +242,7 @@ Je n'ai que très peu utilisé d'IA sauf pour quelques corrections de bugs.`,
         blocs: [
           {
             title: 'Présentation',
-            content: `![Portfolio](https://pierral.cluster100.hosting.ovh.net/img/projects/portfolio.webp)
+            content: `![Portfolio](http://pierral.cluster100.hosting.ovh.net/img/projects/portfolio.webp)
 
 Ce portfolio est le site sur lequel vous êtes actuellement. C'était le plus gros projet web sur lequel j'avais travaillé au moment de sa création. il a pour but de refléter mes capacités de développeur et de montrer mes projets.
 
@@ -275,7 +275,7 @@ Pour ce projet, je me suis aidé de deux IA pour progresser plus rapidement :
   },
   {
     cover_url:
-      'https://pierral.cluster100.hosting.ovh.net/img/projects/space-platformer',
+      'http://pierral.cluster100.hosting.ovh.net/img/projects/space-platformer',
     github_url: 'https://github.com/Pierre-gaillard-dev/space-platformer',
     stacks: [{ title: 'Python', slug: 'python', color: '#3776AB' }],
     translations: {
@@ -296,7 +296,7 @@ Pour ce projet, je me suis aidé de deux IA pour progresser plus rapidement :
           },
           {
             title: 'Présentation',
-            content: `![Space Platformer](https://pierral.cluster100.hosting.ovh.net/img/projects/space-platformer)
+            content: `![Space Platformer](http://pierral.cluster100.hosting.ovh.net/img/projects/space-platformer)
 
 Space platformer est un jeu de plateforme créé en python en utilisant la librairie graphique pygame.`,
             position: '2',

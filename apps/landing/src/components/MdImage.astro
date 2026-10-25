@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets'
+import type { ImageNode } from '../utils/markdown'
+
+interface Props {
+  image: ImageNode
+}
+
+const { image } = Astro.props
+
+// Remote images are optimized (avif/webp, several widths) when their domain is
+// listed in `image.domains` (astro.config). Relative paths point to /public,
+// which Astro doesn't process, so they're rendered as a plain <img>.
+const isRemote = /^https?:\/\//i.test(image.src)
+---
+
+{
+  isRemote ? (
+    <Picture
+      src={image.src}
+      alt={image.alt}
+      inferSize
+      layout='constrained'
+      formats={['avif', 'webp']}
+      fallbackFormat='webp'
+    />
+  ) : (
+    <img src={image.src} alt={image.alt} loading='lazy' />
+  )
+}

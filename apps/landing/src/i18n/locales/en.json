@@ -4,6 +4,7 @@
     "legal-notices": "legal-notices"
   },
   "navbar": {
+    "home": "Home",
     "projects": "Projects",
     "skills": "Skills",
     "experience": "Experience"
@@ -30,5 +31,9 @@
         "tools": "Tools"
       }
     }
+  },
+  "project": {
+    "stack": "stack",
+    "links": "links"
   }
 }
