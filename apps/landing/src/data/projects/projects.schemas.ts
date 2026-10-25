@@ -36,6 +36,15 @@ export const projectSchema = z.object({
   cover_url: z.url(),
   github_url: z.url(),
   stacks: z.array(stackSchema).nonempty(),
-  translation: z.map(z.string(), txProjectSchema),
+  translations: z.record(z.string(), txProjectSchema),
 })
 export type Project = z.infer<typeof projectSchema>
+
+export const translatedProjectSchema = projectSchema
+  .omit({ translations: true })
+  .extend(txProjectSchema.shape)
+  .extend({
+    lang: z.string(),
+    language_variants: z.array(z.object({ lang: z.string(), url: z.string() })),
+  })
+export type TranslatedProject = z.infer<typeof translatedProjectSchema>
