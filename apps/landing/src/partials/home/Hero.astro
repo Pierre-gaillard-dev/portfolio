@@ -1,6 +1,8 @@
 ---
 import NavMap from '../../components/NavMap.astro'
+import { cvUrl, emailUrl, githubUrl } from '../../data/const'
 import { useTranslations } from '../../i18n'
+import { Icon } from 'astro-icon/components'
 import './Hero.css'
 
 interface Props {
@@ -16,6 +18,21 @@ const t = useTranslations(lang).home.hero
     <h2>{t.job}</h2>
     <h1>{t.name}</h1>
     <p>{t.description}</p>
+    <ul>
+      <li>
+        <a href={githubUrl}> {t.links.github} </a>
+      </li>
+      <li>
+        <a href={emailUrl}>
+          {t.links.contact}
+        </a>
+      </li>
+      <li>
+        <a href={cvUrl}>
+          {t.links.cv}
+        </a>
+      </li>
+    </ul>
   </div>
   <NavMap lang={lang} />
 </section>

@@ -19,7 +19,12 @@
     "hero": {
       "job": "Full-stack developer",
       "name": "Pierre Gaillard",
-      "description": "I create web apps and websites built for the long term.\nAs a work-study student at Tom Explore, I specialize in TypeScript, React, Postgres and cost optimization."
+      "description": "I create web apps and websites built for the long term.\nAs a work-study student at Tom Explore, I specialize in TypeScript, React, Postgres and cost optimization.",
+      "links": {
+        "github": "Github",
+        "contact": "Contact",
+        "cv": "CV"
+      }
     },
     "projects": {
       "title": "Projects",

@@ -19,7 +19,12 @@
     "hero": {
       "job": "Développeur full-stack",
       "name": "Pierre Gaillard",
-      "description": "Je crée des applications et sites web pensés pour le long terme.\nEn alternance chez Tom Explore, je me spécialise en TypeScript, React, Postgres et en optimisation des coûts."
+      "description": "Je crée des applications et sites web pensés pour le long terme.\nEn alternance chez Tom Explore, je me spécialise en TypeScript, React, Postgres et en optimisation des coûts.",
+      "links": {
+        "github": "Github",
+        "contact": "Contact",
+        "cv": "CV"
+      }
     },
     "projects": {
       "title": "Projets",
