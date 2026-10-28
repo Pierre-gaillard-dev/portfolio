@@ -23,10 +23,9 @@
         "name": "next"
       }
     ],
-    /* Path mapping - FIX: pointe maintenant sur src/ */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@landing/": ["apps/landing/src"]
     },
     "noEmit": true
   },
