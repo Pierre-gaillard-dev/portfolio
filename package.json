@@ -6,13 +6,12 @@
   "packageManager": "pnpm@12.8.1",
   "scripts": {
     "dev": "pnpm --filter @portfolio/landing dev",
-    "build": "next build",
-    "start": "next start -p 5173",
+    "build": "pnpm --filter @portfolio/landing build",
+    "start": "pnpm --filter @portfolio/landing start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "api": "php -S localhost:3000 -t api/public"
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

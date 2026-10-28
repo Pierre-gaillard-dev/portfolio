@@ -23,9 +23,8 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
-      "@landing/": ["apps/landing/src"]
+      "@landing/": ["./apps/landing/src"]
     },
     "noEmit": true
   },

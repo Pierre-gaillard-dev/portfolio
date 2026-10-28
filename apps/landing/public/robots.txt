@@ -7,4 +7,4 @@ Disallow: /api/
 Disallow: /_next/
 
 # Indiquer l'emplacement du sitemap pour accélérer l'indexation
-Sitemap: https://ton-portfolio.fr/sitemap.xml
+Sitemap: https://pierre-gaillard.dev/sitemap.xml

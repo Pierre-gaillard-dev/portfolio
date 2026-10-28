@@ -3,4 +3,4 @@ export const domain: string =
 
 export const githubUrl = 'https://github.com/Pierre-gaillard-dev'
 export const emailUrl = 'mailto:pierre.gaillard.dev@gmail.com'
-export const cvUrl = `${domain}/cv.pdf`
+export const cvUrl = `${domain}/CV_alternance_Pierre_Gaillard.pdf`
