@@ -21,9 +21,7 @@
     overflow-x: hidden;
     background-color: var(--background-color);
     color: var(--text-color);
-  }
 
-  body {
     font-family: 'Montserrat', sans-serif;
     overflow-wrap: break-word;
     word-break: break-word;
@@ -36,6 +34,10 @@
     padding-left: 16px;
     padding-right: 16px;
     margin: 64px auto;
+  }
+
+  section:first-child {
+    margin-top: 0;
   }
 
   img,

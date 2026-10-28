@@ -16,6 +16,7 @@ section#skills {
     align-items: stretch;
     gap: 16px;
     flex: 1;
+    min-width: min(250px, 100%);
 
     ul {
       gap: 8px;

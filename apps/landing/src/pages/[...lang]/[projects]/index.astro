@@ -48,26 +48,28 @@ const alternates = languages.map((l) => ({
   <body class='projects'>
     <Background />
     <Navbar lang={lang} />
-    <section>
-      <Breadcrumb
-        parts={[
-          { name: t.navbar.home, url: urlFor(lang) },
-          { name: t.navbar.projects, url: urlFor(lang, t.url.projects) },
-        ]}
-      />
-      <h1>{t['project-list'].heading}</h1>
-    </section>
-    <section>
-      <ul class='project-list'>
-        {
-          projects.map((project) => (
-            <li>
-              <ProjectCard lang={lang} project={project} />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    <main>
+      <section>
+        <Breadcrumb
+          parts={[
+            { name: t.navbar.home, url: urlFor(lang) },
+            { name: t.navbar.projects, url: urlFor(lang, t.url.projects) },
+          ]}
+        />
+        <h1>{t['project-list'].heading}</h1>
+      </section>
+      <section>
+        <ul class='project-list'>
+          {
+            projects.map((project) => (
+              <li>
+                <ProjectCard lang={lang} project={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
     <Footer lang={lang} />
   </body>
 </html>

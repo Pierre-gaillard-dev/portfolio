@@ -3,8 +3,13 @@ body.project {
 
   section.hero {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    gap: 16px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
 
     > * {
       flex: 1;
@@ -52,9 +57,14 @@ body.project {
     }
 
     aside {
+      display: none;
       position: sticky;
       top: 100px;
       width: 300px;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
 
       nav {
         display: flex;

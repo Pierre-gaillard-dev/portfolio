@@ -1,11 +1,14 @@
 #page-home #hero {
   height: 90vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   align-items: center;
   gap: 48px;
-  margin-top: 0;
   margin-bottom: 0;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 
   & > * {
     flex: 1;
