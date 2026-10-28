@@ -4,6 +4,7 @@ header {
   left: 0;
   z-index: 999;
   width: 100%;
+  pointer-events: none;
 
   padding: 16px;
   display: flex;
@@ -12,6 +13,7 @@ header {
   nav {
     padding: 16px 24px;
     border-radius: 1000px;
+    pointer-events: all;
 
     ul {
       display: flex;

@@ -25,6 +25,7 @@
   }
   p {
     color: var(--text-reduced);
+    white-space: pre-line;
   }
 
   &::before {

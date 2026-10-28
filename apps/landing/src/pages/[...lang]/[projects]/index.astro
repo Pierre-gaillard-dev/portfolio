@@ -6,6 +6,7 @@ import Navbar from '../../../components/Navbar.astro'
 import ProjectCard from '../../../components/ProjectCard.astro'
 import { getProjects } from '../../../data/projects/projects.queries'
 import { defaultLanguage, languages, useTranslations } from '../../../i18n'
+import Footer from '../../../partials/home/Footer.astro'
 import { urlFor } from '../../../utils/urlFor'
 import './index.css'
 
@@ -67,5 +68,6 @@ const alternates = languages.map((l) => ({
         }
       </ul>
     </section>
+    <Footer lang={lang} />
   </body>
 </html>

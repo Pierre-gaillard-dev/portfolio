@@ -16,5 +16,9 @@ section#projects {
     flex-direction: row;
     justify-content: stretch;
     gap: 32px;
+
+    & > * {
+      flex: 1;
+    }
   }
 }

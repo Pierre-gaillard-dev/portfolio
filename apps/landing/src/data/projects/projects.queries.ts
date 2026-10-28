@@ -9,6 +9,13 @@ export const getProjects = async (
   return cache.getAllRawProjects()
 }
 
+export const getBestProjects = async (
+  _lang: string = defaultLanguage
+): Promise<Project[]> => {
+  const cache = await ProjectCache.get()
+  return cache.getAllRawProjects().slice(0, 3)
+}
+
 export const getTranslatedProjects = async (
   lang: string
 ): Promise<TranslatedProject[]> => {

@@ -1,6 +1,6 @@
 ---
 import ProjectCard from '../../components/ProjectCard.astro'
-import { getProjects } from '../../data/projects/projects.queries'
+import { getBestProjects } from '../../data/projects/projects.queries'
 import { useTranslations } from '../../i18n'
 import { urlFor } from '../../utils/urlFor'
 import './Projects.css'
@@ -13,7 +13,7 @@ const { lang } = Astro.props
 const translation = useTranslations(lang)
 const t = translation.home.projects
 
-const projects = await getProjects(lang)
+const projects = await getBestProjects(lang)
 ---
 
 <section id='projects'>
