@@ -1,0 +1,104 @@
+@layer theme, base, utilities;
+
+@import './variables.css';
+
+/* Reset */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    min-height: 100vh;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    font-family: 'Montserrat', sans-serif;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  section,
+  footer,
+  .content {
+    max-width: 1200px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 64px auto;
+  }
+
+  section:first-child {
+    margin-top: 0;
+  }
+
+  img,
+  picture {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  a,
+  button {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+}
+
+/* globals */
+@layer utilities {
+  button {
+    background-color: rgba(var(--text-color-rgb), 0.05);
+    border: 1px solid rgba(var(--text-color-rgb), 0.5);
+    padding: 16px;
+    border-radius: 999px;
+  }
+
+  .container,
+  .pill {
+    background: var(--container-background);
+    border-radius: 16px;
+    border: 1px solid rgba(var(--text-color-rgb), 0.22);
+    padding: 16px;
+    box-shadow:
+      inset 0 1px 0 rgba(var(--text-color-rgb), 0.35),
+      0 10px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .pill {
+    border-radius: 999px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}

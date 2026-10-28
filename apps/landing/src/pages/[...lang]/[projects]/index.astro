@@ -1,0 +1,75 @@
+---
+import Background from '../../../components/Background.astro'
+import Breadcrumb from '../../../components/Breadcrumb.astro'
+import Head from '../../../components/Head.astro'
+import Navbar from '../../../components/Navbar.astro'
+import ProjectCard from '../../../components/ProjectCard.astro'
+import { getProjects } from '../../../data/projects/projects.queries'
+import { defaultLanguage, languages, useTranslations } from '../../../i18n'
+import Footer from '../../../partials/home/Footer.astro'
+import { urlFor } from '../../../utils/urlFor'
+import './index.css'
+
+export function getStaticPaths() {
+  const paths = [undefined, ...languages]
+    .map((l) => {
+      const t = useTranslations(l)
+      return {
+        params: { lang: l, projects: t.url.projects },
+      }
+    })
+    .filter((path) => path.params.lang != defaultLanguage)
+
+  console.log(
+    `created home routes for languages ${paths.map((p) => p.params.lang).join(',')} `
+  )
+  return paths
+}
+
+const { lang = 'fr' } = Astro.params
+
+const t = useTranslations(lang)
+
+const projects = await getProjects(lang)
+
+const alternates = languages.map((l) => ({
+  lang: l,
+  url: urlFor(l, useTranslations(l).url.projects),
+}))
+---
+
+<html lang={lang}>
+  <Head
+    title={`${t['project-list'].title}${t['title-suffix']}`}
+    description={t['project-list']['meta-description']}
+    lang={lang}
+    alternates={alternates}
+  />
+  <body class='projects'>
+    <Background />
+    <Navbar lang={lang} />
+    <main>
+      <section>
+        <Breadcrumb
+          parts={[
+            { name: t.navbar.home, url: urlFor(lang) },
+            { name: t.navbar.projects, url: urlFor(lang, t.url.projects) },
+          ]}
+        />
+        <h1>{t['project-list'].heading}</h1>
+      </section>
+      <section>
+        <ul class='project-list'>
+          {
+            projects.map((project) => (
+              <li>
+                <ProjectCard lang={lang} project={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

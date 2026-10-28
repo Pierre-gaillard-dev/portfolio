@@ -1,0 +1,34 @@
+---
+import { getBestProjectTranslation } from '../data/projects/project.utils'
+import type { Project } from '../data/projects/projects.schemas'
+import { useTranslations } from '../i18n'
+import { urlFor } from '../utils/urlFor'
+import './ProjectCard.css'
+
+interface Props {
+  lang: string
+  project: Project
+}
+
+const { lang, project } = Astro.props
+
+const translatedProject = getBestProjectTranslation(lang, project)
+const t = useTranslations(translatedProject.lang)
+
+const link = urlFor(
+  translatedProject.lang,
+  t.url.projects,
+  translatedProject.slug
+)
+---
+
+<a class='project' href={link}>
+  <article class='container'>
+    <img src={translatedProject.cover_url} />
+    <h3>{translatedProject.title}</h3>
+    <p>{translatedProject.meta_description}</p>
+    <ul class='stack'>
+      {project.stacks.map((l) => <li class='pill'>{l.title}</li>)}
+    </ul>
+  </article>
+</a>

@@ -1,0 +1,25 @@
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  pointer-events: none;
+
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+
+  nav {
+    padding: 16px 24px;
+    border-radius: 1000px;
+    pointer-events: all;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+  }
+}

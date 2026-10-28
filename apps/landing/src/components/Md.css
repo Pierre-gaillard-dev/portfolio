@@ -1,0 +1,16 @@
+.md {
+  .container > picture {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .container {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
