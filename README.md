@@ -6,14 +6,14 @@ Le dépôt est un monorepo pnpm prévu pour accueillir plusieurs services sous `
 
 ## Stack
 
-| Domaine         | Outils                                        |
-| --------------- | --------------------------------------------- |
-| Site            | Astro 7 (sortie statique), TypeScript, CSS    |
-| Données         | Zod (schémas), JSON de traduction pour l'i18n |
-| Monorepo        | pnpm workspaces                               |
-| Qualité         | ESLint, Prettier                              |
-| Conteneur       | Docker multi-stage, nginx                     |
-| Hébergement     | Dokploy (Traefik, Let's Encrypt)              |
+| Domaine     | Outils                                        |
+| ----------- | --------------------------------------------- |
+| Site        | Astro 7 (sortie statique), TypeScript, CSS    |
+| Données     | Zod (schémas), JSON de traduction pour l'i18n |
+| Monorepo    | pnpm workspaces                               |
+| Qualité     | ESLint, Prettier                              |
+| Conteneur   | Docker multi-stage, nginx                     |
+| Hébergement | Dokploy (Traefik, Let's Encrypt)              |
 
 ## Structure
 
@@ -43,13 +43,13 @@ pnpm dev          # http://localhost:4321
 
 À lancer depuis la racine :
 
-| Commande            | Effet                                          |
-| ------------------- | ---------------------------------------------- |
-| `pnpm dev`          | serveur de dev du landing                      |
-| `pnpm build`        | build statique dans `apps/landing/dist`        |
-| `pnpm start`        | prévisualise le build                          |
-| `pnpm lint`         | ESLint sur tout le dépôt (`lint:fix` corrige)  |
-| `pnpm format`       | Prettier (`format:check` en CI)                |
+| Commande      | Effet                                         |
+| ------------- | --------------------------------------------- |
+| `pnpm dev`    | serveur de dev du landing                     |
+| `pnpm build`  | build statique dans `apps/landing/dist`       |
+| `pnpm start`  | prévisualise le build                         |
+| `pnpm lint`   | ESLint sur tout le dépôt (`lint:fix` corrige) |
+| `pnpm format` | Prettier (`format:check` en CI)               |
 
 Pour cibler un service précis : `pnpm --filter @portfolio/<app> <script>`.
 
@@ -70,7 +70,7 @@ docker compose up --build
 
 Le projet est déployé sur Dokploy comme une application **Docker Compose** pointant sur `compose.yml`.
 
-Le compose ne contient aucune configuration de routage : domaines, HTTPS et réseau Traefik se configurent dans Dokploy, onglet *Domains* de chaque service (ex. `landing` → `pierre-gaillard.dev`, port `80`, certificat `letsencrypt`).
+Le compose ne contient aucune configuration de routage : domaines, HTTPS et réseau Traefik se configurent dans Dokploy, onglet _Domains_ de chaque service (ex. `landing` → `pierre-gaillard.dev`, port `80`, certificat `letsencrypt`).
 
 ## Ajouter un service
 

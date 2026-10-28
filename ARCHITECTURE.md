@@ -58,13 +58,14 @@ Chaque composant a, si besoin, sa feuille `.css` à côté de lui plutôt qu'un 
 - La langue par défaut **n'a pas de préfixe** : `/` est en français, `/en` en anglais.
 - Les segments d'URL sont eux aussi traduits, via la clé `url` des fichiers de locale :
 
-  | Page            | FR                       | EN                          |
-  | --------------- | ------------------------ | --------------------------- |
-  | Accueil         | `/`                      | `/en`                       |
-  | Liste projets   | `/projets`               | `/en/projects`              |
-  | Détail projet   | `/projets/<slug-fr>`     | `/en/projects/<slug-en>`    |
+  | Page          | FR                   | EN                       |
+  | ------------- | -------------------- | ------------------------ |
+  | Accueil       | `/`                  | `/en`                    |
+  | Liste projets | `/projets`           | `/en/projects`           |
+  | Détail projet | `/projets/<slug-fr>` | `/en/projects/<slug-en>` |
 
   D'où l'arborescence `pages/[...lang]/[projects]/[slug]/` : les trois segments sont dynamiques et générés par `getStaticPaths`.
+
 - `trailingSlash: 'never'` : aucune URL ne se termine par `/`. nginx est configuré en conséquence (voir plus bas).
 - Toujours construire les liens avec `urlFor(lang, ...segments)`, qui retire la langue par défaut et préfixe le domaine en production.
 - `useTranslations(lang)` renvoie les textes d'interface ; une langue inconnue retombe sur le français.
@@ -93,12 +94,12 @@ La source est aujourd'hui **un mock** (`projects.mock.ts`). Pour brancher une vr
 
 `apps/landing/Dockerfile`, construit depuis la racine du dépôt :
 
-| Étape     | Base               | Rôle                                                                 |
-| --------- | ------------------ | -------------------------------------------------------------------- |
-| `base`    | `node:24-alpine`   | active pnpm via corepack (version lue dans `packageManager`)         |
-| `deps`    | `base`             | copie seulement lockfile et manifests, installe les deps du landing  |
-| `build`   | `deps`             | copie les sources et lance `astro build`                             |
-| `runtime` | `nginx:stable-alpine` | ne contient que `dist/` et la conf nginx                          |
+| Étape     | Base                  | Rôle                                                                |
+| --------- | --------------------- | ------------------------------------------------------------------- |
+| `base`    | `node:24-alpine`      | active pnpm via corepack (version lue dans `packageManager`)        |
+| `deps`    | `base`                | copie seulement lockfile et manifests, installe les deps du landing |
+| `build`   | `deps`                | copie les sources et lance `astro build`                            |
+| `runtime` | `nginx:stable-alpine` | ne contient que `dist/` et la conf nginx                            |
 
 Choix :
 
