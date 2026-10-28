@@ -1,0 +1,14 @@
+**/node_modules
+**/dist
+**/.astro
+**/.next
+**/.env*
+**/*.log
+.git
+.github
+.vscode
+.idea
+**/Dockerfile
+compose.yml
+README.md
+**/README.md
