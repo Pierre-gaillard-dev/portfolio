@@ -1,49 +1,85 @@
-# Portfolio
+# Portfolio — Pierre Gaillard
 
-## added :
+Code source de [pierre-gaillard.dev](https://pierre-gaillard.dev) : mon portfolio de développeur, bilingue (FR / EN), généré en statique avec [Astro](https://astro.build).
 
-- links
-  - add hover effects to buttons (see /ideas/inspi_1.mp4)
-  - remove underline effects for links for some elements
-- website icon
-- header
-  - projects link goes to section instead to dedicated page if on main page
-- footer
-  - add legal line (@right reserved...)
-  - replace links by buttons only
-- projects
-  - empty filters by default
-  - project detail page in overlay only
-- responsive
-- is deving on {{project name}}
-  - Create a VSCode extension that gets current project, current file and sends it to the portfolio API
-  - Create an API for the portfolio that gets the informations from the API and push it in a DB
-  - Create A DB with the the informations, when I started deving and when I stoppe deving
-  - From that calculate the time spent on deving for each project
-  - link each project in JSON to DB
-  - Display the real time spent on deving for each project
-  - Display wich project I'm currently working on.
+Le dépôt est un monorepo pnpm prévu pour accueillir plusieurs services sous `apps/`, déployés ensemble sur [Dokploy](https://dokploy.com).
 
-## to add :
+## Stack
 
-- projects
-  - add fullscreen button to demos
-- Links
-  - underline effect : line appearing from left to right
-- Home sections
-  - add soft skills
-  - add experiences (roadmap style)
-  - add contact section
-    - add CV (see /ideas.CV.jpg for integration)
-    - linkedin
-    - Mail
-    - Github
-    - City
-- Skills
-  - remove HTML / CSS, replace with React and NextJS
-  - replace github by blender
+| Domaine         | Outils                                        |
+| --------------- | --------------------------------------------- |
+| Site            | Astro 7 (sortie statique), TypeScript, CSS    |
+| Données         | Zod (schémas), JSON de traduction pour l'i18n |
+| Monorepo        | pnpm workspaces                               |
+| Qualité         | ESLint, Prettier                              |
+| Conteneur       | Docker multi-stage, nginx                     |
+| Hébergement     | Dokploy (Traefik, Let's Encrypt)              |
 
-- loading screen
-- dark mode / light mode
-- english
-- elements in background (little stars or things like that)
+## Structure
+
+```text
+.
+├── apps/
+│   └── landing/          # site vitrine Astro (pierre-gaillard.dev)
+├── api/                  # ancienne API PHP (hors workspace, voir ARCHITECTURE.md)
+├── compose.yml           # tous les services, déployés par Dokploy
+├── pnpm-workspace.yaml
+└── package.json          # scripts racine (lint, format, raccourcis vers landing)
+```
+
+Le fonctionnement détaillé (routing i18n, données, build, déploiement) est décrit dans [ARCHITECTURE.md](./ARCHITECTURE.md).
+
+## Démarrage
+
+Prérequis : Node.js ≥ 22.12 et pnpm (la version est fixée par `packageManager`, `corepack enable` suffit).
+
+```sh
+corepack enable
+pnpm install
+pnpm dev          # http://localhost:4321
+```
+
+### Scripts
+
+À lancer depuis la racine :
+
+| Commande            | Effet                                          |
+| ------------------- | ---------------------------------------------- |
+| `pnpm dev`          | serveur de dev du landing                      |
+| `pnpm build`        | build statique dans `apps/landing/dist`        |
+| `pnpm start`        | prévisualise le build                          |
+| `pnpm lint`         | ESLint sur tout le dépôt (`lint:fix` corrige)  |
+| `pnpm format`       | Prettier (`format:check` en CI)                |
+
+Pour cibler un service précis : `pnpm --filter @portfolio/<app> <script>`.
+
+## Docker
+
+Chaque service a son `Dockerfile` dans `apps/<app>/`, toujours construit **depuis la racine** (le lockfile et le workspace y sont).
+
+```sh
+# un service seul
+docker build -f apps/landing/Dockerfile -t portfolio-landing .
+docker run --rm -p 8080:80 portfolio-landing   # http://localhost:8080
+
+# toute la stack
+docker compose up --build
+```
+
+## Déploiement
+
+Le projet est déployé sur Dokploy comme une application **Docker Compose** pointant sur `compose.yml`.
+
+Le compose ne contient aucune configuration de routage : domaines, HTTPS et réseau Traefik se configurent dans Dokploy, onglet *Domains* de chaque service (ex. `landing` → `pierre-gaillard.dev`, port `80`, certificat `letsencrypt`).
+
+## Ajouter un service
+
+1. Créer `apps/<nom>/` avec un `package.json` nommé `@portfolio/<nom>`.
+2. L'ajouter dans `pnpm-workspace.yaml`.
+3. Écrire `apps/<nom>/Dockerfile` sur le modèle de `apps/landing/Dockerfile`.
+4. Déclarer le service dans `compose.yml`.
+5. Lui attribuer un domaine dans Dokploy.
+
+## Licence
+
+Code publié à titre de démonstration. Les contenus (textes, images, CV) restent la propriété de Pierre Gaillard.
