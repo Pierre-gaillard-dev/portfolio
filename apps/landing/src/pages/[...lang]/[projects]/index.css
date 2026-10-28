@@ -1,0 +1,19 @@
+body.projects {
+  .project-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 32px;
+
+    > * {
+      flex: 1;
+      min-width: min(250px, 100%);
+
+      a {
+        height: 100%;
+      }
+    }
+  }
+}

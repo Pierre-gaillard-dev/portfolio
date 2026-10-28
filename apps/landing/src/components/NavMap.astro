@@ -1,0 +1,37 @@
+---
+import { useTranslations } from '../i18n'
+import { urlFor } from '../utils/urlFor'
+import './NavMap.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang)
+---
+
+<div class='nav-map'>
+  <div class='sun'></div>
+  <div class='ring-group'>
+    <div class='ring' id='ring-1'>
+      <a href={urlFor(lang, t.url.projects)} class='planet'>
+        <span class='pill'>{t.navbar.projects}</span>
+      </a>
+    </div>
+    <div class='ring' id='ring-2'>
+      <a href={urlFor(lang, '#skills')} class='planet'>
+        <span class='pill'>
+          {t.navbar.skills}
+        </span>
+      </a>
+    </div>
+    <div class='ring' id='ring-3'>
+      <a href={urlFor(lang, '#work-experience')} class='planet'>
+        <span class='pill'>
+          {t.navbar.experience}
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

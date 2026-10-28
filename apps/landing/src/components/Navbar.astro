@@ -1,0 +1,41 @@
+---
+import { useTranslations } from '../i18n'
+import { urlFor } from '../utils/urlFor'
+import './Navbar.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const t = useTranslations(lang)
+
+const links = [
+  {
+    text: t.navbar.projects,
+    to: urlFor(lang, t.url.projects),
+  },
+  {
+    text: t.navbar.skills,
+    to: urlFor(lang, '#skills'),
+  },
+  {
+    text: t.navbar.experience,
+    to: urlFor(lang, '#work-experience'),
+  },
+]
+---
+
+<header>
+  <nav class='container'>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.to}>{link.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

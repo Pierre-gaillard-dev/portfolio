@@ -1,0 +1,52 @@
+{
+  "title-suffix": " | Pierre Gaillard",
+  "url": {
+    "projects": "projects",
+    "legal-notices": "legal-notices"
+  },
+  "navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience"
+  },
+  "footer": {
+    "legal-notices": "Legal notices"
+  },
+  "home": {
+    "title": "Pierre Gaillard – Full-stack web developer (React & Node)",
+    "meta-description": "Full-stack developer building fast, maintainable web apps with React, Astro, Node and PostgreSQL. Explore my projects and technical skills.",
+    "hero": {
+      "job": "Full-stack developer",
+      "name": "Pierre Gaillard",
+      "description": "I create web apps and websites built for the long term.\nAs a work-study student at Tom Explore, I specialize in TypeScript, React, Postgres and cost optimization.",
+      "links": {
+        "github": "Github",
+        "contact": "Contact",
+        "cv": "CV"
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "see-all": "All projects"
+    },
+    "skills": {
+      "title": "Compétences",
+      "groups": {
+        "front-end": "Front-end",
+        "back-end": "Back-end",
+        "infra": "Infra",
+        "tools": "Tools"
+      }
+    }
+  },
+  "project-list": {
+    "title": "Full-stack web projects",
+    "heading": "My projects",
+    "meta-description": "Web apps, websites and tools built solo or as part of a team: explore my full-stack projects, their tech stack and the problems they solve."
+  },
+  "project": {
+    "stack": "stack",
+    "links": "links"
+  }
+}

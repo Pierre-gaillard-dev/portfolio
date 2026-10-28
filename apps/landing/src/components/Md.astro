@@ -1,0 +1,58 @@
+---
+import { parseMarkdown } from '../utils/markdown'
+import MdImage from './MdImage.astro'
+import MdInline from './MdInline.astro'
+import './Md.css'
+
+interface Props {
+  content: string
+}
+
+const { content } = Astro.props
+
+const blocks = parseMarkdown(content)
+---
+
+<div class='md'>
+  {
+    blocks.map((block) => {
+      if (block.type === 'heading') {
+        const Heading = `h${block.level}` as const
+        return (
+          <Heading>
+            <MdInline nodes={block.content} />
+          </Heading>
+        )
+      }
+      if (block.type === 'image') {
+        return (
+          <div class='container'>
+            <MdImage image={block} />
+          </div>
+        )
+      }
+      if (block.type === 'list') {
+        const List = block.ordered ? 'ol' : 'ul'
+        return (
+          <List>
+            {block.items.map((item) => (
+              <li>
+                <MdInline nodes={item} />
+              </li>
+            ))}
+          </List>
+        )
+      }
+      return (
+        <p>
+          {block.lines.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              <MdInline nodes={line} />
+            </>
+          ))}
+        </p>
+      )
+    })
+  }
+</div>

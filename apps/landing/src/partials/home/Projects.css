@@ -1,0 +1,28 @@
+section#projects {
+  .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    a {
+      padding: 16px;
+    }
+  }
+
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 32px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    & > * {
+      flex: 1;
+    }
+  }
+}

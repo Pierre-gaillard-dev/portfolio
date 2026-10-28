@@ -1,0 +1,22 @@
+# Routing, TLS and the dokploy-network are injected by Dokploy (service > Domains).
+# Each app lives in apps/<name>/ with its own Dockerfile, built from the repo root.
+
+x-app: &app
+  restart: unless-stopped
+
+services:
+  landing:
+    <<: *app
+    build:
+      context: .
+      dockerfile: apps/landing/Dockerfile
+    expose:
+      - '80'
+
+  # api:
+  #   <<: *app
+  #   build:
+  #     context: .
+  #     dockerfile: apps/api/Dockerfile
+  #   expose:
+  #     - "3000"

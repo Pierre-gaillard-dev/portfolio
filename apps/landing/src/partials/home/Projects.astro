@@ -1,0 +1,35 @@
+---
+import ProjectCard from '../../components/ProjectCard.astro'
+import { getBestProjects } from '../../data/projects/projects.queries'
+import { useTranslations } from '../../i18n'
+import { urlFor } from '../../utils/urlFor'
+import './Projects.css'
+
+interface Props {
+  lang: string
+}
+const { lang } = Astro.props
+
+const translation = useTranslations(lang)
+const t = translation.home.projects
+
+const projects = await getBestProjects(lang)
+---
+
+<section id='projects'>
+  <div class='title'>
+    <h2>{t.title}</h2>
+    <a href={urlFor(lang, translation.url.projects)} class='pill'
+      >{t['see-all']} &#8594;</a
+    >
+  </div>
+  <ul>
+    {
+      projects.map((project) => (
+        <li>
+          <ProjectCard lang={lang} project={project} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
