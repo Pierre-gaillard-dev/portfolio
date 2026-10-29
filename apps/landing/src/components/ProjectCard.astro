@@ -1,4 +1,5 @@
 ---
+import { Picture } from 'astro:assets'
 import { getBestProjectTranslation } from '../data/projects/project.utils'
 import type { Project } from '../data/projects/projects.schemas'
 import { useTranslations } from '../i18n'
@@ -24,7 +25,14 @@ const link = urlFor(
 
 <a class='project' href={link}>
   <article class='container'>
-    <img src={translatedProject.cover_url} />
+    <Picture
+      src={translatedProject.cover_url}
+      alt=''
+      inferSize
+      layout='constrained'
+      formats={['avif', 'webp']}
+      fallbackFormat='webp'
+    />
     <h3>{translatedProject.title}</h3>
     <p>{translatedProject.meta_description}</p>
     <ul class='stack'>
