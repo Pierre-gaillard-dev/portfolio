@@ -19,15 +19,27 @@ const t = useTranslations(lang).home.hero
     <p>{t.description}</p>
     <ul>
       <li>
-        <a href={githubUrl}> {t.links.github} </a>
+        <a 
+          href={githubUrl}
+           target="_blank"
+           rel="noopener noreferrer"
+        > {t.links.github} </a>
       </li>
       <li>
-        <a href={emailUrl}>
+        <a 
+          href={emailUrl}
+           target="_blank"
+           rel="noopener noreferrer"
+        >
           {t.links.contact}
         </a>
       </li>
       <li>
-        <a href={cvUrl}>
+        <a
+          href={cvUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {t.links.cv}
         </a>
       </li>

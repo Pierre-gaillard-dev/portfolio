@@ -19,9 +19,9 @@ const projects = await getBestProjects(lang)
 <section id='projects'>
   <div class='title'>
     <h2>{t.title}</h2>
-    <a href={urlFor(lang, translation.url.projects)} class='pill'
-      >{t['see-all']} &#8594;</a
-    >
+    <a href={urlFor(lang, translation.url.projects)} class='pill'>
+      {t['see-all']} &#8594;
+    </a>
   </div>
   <ul>
     {
